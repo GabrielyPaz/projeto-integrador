@@ -1,13 +1,24 @@
-//import styles from "./Navbar.module.css";
+import { Link } from 'react-router-dom';
+import styles from "./Navbar.module.css"; 
 
-function Navbar() {
+const Navbar = () => {
+  return (
+    <nav>
+      <div className="navbar-login" id="navbar-login">
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <Link to="/">Home</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/register">Criar conta</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/login">Iniciar sessão</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
-    return (
-    <>
-        <h1>Isso vai ser um dia o NavBar</h1>
-    </>
-    )
-
-}
-
-export default Navbar
+export default Navbar;
