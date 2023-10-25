@@ -17,4 +17,26 @@
 
 .item {
     margin-right: 1em;
+    list-style: none;
 }
+
+.button {
+    background-color: #dde5eb00; 
+    color: white; 
+    border: 1px solid #ffffff; 
+    border-radius: 4px; 
+    width: 120px; 
+    padding: 6px 10px; 
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 12px; 
+    margin: 4px 2px; 
+    cursor: pointer;
+    transition: all 0.3s ease; 
+  }
+
+  .button:hover {
+    background-color: #4babf473; 
+    color: white; 
+  }
