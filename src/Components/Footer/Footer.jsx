@@ -1,10 +1,12 @@
 //import styles from "./Footer.module.css";
 
-function Footer() {
-
+const Footer = () => {
     return (
     <>
+        <footer>
         <h1>Aqui é o footer</h1>
+        </footer>
+       
     </>
     )
 

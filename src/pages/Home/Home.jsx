@@ -1,3 +1,4 @@
+import Body from "../../Components/Body/Body";
 
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
     return (
         <>
           <h1>Home</h1>
+          <Body />
 
         </>
       );
