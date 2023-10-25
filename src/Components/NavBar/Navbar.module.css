@@ -1,3 +1,14 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #037df6;
+    color: rgb(15, 15, 142);
+    padding: 10px 20px;
+    height: 60px;
+  }
+
+
 .list {
 
     display: flex;

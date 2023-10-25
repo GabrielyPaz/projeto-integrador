@@ -1,10 +1,14 @@
-//import styles from "./Body.module.css";
+import styles from "./Body.module.css";
 
 function Body() {
 
     return (
     <>
-        <h1>Isso vai ser um dia o body</h1>
+        <body className={styles.body}>
+             <p>Isso vai ser um dia o body</p>
+
+        </body>
+       
     </>
     )
 

@@ -3,12 +3,14 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <nav>
+    <nav className={styles.navbar}>
       <div className="navbar-login" id="navbar-login">
         <ul className={styles.list}>
+          
           <li className={styles.item}>
             <Link to="/">Home</Link>
           </li>
+
           <li className={styles.item}>
             <Link to="/register">Criar conta</Link>
           </li>
