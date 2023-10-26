@@ -5,7 +5,8 @@
     background-color: #037df6;
     color: rgb(15, 15, 142);
     padding: 10px 20px;
-    height: 60px;
+    height: auto;
+    flex-wrap: wrap; 
   }
 
 
@@ -13,6 +14,7 @@
 
     display: flex;
     list-style: none;
+    flex-wrap: wrap; 
 }
 
 .item {
@@ -30,7 +32,7 @@
     text-align: center;
     text-decoration: none; 
     display: inline-block; 
-    font-size: 12px; 
+    font-size: 0.7em; 
     margin: 4px 2px; 
     cursor: pointer;
     transition: all 0.3s ease; 
