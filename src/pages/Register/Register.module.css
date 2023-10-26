@@ -1,0 +1,183 @@
+@import url('../../layouts/commom.css'); 
+
+fieldset {
+	border: none;
+}
+
+
+form {
+	position: relative;
+	min-width: 320px;
+	max-width: 26em;
+	background-color: #f2f2f2;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 2em auto;
+	box-shadow: 0 5px 5px lightgrey;
+	padding: 1em 2.5em;
+	box-sizing: border-box;
+	}
+
+input {
+	width: 100%;
+	padding: .4em .5em;
+	background-color: var(--app-grey);
+	border: 1px solid var(--cor-padrao-fraca-transparente);
+	border-radius: .2em;
+	}
+
+	
+
+	input:focus {
+	outline: none;
+	border: 1px solid lightgrey;
+	}
+
+	input:invalid {
+	border: 1px solid var(--cor-erro-input);
+	}
+
+	label {
+	width: 100%;
+	font-weight: 300;
+	margin-bottom: -.1em;
+	margin-top: 1em;
+	font-size: .8em;
+	}
+
+	.user-input{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	gap: 3px;
+	}
+
+	/* aplicando css erros */
+
+	small{
+	display: none;
+	font-size: .8em;
+	font-weight: 300;
+	}
+
+	input:required {
+	border-color: transparent;
+	}
+
+	div.error label{
+	color: var();
+	}
+
+	div.error small{
+	color: var(--cor-erro-input);
+	display: block;
+	}
+
+	div.error input {
+	border-color: var(--cor-erro-input);
+	}
+
+	small.error {
+	color: var(--cor-erro-input);
+	display: block;
+	
+	}
+
+	.divPasswordEConfirmPassword{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--app-grey);
+	border: 1px solid var(--cor-padrao-fraca-transparente);
+	padding-right: 5px;
+	width: 100%;
+	}
+
+	.divPasswordEConfirmPassword input{
+		border: none;
+	}
+
+	/* aplicando css erros */
+
+
+	button {
+	padding: .5em 3em;
+	background-color: var(--primary);
+	color: white;
+	margin-top: 2em;
+	font-weight: 400;
+	font-size: 1em;
+	}
+
+	button:disabled {
+	background-color: rgba(168, 188, 255, 0.5);
+	cursor: not-allowed;
+	}
+
+	.form-header {
+	color: grey;
+	font-size: 2em;
+	}
+
+	.login {
+	text-align: center;
+	}
+
+	.left {
+	width: 50%;
+	background-color: white;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+
+	.left img {
+	width: 60%;
+	}
+
+	.right {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	}
+
+	#response {
+	margin: .5rem 0 -1rem 0;
+	}
+
+	#response span.ok {
+	color:#4fffa7;
+	font-weight: 700;
+	}
+
+	#response span.err {
+	color: var(--cor-erro-input);
+	font-weight: 700;
+	}
+
+	.eye-password-bt{
+	padding: 0 3%;
+	height: 20px;
+	cursor: pointer;
+	}
+
+@media screen and (max-width: 660px){
+	main{
+	flex-direction: column;
+	align-items: center;
+	}
+
+	.right, .left{
+	min-width: 320px;
+	}
+
+	a{
+	padding: 1em 0px;
+	}
+
+}
+

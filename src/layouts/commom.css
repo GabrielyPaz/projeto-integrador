@@ -1,0 +1,13 @@
+/*
+PENSEI NESSE ARQUIVO PRA GENTE USAR COISAS PADRÕES ENTRE OS ESTILOS
+TIPO CORES, FONTES ETC
+o " * " é só um exemplo
+*/
+
+
+* {
+	--cor-padrao-fraca: #037df6;
+	--cor-padrao-fraca-transparente: #037df67c;
+	--cor-padrao-forte: #0f0f8e;
+	--cor-erro-input: #da5858;
+}
