@@ -6,7 +6,6 @@ const Footer = () => {
         <footer className={styles.footer}>
         <h1>footer</h1>
         </footer>
-       
     </>
     )
 
