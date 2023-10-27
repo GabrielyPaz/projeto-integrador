@@ -1,0 +1,87 @@
+body{
+    background-color: #F0F8FF;
+    margin: 0;
+}
+
+.h1{
+    width: 420px;
+    height: 40px;
+    margin: 0;
+    left: 117px;
+    color: #037df6;
+    font-weight: bold;
+    display: flex;
+    algin-itens: center;
+    justify-content: center;
+    
+
+}
+
+.loginform {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    algin-itens: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    algin-items: center;
+    flex-direction: column;
+    margin-top:15px;
+
+}
+
+.label {
+    
+    font-weight: 3.125rem;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom:40px; 
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    algin-items: center;
+    flex-direction: column;
+    margin-top:15px;
+}
+
+.button {
+    width: 160px;
+    height: 40px;
+    margin-top: 15px;
+    padding: 10px;
+    display: flex;   
+    justify-content: center;
+    algin-items: center;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    background-color: #037df6;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+}
+
+.button:hover {
+    background-color: #4babf473; 
+    color: white; 
+  }
+
+.registrar{
+    width: 106px;
+    height: 40px;
+    top: 84px;
+    left: 18px;
+    margin-top: 30px;   
+    text-decoration: none;    
+}
+
