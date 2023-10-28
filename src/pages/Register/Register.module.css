@@ -27,7 +27,7 @@ form {
 	align-items: center;
 	flex-direction: column;
 	box-shadow: 0 5px 5px lightgrey;
-	padding: 1em 2.5em;
+	padding: 1em 1.5em;
 	}
 
 input {
@@ -51,7 +51,7 @@ input {
 	width: 100%;
 	font-weight: 300;
 	margin-bottom: -.1em;
-	margin-top: 1em;
+	margin-top: .5em;
 	font-size: .8em;
 	}
 
@@ -64,13 +64,12 @@ input {
 	}
 
 	.div_button{
-		align-items: center;
+		margin: 0 auto;
 	}
 
 	/* aplicando css erros */
 
 	small{
-	display: none;
 	font-size: .8em;
 	font-weight: 300;
 	}
@@ -93,6 +92,7 @@ input {
 	}
 
 	small.error {
+	padding-top: 2px;
 	color: var(--cor-erro-input);
 	display: block;
 	
@@ -115,7 +115,8 @@ input {
 	/* aplicando css erros */
 
 
-	button {
+button {
+	
 	padding: .5em 3em;
 	background-color: var(--cor-padrao-turquesa-transparente);
 	color: white;
@@ -124,7 +125,7 @@ input {
 	font-size: 1em;
 	border: none;
 	border-radius: 5px;
-	}
+}
 
 	button:disabled {
 	background-color: var(--cor-padrao-fraca-transparente);
