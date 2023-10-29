@@ -1,20 +1,18 @@
 body{
-    background-color: #F0F8FF;
+    background-color: #FFE4E1;
     margin: 0;
 }
 
 .h1{
     width: 420px;
     height: 40px;
-    margin: 0;
+    margin-bottom: 25px;
     left: 117px;
     color: #037df6;
     font-weight: bold;
     display: flex;
-    align-items: center;
+    algin-itens: center;
     justify-content: center;
-    
-
 }
 
 .loginform {
@@ -29,44 +27,48 @@ body{
 .inputContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    algin-items: center;
     flex-direction: column;
     margin-top:15px;
 
 }
 
 .label {
-    
-    font-weight: 3.125rem;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 19px;
-    margin-bottom:40px; 
+    margin-top: 0;
+    margin-bottom: 12px; 
 }
 
 .input {
     display: flex;
     justify-content: center;
-    align-items: center;
+    algin-items: center;
     flex-direction: column;
     margin-top:15px;
 }
 
 .button {
-    width: 160px;
+    width: 400px;
     height: 40px;
     margin-top: 15px;
-    padding: 10px;
+    padding: 22px;
+    
     display: flex;   
     justify-content: center;
-    align-items: center;
+    algin-items: center;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 15px;
-    text-align: center;
+    color: #FFFFFF;
     border: none;
-    border-radius: 4px;
+
     background-color: #037df6;
+    border-radius: 12px;    
+   
     cursor: pointer;
+    opacity: 0.8;
     transition: all 0.3s ease; 
 }
 
@@ -75,12 +77,26 @@ body{
     color: white; 
   }
 
-.registrar{
-    width: 106px;
-    height: 40px;
-    top: 84px;
-    left: 18px;
-    margin-top: 30px;   
-    text-decoration: none;    
+  .log {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
+.question {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;    
+    color: #000000;
+}
+
+
+.register{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: underline;    
+    color:  #037df6;
+}
