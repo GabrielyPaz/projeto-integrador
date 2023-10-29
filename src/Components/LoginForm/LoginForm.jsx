@@ -22,7 +22,10 @@ const Login = () => {
             Entrar
         </button>
 
-        <a className={styles.registrar} href="">Ainda não tem conta? Registre-se</a>
+        <div className={styles.log} >
+        <p className={styles.question} >Ainda não tem conta?</p>
+        <a className={styles.register} href="#">Registre-se</a>
+        </div>
 
        </form>
     </login>
