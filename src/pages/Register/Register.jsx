@@ -17,23 +17,25 @@ export default function Register(){
 
 	const schema = object({
 		
-		nome: string().min(3, "* Mínimo de 3 caracteres!")
-		.required("* Campo Obrigatório!"),
+		nome: string()
+		.required("* Campo Obrigatório!")
+		.min(3, "* Mínimo de 3 caracteres!"),
 
 		sobrenome: string()
-		.required("* Mínimo de 3 caracteres!"),
+		.required("* Campo Obrigatório!")
+		.min(3, "* Mínimo de 3 caracteres!"),
 
 		email: string()
-		.email()
-		.required("* Insira um e-mail válido"),
+		.required("* Campo Obrigatório!")
+		.email("* Insira um e-mail válido"),
 
 		password: string()
-		.min(8, "* Mínimo de 8 caracteres")
-		.required("* Campo Obrigatório!"),
+		.required("* Campo Obrigatório!")
+		.min(8, "* Mínimo de 8 caracteres"),
 
 		confirmPassword: string()
-		.min(8, "* Mínimo de 8 caracteres")
 		.required("* Repita a senha!")
+		.min(8, "* Mínimo de 8 caracteres")
 		.oneOf([ref("password")], "* Senha estão diferentes!")
 	})
 
@@ -69,7 +71,7 @@ export default function Register(){
 					<div>
 						<input name="nome" 
 						type="text" 
-						minLength={3} 
+						minLength={3}
 						{...register("nome")}
 						//onChange={(event) => handleChange(event.target.value)}
 						/>
