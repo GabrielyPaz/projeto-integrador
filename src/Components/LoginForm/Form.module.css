@@ -1,0 +1,124 @@
+body{
+    font-family: 'poppins', sans-serif;
+    background-color: #FFE4E1;
+    margin: 0;
+}
+
+.h1{
+    width: 420px;
+    height: 40px;
+    margin-bottom: 25px;
+    left: 117px;
+    color: #037df6;
+    font-weight: bold;
+    display: flex;
+    algin-itens: center;
+    justify-content: center;
+}
+
+.loginform {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    algin-items: center;
+    flex-direction: column;
+    margin-top:16px;
+
+}
+
+.label {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 19px;    
+    margin-top: 0;
+    margin-bottom: 10px; 
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    algin-items: center;
+    flex-direction: column;  
+    padding: 8px;      
+    border-radius: 12px;   
+}
+
+.clear {
+    width: 400px;
+    height: 40px;
+    margin-top: 5px;
+    padding: 15px;
+    
+    display: flex;   
+    justify-content: center;
+    algin-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #1E90FF;
+    border: none;
+  }
+
+  .clear:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+.button {
+    width: 400px;
+    height: 40px;
+    margin-top: 15px;
+    padding: 11px;
+    
+    display: flex;   
+    justify-content: center;
+    algin-items: center;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px;
+    color: #FFFFFF;
+    border: none;
+
+    background-color: #037df6;
+    border-radius: 12px;    
+   
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.3s ease; 
+}
+
+.button:hover .button:focus {
+    background-color: #4babf473; 
+    color: white; 
+  }
+
+  .log {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.question {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;    
+    color: #000000;
+}
+
+
+.register{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration-line: underline;    
+    color:  #037df6;
+}

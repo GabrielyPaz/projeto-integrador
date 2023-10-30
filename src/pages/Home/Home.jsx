@@ -1,11 +1,10 @@
 import Body from "../../Components/Body/Body";
 
-
 const Home = () => {
 
     return (
         <>
-          <Body />
+          <Body />     
         </>
       );
 };

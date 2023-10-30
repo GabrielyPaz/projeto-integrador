@@ -155,7 +155,6 @@ export default function Register(){
 					</div>
 				</div>
 
-
 				</fieldset>
 
 			</form>
