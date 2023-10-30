@@ -1,4 +1,5 @@
 body{
+    font-family: 'poppins', sans-serif;
     background-color: #FFE4E1;
     margin: 0;
 }
@@ -29,38 +30,59 @@ body{
     justify-content: center;
     algin-items: center;
     flex-direction: column;
-    margin-top:15px;
+    margin-top:16px;
 
 }
 
 .label {
     font-weight: 400;
     font-size: 18px;
-    line-height: 19px;
+    line-height: 19px;    
     margin-top: 0;
-    margin-bottom: 12px; 
+    margin-bottom: 10px; 
 }
 
 .input {
     display: flex;
     justify-content: center;
     algin-items: center;
-    flex-direction: column;
-    margin-top:15px;
+    flex-direction: column;  
+    padding: 8px;      
+    border-radius: 12px;   
 }
+
+.clear {
+    width: 400px;
+    height: 40px;
+    margin-top: 5px;
+    padding: 15px;
+    
+    display: flex;   
+    justify-content: center;
+    algin-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #1E90FF;
+    border: none;
+  }
+
+  .clear:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
 
 .button {
     width: 400px;
     height: 40px;
     margin-top: 15px;
-    padding: 22px;
+    padding: 11px;
     
     display: flex;   
     justify-content: center;
     algin-items: center;
     color: #FFFFFF;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
     color: #FFFFFF;
     border: none;
 
@@ -72,7 +94,7 @@ body{
     transition: all 0.3s ease; 
 }
 
-.button:hover {
+.button:hover .button:focus {
     background-color: #4babf473; 
     color: white; 
   }
