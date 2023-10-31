@@ -1,37 +1,43 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import styles from "./Navbar.module.css"; 
+import { useState, useEffect} from 'react';
+import styles from "./Navbar.module.css";
+import { IoClose  } from "react-icons/io5";
+import { TfiMenu  } from "react-icons/tfi";
+import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter  } from "react-icons/si";
+
 
 const Navbar = () => {
   const location = useLocation();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const handleMenuToggle = () => {
-    setMenuOpen(!isMenuOpen);
-  };
+  const [menuMobile, setMenuMobile] = useState(false);
+  const [login, setLogin] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    // Verifica se há um valor de login no localStorage quando o componente é montado
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setLogin(isLoggedIn);
+  }, []); // O array vazio assegura que isso só aconteça uma vez, quando o componente é montado
 
-    window.addEventListener('resize', handleResize);
+  const exibirMenu = () => setMenuMobile(!menuMobile);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+
+ const handleLogout = () => {
+    // Lógica para fazer logout, se necessário
+    // Por exemplo, você pode chamar uma API para invalidar a sessão do usuário
+    // Em seguida, alterar o estado para `false` para mostrar "Login" novamente
+    setLogin(false);
+    // Salva o estado de login como falso no localStorage ao fazer logout
+    localStorage.setItem('isLoggedIn', 'false');
+    // Outras lógicas de logout, se necessário
+  };
 
   return (
-    <nav className={styles.navbar}>
+    <header className={styles.navbar}>
       <div className={styles.item}>
         <Link to="/" className={styles.link}>
-          <img src="/public/logo-locadora.png" alt="logo da digital booking" className={styles.image} />
-          <span className={styles.text}>Apaixonados por aventuras</span>
+          <img src="/public/logo-site.svg" alt="logo da digital cars" className={styles.image} />
+          <span className={styles.text}>Paixão pela estrada</span>
         </Link>
       </div>
-      {!isMobile && (
         <ul className={styles.list}>
           {location.pathname !== '/register' && (
             <li className={styles.item}>
@@ -41,40 +47,60 @@ const Navbar = () => {
             </li>
           )}
           {location.pathname !== '/login' && (
-            <li className={styles.item}>
-              <Link to="/login">
-                <button className={styles.button}>Iniciar sessão</button>
-              </Link>
-            </li>
+        <li className={styles.item}>
+          {login ? (
+            <button className={styles.button} onClick={handleLogout}>Logout</button>
+          ) : (
+            <Link to="/login">
+              <button className={styles.button}>Iniciar sessão</button>
+            </Link>
           )}
+        </li>
+      )}
         </ul>
-      )}
-      {isMobile && (
-        <div className={styles.menuIcon} onClick={handleMenuToggle}>
-          ☰ {/* Ícone do menu hambúrguer */}
-        </div>
-      )}
-      {isMobile && isMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <ul className={styles.list}>
-            {location.pathname !== '/register' && (
-              <li className={styles.item}>
-                <Link to="/register">
-                  <button className={styles.button}>Criar conta</button>
-                </Link>
-              </li>
-            )}
-            {location.pathname !== '/login' && (
-              <li className={styles.item}>
-                <Link to="/login">
-                  <button className={styles.button}>Iniciar sessão</button>
-                </Link>
-              </li>
-            )}
-          </ul>
-        </div>
-      )}
-    </nav>
+
+        <div className={styles.menuHamburger}>
+                <TfiMenu className={styles.menu} size={28} onClick={exibirMenu}/>
+            </div>
+
+            <nav className={ menuMobile ? `${styles.menuMobile} ${styles.ativo}` : styles.menuMobile}>
+                <div className={styles.menuSuperior}>
+                    <IoClose className={styles.closeButton} size={22} onClick={exibirMenu}/>
+                    <h4 className={styles.menuTitle}> MENU </h4>
+                </div>
+                <div className={styles.menuInferior}>
+                    <div className={styles.menuButtons}>
+                    {location.pathname !== '/register' && (
+                        <Link to="/register "> <button className={styles.buttonItem}> Criar Conta </button> </Link>
+                        )}
+
+                        <hr color="black" width="90%" size="1" className={`${styles.linha} ${location.pathname === '/register' || location.pathname === '/login' ? styles.hidden : ''}`} />
+                        {location.pathname !== '/login' && (
+                        <Link to="/login"> <button className={styles.buttonItem}>  Fazer login </button> </Link> )}
+
+                    </div>
+                    <div>
+                        <ul className={styles.lista}>
+                            <li>
+                                <SiFacebook size={24}/>
+                            </li>
+                            <li>
+                                <SiInstagram size={24}/>
+                            </li>
+                            <li>
+                                <SiLinkedin size={24}/>
+                            </li>
+                            <li>
+                                <SiTwitter size={24}/>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>   
+
+            </nav>
+  
+    </header>
   );
 };
 

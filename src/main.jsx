@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+<<<<<<< HEAD
 //import * as firebase from 'firebase/app'
 //import * as firebaseAuth from 'firebase/auth'
 
@@ -23,6 +24,9 @@ firebaseAuth.signInWithEmailAndPassword(
 .then(user => console.log(user))
 .catch(error => console.log('error', error));
 
+=======
+import "bootstrap/dist/css/bootstrap.min.css";
+>>>>>>> origin/master
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
