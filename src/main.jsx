@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import * as firebase from 'firebase/app'
-import * as firebaseAuth from 'firebase/auth'
+//import * as firebase from 'firebase/app'
+//import * as firebaseAuth from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCBSl2BdAd_DghcW5a5-qp8gFcK0nfuGCY",
