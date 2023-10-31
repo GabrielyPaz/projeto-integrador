@@ -1,92 +1,54 @@
 import styles from './Form.module.css';
 import { useState } from 'react';
-import { isEmailValid } from './ValidationEmail'
-import ValidationError from './ValidationError';
+
+
 
 const Login = () => {
 
-    const [form, setForm] = useState({
-        email: {
-            hasChanged: false,
-            value: ""
-        },
+const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-        password: {
-            hasChanged: false,
-            value: ""
-          }
-    })
+  return (
+    <div className={styles.container}>
+      <div className={styles.container_login}>
+        <div className={styles.wrap_login}>
+          <form className={styles.login_form}>
+            <span className={styles.login_form_title}> Iniciar Sessão </span>
 
-    /*const navigate = useNavigate();
-    const goToRegisterPage = () => {
-      navigate('/register');
-    }*/
+            <div className={styles.wrap_input}>
+              <input
+                className={email !== "" ? "has-val input" : "input"}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <span className="focus-input" data-placeholder="Email"></span>
+            </div>
 
-    return (
-    <login className={styles.loginform}>
-        <h1 className= {styles.h1} >Iniciar Sessão</h1>
+            <div className="wrap-input">
+              <input
+                className={password !== "" ? "has-val input" : "input"}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span className="focus-input" data-placeholder="Password"></span>
+            </div>
 
-       <form>
-        <div className={styles.inputContainer}>
-            <label className={styles.label} htmlFor="email">E-mail</label>
-            <input className={styles.input} type="text" name="email" id="email" placeholder="email@email.com" value={form.email.value}
-            onChange={event => setForm({...form, email: {
-                hasChanged: true, value: event.target.value
-            }})}
-            data-testid='email'/>
-            <ValidationError
-                hasChanged={form.email.hasChanged}
-                errorMessage='O e-mail é obrigatório.'
-                testId='email-required'
-                type='required'
-                value={form.email.value}/>
+            <div className="container-login-form-btn">
+              <button className="login-form-btn">Login</button>
+            </div>
 
-            <ValidationError
-                hasChanged={form.email.hasChanged}
-                errorMessage='E-mail inválido.'
-                testId='email-invalid'
-                type='email'
-                value={form.email.value}/>                  
+            <div className={styles.log} >
+                 <p className={styles.question} >Ainda não tem conta?</p>
+                 <a className={styles.register} 
+                 href="/register">Registre-se</a>
         </div>
-        
-        <div className={styles.inputContainer}>
-            <label className={styles.label} htmlFor="password">Senha</label>
-            <input className={styles.input} type="password" name="password" id="password" placeholder="*******" value={form.password.value}
-            onChange={event => setForm({...form, password: {
-                hasChanged: true, value: event.target.value
-            }})}
-            data-test-id="password"/>
-             <ValidationError
-                hasChanged={form.password.hasChanged}
-                errorMessage='A senha é obrigatória.'
-                testId='password-required'
-                type='required'
-                value={form.password.value}/>           
+          </form>
         </div>
-
-        <button className={styles.clear}
-        data-testid="recover-password-button"
-        disabled={!isEmailValid(form.email.value)}>
-            Recuperar senha
-        </button>
-
-        <button className={styles.button}
-        data-testid="login-button"
-        disabled={!isEmailValid(form.email.value) || !form.password.value}>
-            Entrar
-        </button>
-        
-        <div className={styles.log} >
-        <p className={styles.question} >Ainda não tem conta?</p>
-        <a className={styles.register} 
-        data-testid="register-button" 
-       /* onClick={goToRegisterPage}*/
-        href="/register">Registre-se</a>
-        </div>
-
-       </form>
-    </login>
-    )
-};
+      </div>
+    </div>
+  );
+}
 
 export default Login;
