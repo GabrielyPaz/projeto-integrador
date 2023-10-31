@@ -1,9 +1,9 @@
-@import url('../../layouts/commom.css'); 
+/* @import url('../../layouts/commom.css'); 
 
 fieldset {
 	border: none;
 	text-align: center;
-}
+} */
 
 /*
 main{
@@ -11,13 +11,12 @@ main{
 }*/
 
 
-form {
-	/*
+/* form {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	*/
+	
 
 	margin: 1rem auto;
 	min-width: 320px;
@@ -65,11 +64,11 @@ input {
 
 	.div_button{
 		margin: 0 auto;
-	}
+	} */
 
 	/* aplicando css erros */
 
-	small{
+	/* small{
 	font-size: .8em;
 	font-weight: 300;
 	}
@@ -106,16 +105,16 @@ input {
 	border: 1px solid var(--cor-padrao-turquesa-transparente);
 	padding-right: 5px;
 	width: 100%;
-	}
+	} */
 
-	.divPasswordEConfirmPassword input{
+	/* .divPasswordEConfirmPassword input{
 		border: none;
-	}
+	} */
 
 	/* aplicando css erros */
 
 
-button {
+/* button {
 	
 	padding: .5em 3em;
 	background-color: var(--cor-padrao-turquesa-transparente);
@@ -130,9 +129,9 @@ button {
 	button:disabled {
 	background-color: var(--cor-padrao-fraca-transparente);
 	cursor: not-allowed;
-	}
+	} */
 
-	.form-header {
+	/* .form-header {
 	color: grey;
 	font-size: 2em;
 	}
@@ -154,9 +153,9 @@ button {
 	padding: 0 3%;
 	height: 20px;
 	cursor: pointer;
-	}
+	} */
 
-@media screen and (max-width: 660px){
+/* @media screen and (max-width: 660px){
 	main{
 	flex-direction: column;
 	align-items: center;
@@ -167,4 +166,4 @@ button {
 	}
 
 }
-
+ */

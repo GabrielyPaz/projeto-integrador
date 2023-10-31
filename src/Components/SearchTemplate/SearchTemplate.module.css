@@ -1,76 +1,171 @@
 .header {
-  background-color: #ffffff;
-  color: rgb(7, 0, 0);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: small;
-  padding: 30px;
+  background-color: #31363F;
+  color:  #ffff;
+  align-items: center;
+  display: flex;
+  flex-direction: column; 
+  min-height: min-content;
 }
 
 .title {
-  margin: 10px;
+  padding: 10px;
   width: 100%;
-  font-weight: lighter;
   display: flex;
-  padding:7px 80px;
-  color: #202020;
+  color: #ffff;
+  justify-content: center;
 }
-
 
 .search {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   width: 100%;
-  align-items: center;
-  text-align: left;
-  padding:10px 80px;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 10px;
   gap: 10px;
+  font-size: 0.8rem;
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.label {
+  font-weight: bold;
+  color: #ffffff67;
+  width: 100%;
+  text-align: left;
+  padding-left: 0.3em;
+}
+/* ====== BOTOES =============*/
 
 .input {
   display: flex;
-  flex-direction: column; /* Coloca os rótulos e os inputs em colunas */
-  width: 300px; /* Faz com que os itens ocupem 100% da largura disponível */
-  height: 50px;
+  flex-direction: column; 
+  width: 400px; 
+  height: 40px; 
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 4px;
   border: none;
-  background-color: #066ff94b;
-  padding-left: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color:  #ffff;
+  padding-left: 35px;
+  box-shadow: 3px 3px 2px rgba(114, 110, 110, 0.193);
+
+  background-image: url('../../assets/icons/map.png');
+  background-repeat: no-repeat;
+  background-position: 10px center; 
   
 }
 
 .date {
   display: flex;
-  flex-direction: column; /* Coloca os rótulos e os inputs em colunas */
-  width: 220px; /* Faz com que os itens ocupem 100% da largura disponível */
-  height: 50px;
+  flex-direction: column; 
+  width: 200px; 
+  height: 40px; 
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 4px;
   border: none;
-  background-color: #066ff94b;
+  background-color: #ffff;
   padding: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  
+  box-shadow: 3px 3px 2px rgba(114, 110, 110, 0.193);
 }
 
 .button {
-  background-color: #028df8eb;
+  background-color: #F0572D;
   color: rgb(255, 255, 255);
-  border: 1px solid #ffffff;
-  width: 220px; /* Faz com que os itens ocupem 100% da largura disponível */
-  height: 50px;
+  border: none;
+  width: 206px;
+  height: 40px; 
   border-radius: 4px;
-  margin-top: 26px;
+  margin-top: 38px;
+  margin-bottom: 10px;
   text-align: center;
   text-decoration: none;
-  font-size: 0.8em;
+  font-size:medium;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 2px rgba(114, 110, 110, 0.193);
 }
 
 .button:hover {
-  background-color: #028df88e;
+  background-color: #f1704c;
   color: white;
 }
+
+/* ===== RESPONSIVIDADE ======== */
+
+@media screen and (max-width: 1055px) {
+   
+  .button {
+    width: 140px;
+    height: 40px; 
+  }
+
+  .input {
+    width: 180px; 
+    height: 40px; 
+  }
+  
+  .date {
+    width: 170px; 
+    height: 40px; 
+  }
+
+}  
+
+@media screen and (max-width: 720px) {
+  .wrapper { 
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+  }
+  .title {
+   font-size: 1.6rem;
+  }
+
+  .search {
+    margin: 0;
+
+  }
+
+  .button,
+  .input,
+  .date {
+    width: 40rem; 
+    margin: 0;
+    display:block ;
+  }
+
+  .button {
+    margin-top: 20px;
+  }
+  
+  
+}  
+
+@media screen and (max-width: 425px) {
+  .search {
+    margin-bottom: 10px;
+  }
+  .wrapper { 
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-direction: row;
+  }
+  
+  .button,
+  .input,
+  .date {
+    width: 23rem; 
+   
+  }
+  
+}  
