@@ -1,13 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import styles from "./Navbar.module.css";
-import { IoMenu, IoClose  } from "react-icons/io5";
+import { IoClose  } from "react-icons/io5";
+import { TfiMenu  } from "react-icons/tfi";
 import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter  } from "react-icons/si";
 
 
 const Navbar = () => {
   const location = useLocation();
-  const [menuLateral, setMenuLateral] = useState(false);
+  const [menuMobile, setMenuMobile] = useState(false);
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Navbar = () => {
     setLogin(isLoggedIn);
   }, []); // O array vazio assegura que isso só aconteça uma vez, quando o componente é montado
 
-  const showMenu = () => setMenuLateral(!menuLateral);
+  const exibirMenu = () => setMenuMobile(!menuMobile);
 
 
  const handleLogout = () => {
@@ -59,15 +60,15 @@ const Navbar = () => {
         </ul>
 
         <div className={styles.menuHamburger}>
-                <IoMenu className={styles.menu} size={28} onClick={showMenu}/>
+                <TfiMenu className={styles.menu} size={28} onClick={exibirMenu}/>
             </div>
 
-            <nav className={ menuLateral ? `${styles.menuLateral} ${styles.ativo}` : styles.menuLateral}>
-                <div className={styles.menuHeader}>
-                    <IoClose className={styles.closeButton} size={22} onClick={showMenu}/>
+            <nav className={ menuMobile ? `${styles.menuMobile} ${styles.ativo}` : styles.menuMobile}>
+                <div className={styles.menuSuperior}>
+                    <IoClose className={styles.closeButton} size={22} onClick={exibirMenu}/>
                     <h4 className={styles.menuTitle}> MENU </h4>
                 </div>
-                <div className={styles.menuBody}>
+                <div className={styles.menuInferior}>
                     <div className={styles.menuButtons}>
                     {location.pathname !== '/register' && (
                         <Link to="/register "> <button className={styles.buttonItem}> Criar Conta </button> </Link>
