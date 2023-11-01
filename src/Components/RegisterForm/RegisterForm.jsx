@@ -61,7 +61,7 @@ export default function RegisterForm(){
 		<>
 			<form onSubmit={onSubmit(handleSubmit)}>
 
-				<fieldset> MoveRental
+				<fieldset> Digital Car
 
 				<div className={styles.user_input}>
 
