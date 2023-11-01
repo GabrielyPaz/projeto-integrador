@@ -1,7 +1,7 @@
 import styles from './Form.module.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import registros from '../../data/registros.json'
+//import registros from '../../'
 
 const Login = () => {
 
@@ -32,16 +32,16 @@ const onSubmitInfo = (e) => {
         navigate('/')
       } else {
         alert('Informações inválidas. Tente novamente!')
-         setFormError(true) 
+        setFormError(true) 
       }
   } else {
     alert('Informações inválidas. Tente novamente!')
-     setFormError(true) 
+    setFormError(true) 
   }
 }
 
 return (
- 
+
   <div className={styles.container}>
     <div className={styles.container_login}>
       <div className={styles.wrap_login}>

@@ -84,7 +84,7 @@ export default function RegisterForm(){
 		<>
 			<form className={styles.form_register} onSubmit={onSubmit(handleSubmit)}>
 
-				<h1 className={styles.h1_register}>MoveRental</h1>
+				<h1 className={styles.h1_register}>Cadastro</h1>
 
 				<div className={styles.user_input}>
 
