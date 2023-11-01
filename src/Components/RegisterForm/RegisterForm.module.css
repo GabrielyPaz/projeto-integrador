@@ -5,12 +5,7 @@
 	--cor-azul-escuro: #31363F;
 	--cor-cinza-claro: #DFE4EA; /*cinza claro - background*/
 	--cor-preta: #191B1D;
-	--cor-padrao-fraca: #037df6;
-	--cor-padrao-fraca-transparente: #037df67c;
-	--cor-padrao-forte: #0f0f8e;
-	--cor-erro-input: #da5858;
-	--cor-padrao-turquesa: #08a6ca;
-	--cor-padrao-turquesa-transparente: #08a6caae;
+	--cor-erro-input: #da5858; /* cor de erro */
 }
 
 .form_register{
@@ -28,6 +23,10 @@
 	flex-direction: column;
 	box-shadow: 0 5px 5px lightgrey;
 	padding: 1em 1.5em;
+}
+
+.h1_register{
+	color: var(--cor-laranja);
 }
 
 .input_register {
@@ -119,10 +118,7 @@
 	border-radius: 5px;
 	/* ANDREA */
 	height: 40px; 
-  background: -webkit-linear-gradient(to left, #21d4fd, #b721ff);
-  background: -o-linear-gradient(to left, #21d4fd, #b721ff);
-  background: -moz-linear-gradient(to left, #21d4fd, #b721ff);
-  background: linear-gradient(to left, #21d4fd, #b721ff); 
+  background: var(--cor-laranja);
 }
 
 .button_register:disabled {

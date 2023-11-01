@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 // useForm
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,8 +12,19 @@ import eyeslash from '../../assets/eye-slash.svg';
 
 export default function RegisterForm(){
 
+	const navigate = useNavigate();
+
 	const [showPasswordOne, setShowPasswordOne] = useState(false);
 	const [showPasswordTwo, setShowPasswordTwo] = useState(false);
+	const data = localStorage.getItem("registros");
+	const [listaRegistro, setListaRegistro] = useState(data ? JSON.parse(data) : []);
+
+	const [formData, setFormData] = useState({
+    nome: '',
+    sobrenome:'',
+    email: '',
+    password: '',
+  });
 
 	const schema = object({
 		
@@ -39,28 +51,40 @@ export default function RegisterForm(){
 	})
 
 	const { register, 
-		handleSubmit: onSubmit, 
+		handleSubmit: onSubmit,
 		watch, 
 		formState: { errors } 
 	} = useForm({resolver: yupResolver(schema)});
 
+
 	const handleSubmit = (data) => {
 		console.log(data);
+		const novoRegistro = [...listaRegistro, formData];
+		setListaRegistro(novoRegistro);
+
+		localStorage.setItem('registros', JSON.stringify(novoRegistro));
+      alert('Cadastro realizado com sucesso!');
+      navigate('/');
 	}
 
-		const handleClickShowPasswordOne = () => {
-			setShowPasswordOne(!showPasswordOne)
-		}
+	const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+		console.log(formData);
+  }
 
-		const handleClickShowPasswordTwo = () => {
-			setShowPasswordTwo(!showPasswordTwo)
-		}		
+	const handleClickShowPasswordOne = () => {
+		setShowPasswordOne(!showPasswordOne)
+	}
+
+	const handleClickShowPasswordTwo = () => {
+		setShowPasswordTwo(!showPasswordTwo)
+	}		
 	
 	return (
 		<>
 			<form className={styles.form_register} onSubmit={onSubmit(handleSubmit)}>
 
-				<h1> MoveRental</h1>
+				<h1 className={styles.h1_register}>MoveRental</h1>
 
 				<div className={styles.user_input}>
 
@@ -72,7 +96,7 @@ export default function RegisterForm(){
 						type="text" 
 						minLength={3}
 						{...register("nome")}
-						//onChange={(event) => handleChange(event.target.value)}
+						onChange={handleChange}
 						/>
 						<small className={styles.small_register_error}>{errors?.nome?.message}</small>
 					</div>
@@ -86,7 +110,7 @@ export default function RegisterForm(){
 						type="text" 
 						minLength={3}
 						{...register("sobrenome")}
-						//onChange={(event) => handleChange(event.target.value)}
+						onChange={handleChange}
 						/>
 						
 						<small className={styles.small_register_error}>{errors?.sobrenome?.message}</small>
@@ -104,6 +128,7 @@ export default function RegisterForm(){
 						name="email"
 						id="email" 
 						{...register("email")}
+						onChange={handleChange}
 						/>
 						<small className={styles.small_register_error}>{errors?.email?.message}</small>
 					</div>
@@ -119,6 +144,7 @@ export default function RegisterForm(){
 						id="password" 
 						minLength={8}
 						{...register("password")}
+						onChange={handleChange}
 						/>
 
 						<img onClick={handleClickShowPasswordOne} 
@@ -143,6 +169,7 @@ export default function RegisterForm(){
 						id="confirmPassword" 
 						minLength={8} 
 						{...register("confirmPassword")}
+						onChange={handleChange}
 
 						/>
 						<img onClick={handleClickShowPasswordTwo} 
