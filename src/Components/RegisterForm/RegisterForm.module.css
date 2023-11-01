@@ -1,24 +1,25 @@
-/* @import url('../../layouts/commom.css'); 
+.form_register{
 
-fieldset {
-	border: none;
-	text-align: center;
-} */
+	--cor-laranja: #F0572D; /*elementos de destaque*/
+	--cor-laranja-disabled: #f0572d7c;
+	--cor-azul-escuro: #31363F;
+	--cor-cinza-claro: #DFE4EA; /*cinza claro - background*/
+	--cor-preta: #191B1D;
+	--cor-padrao-fraca: #037df6;
+	--cor-padrao-fraca-transparente: #037df67c;
+	--cor-padrao-forte: #0f0f8e;
+	--cor-erro-input: #da5858;
+	--cor-padrao-turquesa: #08a6ca;
+	--cor-padrao-turquesa-transparente: #08a6caae;
+}
 
-/*
-main{
-	position: relative;
-}*/
-
-
-/* form {
+.form_register{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	
 
-	margin: 1rem auto;
+	margin: 0 auto;
 	min-width: 320px;
 	max-width: 26em;
 	background-color: #f2f2f2;
@@ -27,26 +28,26 @@ main{
 	flex-direction: column;
 	box-shadow: 0 5px 5px lightgrey;
 	padding: 1em 1.5em;
-	}
+}
 
-input {
+.input_register {
 	width: 100%;
 	padding: .4em .5em;
 	background-color: var(--app-grey);
-	border: 1px solid var(--cor-padrao-turquesa-transparente);
+	border: 1px solid var(--cor-laranja);
 	border-radius: .2em;
 	}
 
-	input:focus {
+.input_register:focus {
 	outline: none;
 	border: 1px solid lightgrey;
-	}
+}
 
-	input:invalid {
+.input_register:invalid {
 	border: 1px solid var(--cor-erro-input);
-	}
+}
 
-	label {
+.label_register {
 	width: 100%;
 	font-weight: 300;
 	margin-bottom: -.1em;
@@ -54,116 +55,91 @@ input {
 	font-size: .8em;
 	}
 
-	.user_input{
+.user_input{
 	display: flex;
 	width: 100%;
 	flex-direction: column;
 	gap: 3px;
 	text-align: start;
-	}
-
-	.div_button{
-		margin: 0 auto;
-	} */
+}
 
 	/* aplicando css erros */
 
-	/* small{
-	font-size: .8em;
-	font-weight: 300;
-	}
-
-	input:required {
+.input_register:required {
 	border-color: transparent;
-	}
+}
 
-	div.error label{
+	div.error .label_register{
 	color: var();
 	}
 
-	div.error small{
+	div.error .small_register{
 	color: var(--cor-erro-input);
 	display: block;
 	}
 
-	div.error input {
+	div.error .input_register {
 	border-color: var(--cor-erro-input);
 	}
 
-	small.error {
+.small_register_error {
+	font-size: .8em;
+	font-weight: 300;
 	padding-top: 2px;
 	color: var(--cor-erro-input);
 	display: block;
-	
-	}
+}
 
 	.divPasswordEConfirmPassword{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: var(--app-grey);
-	border: 1px solid var(--cor-padrao-turquesa-transparente);
+	border: 1px solid var(--cor-laranja);
 	padding-right: 5px;
 	width: 100%;
-	} */
+	}
 
-	/* .divPasswordEConfirmPassword input{
+.divPasswordEConfirmPassword .input_register{
 		border: none;
-	} */
+	}
 
 	/* aplicando css erros */
 
 
-/* button {
+.button_register {
 	
+	width: 100%;
+	margin-top: 1rem;
 	padding: .5em 3em;
-	background-color: var(--cor-padrao-turquesa-transparente);
 	color: white;
-	margin-top: 2em;
 	font-weight: 400;
 	font-size: 1em;
 	border: none;
 	border-radius: 5px;
+	/* ANDREA */
+	height: 40px; 
+  background: -webkit-linear-gradient(to left, #21d4fd, #b721ff);
+  background: -o-linear-gradient(to left, #21d4fd, #b721ff);
+  background: -moz-linear-gradient(to left, #21d4fd, #b721ff);
+  background: linear-gradient(to left, #21d4fd, #b721ff); 
 }
 
-	button:disabled {
-	background-color: var(--cor-padrao-fraca-transparente);
+.button_register:disabled {
+	background-color: var(--cor-laranja-disabled);
 	cursor: not-allowed;
-	} */
+}
 
-	/* .form-header {
-	color: grey;
-	font-size: 2em;
-	}
-
-	.login {
-	text-align: center;
-	}
-
-	.left {
-	width: 50%;
-	background-color: white;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	}
-
-	.eye_password_bt{
+.eye_password_bt{
 	padding: 0 3%;
 	height: 20px;
 	cursor: pointer;
-	} */
-
-/* @media screen and (max-width: 660px){
-	main{
-	flex-direction: column;
-	align-items: center;
-	}
-
-	a{
-	padding: 1em 0px;
-	}
-
 }
- */
+
+.link_form{
+	margin-top: 1rem;
+	font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;   
+  color: var(--cor-laranja);
+}

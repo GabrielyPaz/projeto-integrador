@@ -2,7 +2,6 @@ import { useState } from 'react';
 // useForm
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 //yup
 import {object, ref, string} from "yup";
 
@@ -59,61 +58,64 @@ export default function RegisterForm(){
 	
 	return (
 		<>
-			<form onSubmit={onSubmit(handleSubmit)}>
+			<form className={styles.form_register} onSubmit={onSubmit(handleSubmit)}>
 
-				<fieldset> MoveRental
+				<h1> MoveRental</h1>
 
 				<div className={styles.user_input}>
 
-					<label>
+					<label className={styles.label_register}>
 						Nome:
 					</label>
 					<div>
-						<input name="nome" 
+						<input className={styles.input_register} name="nome" 
 						type="text" 
 						minLength={3}
 						{...register("nome")}
 						//onChange={(event) => handleChange(event.target.value)}
 						/>
-						<small className={styles.error}>{errors?.nome?.message}</small>
+						<small className={styles.small_register_error}>{errors?.nome?.message}</small>
 					</div>
 
-					<label htmlFor="">
+					<label className={styles.label_register}>
 						Sobrenome
 					</label>
 					<div className={styles.user_input}>
-						<input name="sobrenome" 
+						<input className={styles.input_register} 
+						name="sobrenome" 
 						type="text" 
 						minLength={3}
 						{...register("sobrenome")}
 						//onChange={(event) => handleChange(event.target.value)}
 						/>
 						
-						<small className={styles.error}>{errors?.sobrenome?.message}</small>
+						<small className={styles.small_register_error}>{errors?.sobrenome?.message}</small>
 					</div>
 				</div>
 
 				<div className={styles.user_input}>
-					<label htmlFor="">
+					<label className={styles.label_register}>
 						Email:
 					</label>
 					<div>
 						<input 
+						className={styles.input_register}
 						type="email" 
 						name="email"
 						id="email" 
 						{...register("email")}
 						/>
-						<small className={styles.error}>{errors?.email?.message}</small>
+						<small className={styles.small_register_error}>{errors?.email?.message}</small>
 					</div>
 				</div>
 
 				<div className={styles.user_input}>
-					<label htmlFor="">
+					<label className={styles.label_register}>
 						Senha:
 					</label>
 					<div className={styles.divPasswordEConfirmPassword}>
-						<input type={!showPasswordOne ? "password" : "text"} name="password" 
+						<input className={styles.input_register}
+						type={!showPasswordOne ? "password" : "text"} name="password" 
 						id="password" 
 						minLength={8}
 						{...register("password")}
@@ -126,15 +128,18 @@ export default function RegisterForm(){
 							alt="icone olho" 
 							/>
 					</div>
-					<small className={styles.error}>{errors?.password?.message}</small>
+					<small className={styles.small_register_error}>{errors?.password?.message}</small>
 				</div>
 
 				<div className={styles.user_input}>
-					<label htmlFor="" >
+					<label className={styles.label_register} >
 						Comfirmar Senha:
 					</label>
 					<div className={styles.divPasswordEConfirmPassword}>
-						<input type={!showPasswordTwo ? "password" : "text"} name="confirmPassword" 
+						<input 
+						className={styles.input_register}
+						type={!showPasswordTwo ? "password" : "text"} 
+						name="confirmPassword" 
 						id="confirmPassword" 
 						minLength={8} 
 						{...register("confirmPassword")}
@@ -147,16 +152,15 @@ export default function RegisterForm(){
 							alt="icone olho" 
 							/>
 					</div>
-					<small className={styles.error}>{errors?.confirmPassword?.message}</small>
+					<small className={styles.small_register_error}>{errors?.confirmPassword?.message}</small>
 					
 
-					<div className={styles.div_button}>
-						<button name="send" id="" >Cadastrar</button>
+					<div>
+						<button className={styles.button_register} name="send">Cadastrar</button>
 					</div>
 				</div>
 
-				</fieldset>
-
+				<a className={styles.link_form} href="/login">Já sou cadastrado!</a>
 			</form>
 			
 		</>
