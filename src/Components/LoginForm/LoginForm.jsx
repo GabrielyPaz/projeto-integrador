@@ -1,6 +1,7 @@
 import styles from './Form.module.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import registros from '../../data/registros.json'
 
 const Login = () => {
 
@@ -11,19 +12,18 @@ const navigate = useNavigate;
 const onChangeUserEmail = (e) => setUserEmail(e.target.value);
 const onChangePassword = (e) => setPassword(e.target.value);
 
-
-
 const onSubmitInfo = (e) => {
+  e.preventDefault();
   const formData = new FormData(e.target);
-  const data = Object.FromEntries(formData);
+  const data = Object.fromEntries(formData);
   const registers = JSON.parse(localStorage.getItem("registers"));
   const existRegister = !!localStorage.getItem("registers");
-    
-  if(existRegister){
-
-    const searchUser = registers.find(record =>
-      record.email === data.email && record.password === data.password)
-      
+    //existRegister
+  if(data){
+                      //registers 
+    const searchUser = registros.find(record =>
+      record.email === data.email && record.senha === data.password)
+      console.log(searchUser)
       if(searchUser){
 
         alert('Login efetuado com sucesso!')
@@ -31,11 +31,11 @@ const onSubmitInfo = (e) => {
         localStorage.setItem('Usuário logado!', JSON.stringify(searchUser))
         navigate('/')
       } else {
-        alert('Informações incorretas. Tente novamente!')
+        alert('Informações inválidas. Tente novamente!')
          setFormError(true) 
       }
   } else {
-    alert('Informações incorretas. Tente novamente!')
+    alert('Informações inválidas. Tente novamente!')
      setFormError(true) 
   }
 }
@@ -47,13 +47,13 @@ return (
       <div className={styles.wrap_login}>
 
       <form className={styles.login_form} onSubmit={onSubmitInfo}>
-        
+
       <h1 className={styles.login_form_title}>Iniciar Sessão</h1>
 
-        <div className={ styles.wrap_input }>
+        <div className={ styles.wrap_input } >
           <label className={styles.focus_input} data-placeholder="E-mail"></label>
-            <input
-              className={email !== "" ? "has_val input" : "input"}
+
+            <input className={styles.login}
               name="email"
               type="email"
               value={email}
@@ -63,8 +63,7 @@ return (
 
             <div className={styles.wrap_input}>
             <label className={styles.focus_input} data-placeholder="Senha"></label>
-              <input
-                className={password !== "" ? "has_val input" : "input"}
+              <input className={styles.login}
                 name="password"
                 type="password"
                 value={password}
@@ -73,12 +72,12 @@ return (
             </div>
 
             <div className={styles.container_login_form_btn}>
-              <button className={styles.login_form_btn}>Login</button>
+              <button className={styles.login_form_btn}>Entrar</button>
             </div>
 
             <div className={styles.log} >
-                 <p className={styles.question}>Ainda não tem conta?</p>
-                 <a className={styles.register} href="/register">Registre-se</a>
+                 <p className={styles.question}>Ainda não tem conta? <a className={styles.register} href="/register">Registre-se</a></p>
+                 
         </div>
           </form>
           
