@@ -10,13 +10,17 @@
     display: flex;
     align-items: center; 
     justify-content: space-between; 
-    padding: 0 20px; 
-    font-size: medium;
+    padding: 0 10px;
+    font-weight: 400;
+  
 }
 
-.texto {
+.footerText {
     text-align: left;
-    flex: 1; 
+    flex: 1;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .lista {

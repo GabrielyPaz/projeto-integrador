@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .form_register{
 
 	--cor-laranja: #F0572D; /*elementos de destaque*/
@@ -9,6 +10,22 @@
 }
 
 .form_register{
+=======
+ @import url('../../layouts/commom.css'); 
+
+fieldset {
+	border: none;
+	text-align: center;
+} 
+
+
+main{
+	position: relative;
+}
+
+
+form {
+>>>>>>> origin/master
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -64,7 +81,16 @@
 
 	/* aplicando css erros */
 
+<<<<<<< HEAD
 .input_register:required {
+=======
+	small{
+	font-size: .8em;
+	font-weight: 300;
+	}
+
+	input:required {
+>>>>>>> origin/master
 	border-color: transparent;
 }
 
@@ -97,16 +123,28 @@
 	border: 1px solid var(--cor-laranja);
 	padding-right: 5px;
 	width: 100%;
+<<<<<<< HEAD
 	}
 
 .divPasswordEConfirmPassword .input_register{
 		border: none;
 	}
+=======
+	} 
+
+	.divPasswordEConfirmPassword input{
+		border: none;
+	} 
+>>>>>>> origin/master
 
 	/* aplicando css erros */
 
 
+<<<<<<< HEAD
 .button_register {
+=======
+button {
+>>>>>>> origin/master
 	
 	width: 100%;
 	margin-top: 1rem;
@@ -126,6 +164,7 @@
 	cursor: not-allowed;
 }
 
+<<<<<<< HEAD
 .eye_password_bt{
 	padding: 0 3%;
 	height: 20px;
@@ -139,3 +178,30 @@
   line-height: 19px;   
   color: var(--cor-laranja);
 }
+=======
+	.form-header {
+	color: grey;
+	font-size: 2em;
+	}
+
+	.login {
+	text-align: center;
+	}
+
+	.left {
+	width: 50%;
+	background-color: white;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+
+	.eye_password_bt{
+	padding: 0 3%;
+	height: 20px;
+	cursor: pointer;
+	} 
+
+ 
+>>>>>>> origin/master

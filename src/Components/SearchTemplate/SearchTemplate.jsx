@@ -7,7 +7,7 @@ const SearchTemplate = () => {
 
     return (
         <>
-        <div className={styles.header}>
+        <div className={styles.headerSearch}>
             <h1 className={styles.title}>Buscar ofertas em aluguéis de carros</h1>
         <div className={styles.search}>
         
