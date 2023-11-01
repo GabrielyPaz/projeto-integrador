@@ -10,12 +10,56 @@
   display: block;
   margin: 0 auto;
   max-height: 20rem;
-  width: 45%;
+  width: 100%;
+  height: auto; 
+  object-fit: cover; 
 }
+
+/* ========= EDICAO POLIANA =================== */
+
+.carouselTitle {
+  display: flex;
+  color: #ffffff96;
+  font-weight: 700;
+  font-size: 2.5rem;
+  justify-content: center;
+  padding: 10px; /* Espaçamento interno ao redor do texto */
+  text-shadow: 2px 2px 8px rgba(22, 22, 22, 0.726);
+}
+
+.carouselDescricao {
+  width: 100%;
+  display: flex;
+  color: #ffffff94;
+  font-weight: 700;
+  font-size: 1.5rem;
+  justify-content: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.886);
+}
+
+.bodyForTitle {
+  align-items: center;
+  display: flex;
+  flex-direction: column; 
+  min-height: min-content;
+}
+
+.bodyTitle{
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  color: #31363F;
+  font-weight: 700;
+  font-size: 1.8rem;
+  justify-content: flex-start;
+  margin-left: 25rem;
+} 
+
+/*======================================================== */
 
 .sectionCard {
   padding: 0.5rem;
-  background-color: #d2c8c8aa;
+  background-color: #DFE4EA;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px;
 }
@@ -27,7 +71,7 @@
   flex-wrap: wrap;
   gap: 10px;
   padding: 0 2.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 6rem; /* adicionei uma edição */
 }
 
 .imgCar {

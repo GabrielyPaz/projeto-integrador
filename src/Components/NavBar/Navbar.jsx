@@ -42,17 +42,17 @@ const Navbar = () => {
           {location.pathname !== '/register' && (
             <li className={styles.item}>
               <Link to="/register">
-                <button className={styles.button}>Criar conta</button>
+                <button className={styles.buttonNav}>Criar conta</button>
               </Link>
             </li>
           )}
           {location.pathname !== '/login' && (
         <li className={styles.item}>
           {login ? (
-            <button className={styles.button} onClick={handleLogout}>Logout</button>
+            <button className={styles.buttonNav} onClick={handleLogout}>Logout</button>
           ) : (
             <Link to="/login">
-              <button className={styles.button}>Iniciar sessão</button>
+              <button className={styles.buttonNav}>Iniciar sessão</button>
             </Link>
           )}
         </li>

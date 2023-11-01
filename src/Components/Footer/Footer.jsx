@@ -6,7 +6,7 @@ const Footer = () => {
     <>
         <footer className={styles.footer}>
         
-        <h4> © 2023 Digital Cars</h4>
+        <h4 className={styles.footerText}> © 2023 Digital Cars</h4>
 
         <div>
                         <ul className={styles.lista}>
