@@ -8,7 +8,10 @@
   --laranja-principal: #f0572d;
   --azul-escuro: #31363f;
   --preto: #191B1D;
+  --preto-total: #000;
   --cinza-background: #DFE4EA;
+  --branco: #fff;
+  --branco-opaco: #ffffff95;
 }
 
 body {

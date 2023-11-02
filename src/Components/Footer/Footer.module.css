@@ -1,8 +1,8 @@
 .footer {
     bottom: 0;
     position: fixed;
-    background-color: #F0572D;
-    color: white;
+    background-color: var(--laranja-principal);
+    color: var(--branco);
     text-align: center;
     margin-top: auto;
     width: 100%;
@@ -26,7 +26,7 @@
 .lista {
     display: flex;
     gap: 30px;
-    color: rgb(253, 253, 253);
+    color: var(--branco);
     margin-right: 10px;
     margin-top: 10px;
 }

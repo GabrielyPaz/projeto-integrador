@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff95;
-    color: rgb(252, 252, 252);
+    background-color: var(--branco-opaco);
+    color: var(--branco);
     padding: 10px 20px;
     height: 80px;
     flex-wrap: wrap;
@@ -21,7 +21,7 @@
 
 .link {
    
-  color: #191B1D; 
+  color: var(--preto); 
   display: flex; 
   align-items:center;
   font-style: italic;
@@ -33,7 +33,7 @@
   margin-left: 5px; 
   font-size: 1em; 
   display: block;
-  color: #191B1D;
+  color: var(--preto);
 }
 
 .list {
@@ -49,8 +49,8 @@
 }
 
 .buttonNav {
-  background-color: #F0572D;
-  color: rgb(255, 255, 255);
+  background-color: var(--laranja-principal);
+  color: var(--branco);
   border: none;
   width: 206px;
   height: 40px; 
@@ -68,15 +68,15 @@
   }
 
   .button:hover {
-    background-color: #F0572D; 
-    color: white;
+    background-color: var(--laranja-principal); 
+    color: var(--branco);
     font-weight: bold;
   }
 
   .menuHamburger {
     display: none;
     cursor: pointer;
-    color: #F0572D
+    color: var(--laranja-principal)
 }
 
 .menu {
@@ -109,7 +109,7 @@ nav {
       top: 0;
       right: -100%;
       transition: 850ms;
-      background-color: var(--white-color);
+      background-color: var(--branco);
   }
   
   .ativo {
@@ -123,7 +123,7 @@ nav {
 
 .menuSuperior {
   height:175px;
-  background-color: #F0572D;
+  background-color: var(--laranja-principal);
   padding: 0 10px;
   display: flex;
   flex-direction: column;
@@ -132,13 +132,13 @@ nav {
 
 .closeButton {
   cursor: pointer;
-  color: #f9fafc;
+  color: var(--cinza-background);
   margin: 10px;
 }
 
 .menuTitle{
   text-align: right;
-  color:  #ffff;
+  color:  var(--branco);
 }
 
 .menuInferior {
@@ -148,7 +148,7 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   padding: 10px 10px;
-  background-color: #DFE4EA;
+  background-color: var(--cinza-background);
 
 }
 
@@ -178,7 +178,7 @@ nav {
   display: flex;
   justify-content: space-around;
   gap: 25px;
-  color: #31363F;
+  color: var(--azul-escuro);
 }
 
 .lista li {
