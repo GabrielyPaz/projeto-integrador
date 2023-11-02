@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import styles from './Navbar.module.css'
 import { useState, useEffect} from 'react';
-import styles from "./Navbar.module.css";
 import { IoClose  } from "react-icons/io5";
 import { TfiMenu  } from "react-icons/tfi";
+import { Link, useLocation } from 'react-router-dom';
 import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter  } from "react-icons/si";
 
 
@@ -20,7 +20,7 @@ const Navbar = () => {
   const exibirMenu = () => setMenuMobile(!menuMobile);
 
 
- const handleLogout = () => {
+  const handleLogout = () => {
     // Lógica para fazer logout, se necessário
     // Por exemplo, você pode chamar uma API para invalidar a sessão do usuário
     // Em seguida, alterar o estado para `false` para mostrar "Login" novamente
@@ -64,9 +64,12 @@ const Navbar = () => {
             </div>
 
             <nav className={ menuMobile ? `${styles.menuMobile} ${styles.ativo}` : styles.menuMobile}>
+
                 <div className={styles.menuSuperior}>
                     <IoClose className={styles.closeButton} size={22} onClick={exibirMenu}/>
+
                     <h4 className={styles.menuTitle}> MENU </h4>
+
                 </div>
                 <div className={styles.menuInferior}>
                     <div className={styles.menuButtons}>

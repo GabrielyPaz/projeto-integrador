@@ -4,11 +4,18 @@
   box-sizing: border-box; 
 }
 
+:root {
+  --laranja-principal: #f0572d;
+  --azul-escuro: #31363f;
+  --preto: #191B1D;
+  --cinza-background: #DFE4EA;
+}
+
 body {
 
     font-family: 'Poppins', sans-serif !important;
     height: 100vh;
-    background-color:  #DFE4EA;
+    background-color:  var(--cinza-background);
 
 }
 

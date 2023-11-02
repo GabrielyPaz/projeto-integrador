@@ -64,7 +64,7 @@ export default function RegisterForm(){
 
 		localStorage.setItem('registros', JSON.stringify(novoRegistro));
       alert('Cadastro realizado com sucesso!');
-      navigate('/');
+      navigate('/login');
 	}
 
 	const handleChange = (e) => {

@@ -85,7 +85,7 @@ nav {
 
 /* ===== MENU HAMBURGUER ======== */
 
-@media(max-width:506px) {
+@media(max-width:586px) {
   .menuHamburger {
       display: block;
   }
