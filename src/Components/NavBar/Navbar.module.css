@@ -79,18 +79,25 @@
     color: #F0572D
 }
 
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+}
+
 nav {
     display: none;
 }
 
 /* ===== MENU HAMBURGUER ======== */
 
-@media(max-width:586px) {
+@media(max-width: 620px) {
   .menuHamburger {
       display: block;
   }
 
-  .loginBotoes {
+  .buttonNav {
       display: none;
   }
   .menuMobile {
