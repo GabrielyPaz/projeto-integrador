@@ -9,6 +9,7 @@ import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter  } from "react-icons/si"
 const Navbar = () => {
   const location = useLocation();
   const [menuMobile, setMenuMobile] = useState(false);
+
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
@@ -38,6 +39,8 @@ const Navbar = () => {
           <span className={styles.text}>Paixão pela estrada</span>
         </Link>
       </div>
+
+      { 
         <ul className={styles.list}>
           {location.pathname !== '/register' && (
             <li className={styles.item}>
@@ -56,8 +59,9 @@ const Navbar = () => {
             </Link>
           )}
         </li>
-      )}
+        )}
         </ul>
+     }
 
         <div className={styles.menuHamburger}>
                 <TfiMenu className={styles.menu} size={28} onClick={exibirMenu}/>

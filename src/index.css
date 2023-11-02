@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box; 
+  font-family: 'Poppins', sans-serif
 }
 
 :root {
@@ -15,8 +16,6 @@
 }
 
 body {
-
-    font-family: 'Poppins', sans-serif !important;
     height: 100vh;
     background-color:  var(--cinza-background);
 

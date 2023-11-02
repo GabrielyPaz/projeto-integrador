@@ -16,11 +16,9 @@
   }
 .image {
   margin-bottom: 9px;
-
 }
 
 .link {
-   
   color: var(--preto); 
   display: flex; 
   align-items:center;
@@ -72,6 +70,8 @@
     color: var(--branco);
     font-weight: bold;
   }
+
+
 
   .menuHamburger {
     display: none;
