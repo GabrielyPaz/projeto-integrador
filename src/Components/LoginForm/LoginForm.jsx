@@ -53,7 +53,7 @@ return (
           <h1 className={styles.login_form_title}>Iniciar Sessão</h1>
 
               <div className={formError ? `${styles.wrap_input} ${styles.error}` : `${styles.wrap_input}`} >
-                <label className={styles.focus_input} htmlFor=""></label>
+                <label className={styles.label_input} htmlFor="">Email:</label>
 
                   <input className={styles.login}
                     name="email"
@@ -65,7 +65,7 @@ return (
               </div>
 
               <div className={formError ? `${styles.wrap_input} ${styles.error}` : `${styles.wrap_input}`}>
-                <label className={styles.focus_input} htmlFor=""></label>
+                <label className={styles.label_input} htmlFor="">Senha:</label>
 
                 <input className={styles.login}
                   name="password"
