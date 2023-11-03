@@ -1,5 +1,5 @@
 .headerSearch {
-  background-color: #31363F;
+  background: linear-gradient(to bottom, #31363F, #191B1D); /* perguntar se ficou legal */
   color:  #ffff;
   align-items: center;
   display: flex;

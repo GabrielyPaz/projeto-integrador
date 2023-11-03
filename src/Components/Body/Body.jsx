@@ -1,5 +1,5 @@
 import styles from "./Body.module.css";
-import SearchTemplate from "../SearchTemplate/SearchTemplate";
+// import SearchTemplate from "../SearchTemplate/SearchTemplate";
 import Carousel from "react-bootstrap/Carousel"
 
 
@@ -7,7 +7,7 @@ function Body() {
 
     return (
         <main className={styles.body}>
-            <SearchTemplate/>
+            {/* <SearchTemplate/> */}
 
             <Carousel className={styles.carousel}>
                     <Carousel.Item>
@@ -32,14 +32,18 @@ function Body() {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-             <div className={styles.bodyForTitle}>
-                <h2 className={styles.bodyTitle}>Recomendações</h2>
-                </div>    
+            
 
              <div className={styles.cardCars}>
+               
+                <div className={styles.cardForTitle}>
+                <h2 className={styles.cardTitle}>Recomendações</h2>
+                </div>    
 
                 <section className={styles.sectionCard}>
+                    <div className={styles.cardContainer}>
                     <img className={styles.imgCar} src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2023/202310/20231024/mercedesbenz-a-35-amg-2.0-cgi-gasolina-4matic-7gdct-wmimagem07390147495.jpg?s=fill&w=552&h=414&q=60" alt="Imagem do carro" />
+                    </div>
                     <p className={styles.modelCar}>MERCEDES-BENZ A 35 AMG</p>
                     <div className={styles.yearCar}>
                         <span className={styles.span}>Ano 2020/2021</span>
@@ -48,7 +52,9 @@ function Body() {
                 </section> 
 
                 <section className={styles.sectionCard}>
-                    <img className={styles.imgCar} src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2023/202310/20231024/mercedesbenz-a-35-amg-2.0-cgi-gasolina-4matic-7gdct-wmimagem07390147495.jpg?s=fill&w=552&h=414&q=60" alt="Imagem do carro" />
+                    <div className={styles.cardContainer}>
+                    <img className={styles.imgCar} src="https://www.chevrolet.com.br/content/dam/chevrolet/mercosur/brazil/portuguese/index/cars/cars-subcontent/02-images/novo-cruze-nb.jpg?imwidth=960" alt="Imagem do carro" />
+                    </div>
                     <p className={styles.modelCar}>MERCEDES-BENZ A 35 AMG</p>
                     <div className={styles.yearCar}>
                         <span className={styles.span}>Ano 2020/2021</span>
@@ -57,7 +63,9 @@ function Body() {
                 </section>   
 
                 <section className={styles.sectionCard}>
+                    <div className={styles.cardContainer}>
                     <img className={styles.imgCar} src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2023/202310/20231024/mercedesbenz-a-35-amg-2.0-cgi-gasolina-4matic-7gdct-wmimagem07390147495.jpg?s=fill&w=552&h=414&q=60" alt="Imagem do carro" />
+                    </div>
                     <p className={styles.modelCar}>MERCEDES-BENZ A 35 AMG</p>
                     <div className={styles.yearCar}>
                         <span className={styles.span}>Ano 2020/2021</span>
@@ -66,7 +74,9 @@ function Body() {
                 </section>  
 
                 <section className={styles.sectionCard}>
+                    <div className={styles.cardContainer}>
                     <img className={styles.imgCar} src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2023/202310/20231024/mercedesbenz-a-35-amg-2.0-cgi-gasolina-4matic-7gdct-wmimagem07390147495.jpg?s=fill&w=552&h=414&q=60" alt="Imagem do carro" />
+                    </div>
                     <p className={styles.modelCar}>MERCEDES-BENZ A 35 AMG</p>
                     <div className={styles.yearCar}>
                         <span className={styles.span}>Ano 2020/2021</span>
@@ -75,7 +85,9 @@ function Body() {
                 </section> 
 
                 <section className={styles.sectionCard}>
+                    <div className={styles.cardContainer}>
                     <img className={styles.imgCar} src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2023/202310/20231024/mercedesbenz-a-35-amg-2.0-cgi-gasolina-4matic-7gdct-wmimagem07390147495.jpg?s=fill&w=552&h=414&q=60" alt="Imagem do carro" />
+                    </div>
                     <p className={styles.modelCar}>MERCEDES-BENZ A 35 AMG</p>
                     <div className={styles.yearCar}>
                         <span className={styles.span}>Ano 2020/2021</span>
@@ -84,7 +96,9 @@ function Body() {
                 </section>   
 
                 <section className={styles.sectionCard}>
+                    <div className={styles.cardContainer}>
                     <img className={styles.imgCar} src="https://image.webmotors.com.br/_fotos/anunciousados/gigante/2023/202310/20231024/mercedesbenz-a-35-amg-2.0-cgi-gasolina-4matic-7gdct-wmimagem07390147495.jpg?s=fill&w=552&h=414&q=60" alt="Imagem do carro" />
+                    </div>
                     <p className={styles.modelCar}>MERCEDES-BENZ A 35 AMG</p>
                     <div className={styles.yearCar}>
                         <span className={styles.span}>Ano 2020/2021</span>
