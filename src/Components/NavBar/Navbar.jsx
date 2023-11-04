@@ -39,8 +39,6 @@ const Navbar = () => {
           <span className={styles.text}>Paixão pela estrada</span>
         </Link>
       </div>
-
-      { 
         <ul className={styles.list}>
           {location.pathname !== '/register' && (
             <li className={styles.item}>
@@ -61,14 +59,10 @@ const Navbar = () => {
         </li>
         )}
         </ul>
-     }
-
         <div className={styles.menuHamburger}>
                 <TfiMenu className={styles.menu} size={28} onClick={exibirMenu}/>
             </div>
-
-            <nav className={ menuMobile ? `${styles.menuMobile} ${styles.ativo}` : styles.menuMobile}>
-
+            <nav className={ menuMobile ? `${styles.menuMobile}` : styles.ativo}>
                 <div className={styles.menuSuperior}>
                     <IoClose className={styles.closeButton} size={22} onClick={exibirMenu}/>
 
@@ -102,11 +96,8 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-
-                </div>   
-
+                </div>
             </nav>
-  
     </header>
   );
 };
