@@ -1,5 +1,5 @@
 import styles from './Navbar.module.css'
-import { useState, useEffect} from 'react';
+import { useState} from 'react';
 import { IoClose  } from "react-icons/io5";
 import { TfiMenu  } from "react-icons/tfi";
 import { Link, useLocation } from 'react-router-dom';
@@ -9,27 +9,22 @@ import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter  } from "react-icons/si"
 const Navbar = () => {
   const location = useLocation();
   const [menuMobile, setMenuMobile] = useState(false);
+  const usuarioData = JSON.parse(localStorage.getItem("usuarioLogado"));
+  console.log("o nome do usuarioLogado foi captado");
 
-  const [login, setLogin] = useState(false);
-
-  useEffect(() => {
-    // Verifica se há um valor de login no localStorage quando o componente é montado
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    setLogin(isLoggedIn);
-  }, []); // O array vazio assegura que isso só aconteça uma vez, quando o componente é montado
-
+  const [login, setLogin] = useState(usuarioData ? false : true);
+  console.log("login state :" + login);
+ 
   const exibirMenu = () => setMenuMobile(!menuMobile);
 
 
-  const handleLogout = () => {
-    // Lógica para fazer logout, se necessário
-    // Por exemplo, você pode chamar uma API para invalidar a sessão do usuário
-    // Em seguida, alterar o estado para `false` para mostrar "Login" novamente
-    setLogin(false);
-    // Salva o estado de login como falso no localStorage ao fazer logout
-    localStorage.setItem('isLoggedIn', 'false');
-    // Outras lógicas de logout, se necessário
-  };
+  const logout = () => {
+    setLogin(true);
+    console.log("usuario deslogado");
+    localStorage.removeItem('usuarioLogado');
+    console.log("item usuario logado removido");
+}
+ 
 
   return (
     <header className={styles.navbar}>
@@ -39,30 +34,48 @@ const Navbar = () => {
           <span className={styles.text}>Paixão pela estrada</span>
         </Link>
       </div>
-        <ul className={styles.list}>
-          {location.pathname !== '/register' && (
-            <li className={styles.item}>
-              <Link to="/register">
-                <button className={styles.buttonNav}>Criar conta</button>
-              </Link>
-            </li>
-          )}
-          {location.pathname !== '/login' && (
-        <li className={styles.item}>
-          {login ? (
-            <button className={styles.buttonNav} onClick={handleLogout}>Logout</button>
-          ) : (
-            <Link to="/login">
-              <button className={styles.buttonNav}>Iniciar sessão</button>
-            </Link>
-          )}
-        </li>
-        )}
-        </ul>
+
+
+      { login ? (
+      <ul className={styles.list}>
+       {location.pathname !== '/register' && (
+         <li className={styles.item}>
+           <Link to="/register">
+             <button className={styles.buttonNav}>Criar conta</button>
+           </Link>
+         </li>
+       )}
+       {location.pathname !== '/login' && (
+         <li className={styles.item}>
+             <Link to="/login">
+               <button className={styles.buttonNav}>Iniciar sessão</button>
+             </Link>
+         </li>
+       )}
+     </ul> 
+        ) : (
+          <div className={styles.loginArea}>
+                {/* <div className={styles.loginAvatar}> {usuarioData.nome.charAt(0).toUpperCase()}{usuarioData.sobrenome.charAt(0).toUpperCase()} </div>
+                <div className={styles.loginText}> 
+                    <p> Olá, </p>
+                    <strong> {usuarioData.nome} {usuarioData.sobrenome} </strong>
+                </div> */}
+                <button className={styles.buttonLogout} onClick={logout}> Logout </button>
+            </div>
+            )
+
+            }
+
+
+
+
+
         <div className={styles.menuHamburger}>
                 <TfiMenu className={styles.menu} size={28} onClick={exibirMenu}/>
             </div>
-            <nav className={ menuMobile ? `${styles.menuMobile}` : styles.ativo}>
+
+            <nav className={ menuMobile ? `${styles.menuMobile} ${styles.ativo}` : styles.menuMobile}>
+
                 <div className={styles.menuSuperior}>
                     <IoClose className={styles.closeButton} size={22} onClick={exibirMenu}/>
 
@@ -96,8 +109,11 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                </div>
+
+                </div>   
+
             </nav>
+  
     </header>
   );
 };

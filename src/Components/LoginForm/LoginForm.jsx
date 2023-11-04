@@ -28,10 +28,13 @@ const onSubmitInfo = (e) => {
       if(searchUser){
 
         alert('Login efetuado com sucesso!')
-        localStorage.setItem('Está logado!', false);
-        localStorage.setItem('Usuário logado!', JSON.stringify(searchUser));
+        // localStorage.setItem('Está logado!', false);
+        localStorage.setItem('usuarioLogado', JSON.stringify(searchUser));
+        console.log("login realizado");
 
         navigate("/")
+
+        console.log("foi para a home");
       } else {
         alert('Informações inválidas. Tente novamente!')
         setFormError(true) 
