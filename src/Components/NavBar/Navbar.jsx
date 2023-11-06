@@ -23,14 +23,14 @@ const Navbar = () => {
 
       </div>
 
-      { state.login ? (
+      { state.login && state.user ? (
         
         <div className={styles.loginArea}>
-           {/* <div className={styles.loginAvatar}> {usuarioData.nome.charAt(0).toUpperCase()}{usuarioData.sobrenome.charAt(0).toUpperCase()} </div>
+           <div className={styles.loginAvatar}> {state.user.nome.charAt(0).toUpperCase()}{state.user.sobrenome.charAt(0).toUpperCase()} </div>
         <div className={styles.loginText}> 
             <p> Olá, </p>
-            <strong> {usuarioData.nome} {usuarioData.sobrenome} </strong>
-        </div> */}
+            <strong> {state.user.nome} {state.user.sobrenome} </strong>
+        </div>
         <button className={styles.buttonLogout} onClick={()=> logout()}> Logout </button>
         </div> 
       ) : (
@@ -58,10 +58,20 @@ const Navbar = () => {
          </div>
   
          <nav className={ menuMobile ? `${styles.menuMobile} ${styles.ativo}` : styles.menuMobile}>
+          
           <div className={styles.menuSuperior}>
            <IoClose className={styles.closeButton} size={22} onClick={exibirMenu}/>
-            <h4 className={styles.menuTitle}> MENU </h4>
-          </div>
+           
+           { state.login && state.user ? (  <div className={styles.menuSuperiorLogado}>
+             <div className={styles.menuAvatar}> {state.user.nome.charAt(0).toUpperCase()}{state.user.sobrenome.charAt(0).toUpperCase()} </div>
+               <div className={styles.menuText}> 
+                <p> Olá, </p>
+                  <strong> {state.user.nome} {state.user.sobrenome} </strong>
+                    </div>  
+                      </div> ) : (
+                    
+             <h4 className={styles.menuTitle}> MENU </h4> )}
+           </div>
           
           <div className={styles.menuInferior}>
           
