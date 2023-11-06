@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from './Form.module.css';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext } from '../../contexts/LoginContext/LoginContext';
 
 const Login = () => {
 
@@ -8,6 +9,7 @@ const [email, setUserEmail] = useState("");
 const [password, setPassword] = useState("");
 const [formError, setFormError] = useState(false);
 const navigate = useNavigate();
+const { login } = useContext(LoginContext);
 
 const onChangeUserEmail = (e) => setUserEmail(e.target.value);
 const onChangePassword = (e) => setPassword(e.target.value);
@@ -30,11 +32,10 @@ const onSubmitInfo = (e) => {
         alert('Login efetuado com sucesso!')
         // localStorage.setItem('Está logado!', false);
         localStorage.setItem('usuarioLogado', JSON.stringify(searchUser));
-        console.log("login realizado");
-
+        login();
         navigate("/")
 
-        console.log("foi para a home");
+        
       } else {
         alert('Informações inválidas. Tente novamente!')
         setFormError(true) 
