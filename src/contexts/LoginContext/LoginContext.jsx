@@ -6,10 +6,11 @@ export const LoginContext = createContext();
 
 const LoginContextProvider = ( {children}) => {
     
-    const [state, dispatch] = useReducer(loginReducer, {login: !!localStorage.getItem("usuarioLogado")});
+    const storeUser = JSON.parse(localStorage.getItem("usuarioLogado"));
+    const [state, dispatch] = useReducer(loginReducer, {login: !!storeUser, user: storeUser || null});
 
-    const login = () => {
-      dispatch({type: 'SET_LOGIN'})
+    const login = (user) => {
+      dispatch({type: 'SET_LOGIN', payload: user})
     }
 
     const logout = () => {

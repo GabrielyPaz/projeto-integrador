@@ -32,7 +32,7 @@ const onSubmitInfo = (e) => {
         alert('Login efetuado com sucesso!')
         // localStorage.setItem('Está logado!', false);
         localStorage.setItem('usuarioLogado', JSON.stringify(searchUser));
-        login();
+        login(searchUser);
         navigate("/")
 
         

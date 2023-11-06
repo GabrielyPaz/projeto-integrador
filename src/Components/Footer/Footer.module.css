@@ -19,7 +19,7 @@
     text-align: left;
     flex: 1;
     font-family: 'Poppins', sans-serif !important;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     padding-top: 0.5rem;
 }
@@ -36,7 +36,7 @@
     list-style: none;
 }
 
-@media screen and (max-width: 506px) {
+@media screen and (max-width: 620px) {
   .lista {
     display: none; /* Oculta o texto quando a largura da tela é 580 pixels ou menos */
   }
