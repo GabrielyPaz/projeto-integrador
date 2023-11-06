@@ -12,10 +12,9 @@
   max-height: 20rem;
   width: 100%;
   height: auto; 
-  object-fit: cover; 
+  object-fit: cover;
+  object-position: center; 
 }
-
-/* ========= EDICAO POLIANA =================== */
 
 .carouselTitle {
   display: flex;
@@ -23,7 +22,7 @@
   font-weight: 700;
   font-size: 2.5rem;
   justify-content: center;
-  padding: 10px; /* Espaçamento interno ao redor do texto */
+  padding: 10px; 
   text-shadow: 2px 2px 8px rgba(22, 22, 22, 0.726);
 }
 
@@ -42,8 +41,7 @@
   display: flex;
   width: 100%;
   flex-direction: column; 
-  min-height: min-content;
-  /* margin-left: 10rem; */
+  min-height: min-content; 
 }
 
 .cardTitle{
@@ -53,10 +51,9 @@
   font-weight: 700;
   font-size: 1.8rem;
   justify-content: flex-start;
-  /* margin-left: 25rem;  */
+  
 } 
 
-/*======================================================== */
 
 .sectionCard {
   padding: 0.5rem;
@@ -72,20 +69,15 @@
   flex-wrap: wrap;
   gap: 10px;
   padding: 0 2.5rem;
-  margin-bottom: 6rem; /* adicionei uma edição */
-  /* width: 120px;
-  height: 300px; */
-  
+  margin-bottom: 6rem;   
 }
 
 .cardContainer {
-
-background-color: #F0572D;
-max-width: 22rem;
-height: 17rem;
-border-radius: 0.3rem;
-margin-bottom: 0.5rem; 
-
+  background-color: #F0572D;
+  max-width: 22rem;
+  height: 17rem;
+  border-radius: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .imgCar {
@@ -133,6 +125,13 @@ margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 460px) {
+  .carouselTitle {
+    font-size: 2rem;
+   
+  }
   
+  .carouselDescricao {
+    display: none;
+ }
 }
