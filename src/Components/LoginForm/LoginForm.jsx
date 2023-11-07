@@ -3,6 +3,10 @@ import styles from './Form.module.css';
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../../contexts/LoginContext/LoginContext';
 
+// ========= ANDRE ===========
+import eye from '../../assets/eye.svg';
+import eyeslash from '../../assets/eye-slash.svg';
+
 const Login = () => {
 
 const [email, setUserEmail] = useState("");
@@ -13,6 +17,9 @@ const { login } = useContext(LoginContext);
 
 const onChangeUserEmail = (e) => setUserEmail(e.target.value);
 const onChangePassword = (e) => setPassword(e.target.value);
+
+// ========= ANDRE ===========
+const [showPassword, setShowPassword] = useState(false);
 
 const onSubmitInfo = (e) => {
   e.preventDefault();
@@ -28,6 +35,7 @@ const onSubmitInfo = (e) => {
       record.email === data.email && record.password === data.password);
 
       if(searchUser){
+        searchUser.name 
 
         alert('Login efetuado com sucesso!')
         // localStorage.setItem('Está logado!', false);
@@ -46,6 +54,10 @@ const onSubmitInfo = (e) => {
   } 
 }
 
+const handleClickShowPassword = () => {
+		setShowPassword(!showPassword)
+	}
+
 return (
 
   <div className={styles.container}>
@@ -58,7 +70,7 @@ return (
 
               <div className={formError ? `${styles.wrap_input} ${styles.error}` : `${styles.wrap_input}`} >
                 <label className={styles.label_input} htmlFor="">Email:</label>
-
+                
                   <input className={styles.login}
                     name="email"
                     type="email"
@@ -66,18 +78,27 @@ return (
                     value={email}
                     onChange={onChangeUserEmail}
                   />             
+              
               </div>
 
               <div className={formError ? `${styles.wrap_input} ${styles.error}` : `${styles.wrap_input}`}>
                 <label className={styles.label_input} htmlFor="">Senha:</label>
-
-                <input className={styles.login}
+                <div className={styles.user_input}>
+                <input className={styles.input_register}
                   name="password"
-                  type="password"
+                  type={!showPassword ? "password" : "text"}
                   placeholder="Digite sua senha..."
                   value={password}
                   onChange={onChangePassword}
                 />
+
+                <img onClick={handleClickShowPassword} 
+							    className={styles.eye_password_bt}
+							    id="imgPassword"
+							    src={!showPassword ? eye : eyeslash}
+							    alt="icone olho" 
+							  />
+                </div>
               </div>
 
               <div className={styles.container_login_form_btn}>
