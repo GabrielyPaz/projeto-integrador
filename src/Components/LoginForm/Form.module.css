@@ -40,22 +40,36 @@
     align-items: center;
     justify-content: center;
   }
-   
+
   .wrap_input {
-    width: 100%;
+    /*width: 100%;
     margin-bottom: 30px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; 
-    border: var(--laranja-principal); 
-    outline: none;  
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--laranja-principal);
+    padding-right: 5px;
+    outline: none;*/
+    width: 100%;
+	padding: .4em .5em;
+	border: 1px solid var(--cor-laranja);
+	border-radius: .2em;
+  text-align: start;
   }
 
-  .error .login {
-    border: 2px solid red;
-    background-color:rgba(255, 0, 0, 0.357);
+  .wrap_input:focus {
+    outline: none;
+    border: 1px solid var(--laranja-principal);
   }
+  
+  .wrap_input:invalid {
+    border: 1px solid var(--cor-erro-input);
+  }
+
+.error .login {
+  border: 2px solid red;
+  background-color:rgba(255, 0, 0, 0.357);
+}
   
   .input {
    font-size: 15px;
@@ -63,28 +77,62 @@
     width: 28rm;
     padding: 15px;
     height: 80px;
-    outline: none;
-    
+    outline: none;    
     background-color: transparent;   
   }
   
+.user_input{
+  display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--branco);
+	border: 1px solid var(--laranja-principal);
+	padding-right: 5px;
+	width: 100%;
+}
+
   .label_input {
   
     width: 100%;
-	  font-weight: 300;
-	  margin-bottom: .1em;
-	  margin-top: .5em;
-    font-size: .9em;
-    display: flex;
+    font-weight: 300;
+    margin-bottom: -.1em;
+    margin-top: .5em;
+    font-size: .8em;
 	  
   }
 
   .login {
-    width: 165%;
-    padding: 5px;
+    width: 100%;
+    padding: .4em .5em;
+    border-radius: .2em;
+    border: 1px solid var(--laranja-principal);
+    background-color: var(--branco);
+  }
+
+  .login:focus{
     outline: none;
-    border-radius: 4px;
-    border: 1.5px solid var(--laranja-principal);
+	  border: 1px solid var(--laranja-principal);
+  }
+
+  .login:invalid{
+    border: var(--cor-erro-input)
+  }
+
+  .input_register {
+    width: 100%;
+    padding: .4em .5em;
+    border: 1px solid var(--cor-laranja);
+    border-radius: .2em;
+    background-color: var(--branco);
+    }
+  
+  .input_register:focus {
+    outline: none;
+    border: none;
+  }
+  
+  .input_register:invalid {
+    border: 1px solid var(--cor-erro-input);
   }
       
   .container_login_form_btn {
@@ -115,7 +163,7 @@
     color: var(--laranja-principal);  
     border: 1px solid var(--laranja-principal);   
   }
-     
+
 .text-center {
     display: flex;
     justify-content: center;
