@@ -137,6 +137,11 @@
 	font-size: .8em;
 }
 
+.div_button_register {
+	display: flex;
+	justify-content: center;
+}
+
 .button_register {
 	
 	width: 206px;

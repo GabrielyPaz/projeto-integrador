@@ -186,7 +186,7 @@ export default function RegisterForm(){
 					{errors.confirmPassword && <small className={styles.small_register_error}>{errors.confirmPassword.message}</small>}
 					
 
-					<div>
+					<div className={styles.div_button_register}>
 						<button 
 						className={styles.button_register} 
 						name="send"
