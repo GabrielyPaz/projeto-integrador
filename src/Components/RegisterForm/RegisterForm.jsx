@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 // useForm
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 //yup
-import {object, ref, string} from "yup";
 
 import styles from './RegisterForm.module.css';
 import eye from '../../assets/eye.svg';
@@ -18,59 +18,69 @@ export default function RegisterForm(){
 	const [showPasswordTwo, setShowPasswordTwo] = useState(false);
 	const data = localStorage.getItem("registros");
 	const [listaRegistro, setListaRegistro] = useState(data ? JSON.parse(data) : []);
-
+/*
 	const [formData, setFormData] = useState({
     nome: '',
     sobrenome:'',
     email: '',
-    password: '',
-  });
+    password: ''
+  });*/
 
-	const schema = object({
+	const schema = Yup.object().shape({
 		
-		nome: string()
+		nome: Yup.string()
 		.required("* Campo Obrigatório!")
 		.min(3, "* Mínimo de 3 caracteres!"),
 
-		sobrenome: string()
+		sobrenome: Yup.string()
 		.required("* Campo Obrigatório!")
 		.min(3, "* Mínimo de 3 caracteres!"),
 
-		email: string()
+		email: Yup.string()
 		.required("* Campo Obrigatório!")
 		.email("* Insira um e-mail válido"),
 
-		password: string()
+		password: Yup.string()
 		.required("* Campo Obrigatório!")
 		.min(8, "* Mínimo de 8 caracteres"),
 
-		confirmPassword: string()
+		confirmPassword: Yup.string()
 		.required("* Repita a senha!")
-		.min(8, "* Mínimo de 8 caracteres")
-		.oneOf([ref("password")], "* Senha estão diferentes!")
+		.oneOf([Yup.ref("password"), null], "* Senha estão diferentes!")
 	})
 
-	const { register, 
-		handleSubmit: onSubmit,
-		watch, 
-		formState: { errors } 
-	} = useForm({resolver: yupResolver(schema)});
+	const { register, handleSubmit, formState, reset } = useForm({
 
+		mode: "all",
+		resolver: yupResolver(schema),
+		defaultValues: {
+			nome: "",
+			sobrenome: "",
+			email: "",
+			password: "",
+			confirmPassword: ""
+		}
+	});
 
-	const handleSubmit = (data) => {
+	const { errors, isDirty, isValid } = formState;
+	//console.log("error", errors.nome)
+
+	const handleSubmitData = (data) => {
 		console.log(data);
-		const novoRegistro = [...listaRegistro, formData];
+		const novoRegistro = [...listaRegistro, data];
 		setListaRegistro(novoRegistro);
+		console.log(data)
 
 		localStorage.setItem('registros', JSON.stringify(novoRegistro));
-      alert('Cadastro realizado com sucesso!');
-      navigate('/login');
+		reset()
+    alert('Cadastro realizado com sucesso!');
+    navigate('/login');
 	}
 
-	const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-		console.log(formData);
-  }
+	//const handleChange = (e) => {
+    //setFormData({ ...formData, [e.target.name]: e.target.value });
+	//	console.log(formData);
+ // }
 
 	const handleClickShowPasswordOne = () => {
 		setShowPasswordOne(!showPasswordOne)
@@ -82,7 +92,8 @@ export default function RegisterForm(){
 	
 	return (
 		<>
-			<form className={styles.form_register} onSubmit={onSubmit(handleSubmit)}>
+			<form className={styles.form_register} 
+			onSubmit={handleSubmit(handleSubmitData)}>
 
 				<h1 className={styles.h1_register}>Cadastro</h1>
 
@@ -92,28 +103,24 @@ export default function RegisterForm(){
 						Nome:
 					</label>
 					<div>
-						<input className={styles.input_register} name="nome" 
+						<input className={errors.nome ? styles.input_register_error : styles.input_register} 
+						name="nome" 
 						type="text" 
-						minLength={3}
-						{...register("nome")}
-						onChange={handleChange}
+						{...register('nome')}
 						/>
-						<small className={styles.small_register_error}>{errors?.nome?.message}</small>
+						{errors.nome && <small className={styles.small_register_error}>{errors.nome.message}</small>}
 					</div>
 
 					<label className={styles.label_register}>
 						Sobrenome
 					</label>
 					<div className={styles.user_input}>
-						<input className={styles.input_register} 
+						<input className={errors.sobrenome ? styles.input_register_error : styles.input_register}
 						name="sobrenome" 
-						type="text" 
-						minLength={3}
+						type="text"
 						{...register("sobrenome")}
-						onChange={handleChange}
 						/>
-						
-						<small className={styles.small_register_error}>{errors?.sobrenome?.message}</small>
+						{errors.sobrenome && <small className={styles.small_register_error}>{errors.sobrenome.message}</small>}
 					</div>
 				</div>
 
@@ -123,14 +130,13 @@ export default function RegisterForm(){
 					</label>
 					<div>
 						<input 
-						className={styles.input_register}
+						className={errors.email ? styles.input_register_error : styles.input_register}
 						type="email" 
 						name="email"
 						id="email" 
 						{...register("email")}
-						onChange={handleChange}
 						/>
-						<small className={styles.small_register_error}>{errors?.email?.message}</small>
+						{errors.email && <small className={styles.small_register_error}>{errors.email.message}</small>}
 					</div>
 				</div>
 
@@ -138,13 +144,12 @@ export default function RegisterForm(){
 					<label className={styles.label_register}>
 						Senha:
 					</label>
-					<div className={styles.divPasswordEConfirmPassword}>
-						<input className={styles.input_register}
+					<div className={errors.password ? styles.divPasswordEConfirmPassword_error : styles.divPasswordEConfirmPassword}>
+						<input 
+						className={errors.password ? styles.input_div_error : styles.input_register}
 						type={!showPasswordOne ? "password" : "text"} name="password" 
 						id="password" 
-						minLength={8}
 						{...register("password")}
-						onChange={handleChange}
 						/>
 
 						<img onClick={handleClickShowPasswordOne} 
@@ -154,22 +159,21 @@ export default function RegisterForm(){
 							alt="icone olho" 
 							/>
 					</div>
-					<small className={styles.small_register_error}>{errors?.password?.message}</small>
+					{errors.password && <small className={styles.small_register_error}>{errors.password.message}</small>}
 				</div>
 
 				<div className={styles.user_input}>
 					<label className={styles.label_register} >
 						Comfirmar Senha:
 					</label>
-					<div className={styles.divPasswordEConfirmPassword}>
+					<div className={errors.confirmPassword ? styles.divPasswordEConfirmPassword_error : styles.divPasswordEConfirmPassword}>
 						<input 
-						className={styles.input_register}
+						className={errors.confirmPassword ? styles.input_div_error : styles.input_register}
 						type={!showPasswordTwo ? "password" : "text"} 
 						name="confirmPassword" 
 						id="confirmPassword" 
 						minLength={8} 
 						{...register("confirmPassword")}
-						onChange={handleChange}
 
 						/>
 						<img onClick={handleClickShowPasswordTwo} 
@@ -179,11 +183,15 @@ export default function RegisterForm(){
 							alt="icone olho" 
 							/>
 					</div>
-					<small className={styles.small_register_error}>{errors?.confirmPassword?.message}</small>
+					{errors.confirmPassword && <small className={styles.small_register_error}>{errors.confirmPassword.message}</small>}
 					
 
 					<div>
-						<button className={styles.button_register} name="send">Cadastrar</button>
+						<button 
+						className={styles.button_register} 
+						name="send"
+						disabled={!isDirty || !isValid}
+						>Cadastrar</button>
 					</div>
 				</div>
 

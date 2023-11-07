@@ -6,6 +6,13 @@
 	--cor-cinza-claro: #DFE4EA; /*cinza claro - background*/
 	--cor-preta: #191B1D;
 	--cor-erro-input: #da5858; /* cor de erro */
+	--cor-erro-input-transparente: #ff00005b;
+  --azul-escuro: #31363f;
+  --preto: #191B1D;
+  --preto-total: #000;
+  --cinza-background: #DFE4EA;
+  --branco: #fff;
+  --branco-opaco: #ffffff95;
 }
 
 .form_register{
@@ -17,11 +24,11 @@
 	margin: 0 auto;
 	min-width: 320px;
 	max-width: 26em;
-	background-color: inherit;
+	background-color: var(--cinza-background);
+	box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	/*box-shadow: 0 5px 5px lightgrey;*/
 	padding: 1em 1.5em;
 }
 
@@ -32,9 +39,9 @@
 .input_register {
 	width: 100%;
 	padding: .4em .5em;
-	background-color: var(--app-grey);
 	border: 1px solid var(--cor-laranja);
 	border-radius: .2em;
+	background-color: var(--branco);
 	}
 
 .input_register:focus {
@@ -68,18 +75,24 @@
 	border-color: transparent;
 }
 
-	div.error .label_register{
-	color: var();
-	}
+.input_register_error {
+	outline: none;
+	width: 100%;
+	padding: .4em .5em;
+	background-color: var(--app-grey);
+	border: 1px solid var(--cor-erro-input);
+	background-color: var(--cor-erro-input-transparente);
+	border-radius: .2em;
+}
 
-	div.error .small_register{
-	color: var(--cor-erro-input);
-	display: block;
-	}
-
-	div.error .input_register {
-	border-color: var(--cor-erro-input);
-	}
+.input_div_error{
+	outline: none;
+	width: 100%;
+	padding: .4em .5em;
+	background-color: var(--app-grey);
+	border-radius: .2em;
+	border: none;
+}
 
 .small_register_error {
 	font-size: .8em;
@@ -93,11 +106,21 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: var(--app-grey);
+	background-color: var(--branco);
 	border: 1px solid var(--cor-laranja);
 	padding-right: 5px;
 	width: 100%;
 	}
+
+	.divPasswordEConfirmPassword_error{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background-color: var(--cor-erro-input-transparente);
+		border: 1px solid var(--cor-erro-input);
+		padding-right: 5px;
+		width: 100%;
+		}
 
 .divPasswordEConfirmPassword .input_register{
 		border: none;
@@ -105,6 +128,14 @@
 
 	/* aplicando css erros */
 
+.label_register_error{
+	color: var(--cor-erro-input);
+	width: 100%;
+	font-weight: 300;
+	margin-bottom: -.1em;
+	margin-top: .5em;
+	font-size: .8em;
+}
 
 .button_register {
 	
