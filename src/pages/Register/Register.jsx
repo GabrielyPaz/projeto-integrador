@@ -1,14 +1,17 @@
-//  import RegisterForm from "../../Components/RegisterForm/RegisterForm";
+import Navbar from "../../Components/NavBar/Navbar";
+import Footer from "../../Components/Footer/Footer";
+import RegisterForm from "../../Components/RegisterForm/RegisterForm";
 
+export function Register() {
 
-const Register = () => {
+return (
+    <>
+        <Navbar />
+        <main>
+            <RegisterForm />
+        </main>
+            <Footer />
+    </>
+    )
+}
 
-    return (
-        <>
-         {/* {<RegisterForm /> } */}
-
-        </>
-      );
-};
-
-export default Register;

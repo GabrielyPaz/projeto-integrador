@@ -1,14 +1,18 @@
 import Body from "../../Components/Body/Body";
 import SearchTemplate from "../../Components/SearchTemplate/SearchTemplate";
+import Navbar from "../../Components/NavBar/Navbar";
+import Footer from "../../Components/Footer/Footer";
 
-const Home = () => {
+export function Home() {
 
-    return (
-        <>
-         <SearchTemplate/>
-          <Body />     
-        </>
-      );
-};
-
-export default Home;
+return (
+    <>
+        <Navbar />
+        <main>
+            <SearchTemplate />
+            <Body />
+        </main> 
+        <Footer /> 
+    </>
+);
+}

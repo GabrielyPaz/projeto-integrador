@@ -1,0 +1,37 @@
+.detailHeader {
+background-color: #31363f;
+display: flex;
+justify-content:space-between ;
+padding: 10px;
+}
+
+.detailTitle {
+
+color: #ffff;
+
+}
+
+.detailTitle h1 {
+    font-size: 24px;
+
+}
+
+.detailTitle h2 {
+    font-size: 18px;
+
+}
+
+.detailHeaderIcon{
+    color: #ffff !important;
+    align-items: center;
+    display: flex;
+    
+}
+
+.link {
+
+    color: #ffff;
+    align-items: center;
+    
+   
+}
