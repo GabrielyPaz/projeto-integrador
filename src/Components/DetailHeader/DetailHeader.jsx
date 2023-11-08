@@ -1,16 +1,16 @@
-import styles from './DetailCarHeader.module.css';
+import styles from './DetailHeader.module.css';
 import { Link } from 'react-router-dom';
 import { MdKeyboardArrowLeft  } from "react-icons/md";
 
 
-const DetailCarHeader = () => { 
+const DetailHeader = () => { 
 
     return (
     <div className={styles.detailHeader}>
 
         <div className={styles.detailTitle}>
-            <h1>Nome da Categoria</h1>
-                <h2>Produto</h2>
+            <h2>Nome da Categoria</h2>
+                <h1>Produto</h1>
         </div>
         
         <div className={styles.detailHeaderIcon}>
@@ -24,4 +24,4 @@ const DetailCarHeader = () => {
     )
 }
 
-export default DetailCarHeader;
+export default DetailHeader;

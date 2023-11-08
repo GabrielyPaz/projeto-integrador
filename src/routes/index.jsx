@@ -3,7 +3,7 @@ import { Home } from "../pages/Home/Home"
 import { LoginPage } from "../pages/Login/LoginPage";
 import { Register } from "../pages/Register/Register";
 import LoginContextProvider from "../contexts/LoginContext/LoginContext";
-import { DetailCar } from "../pages/DetailCar/DetailCar";
+import { DetailPage } from "../pages/DetailPage/DetailPage";
 
 export function RouteList() {
 
@@ -15,7 +15,7 @@ return (
 <Route path="/" element={<Home/>} />
 <Route path="/register" element={<Register/>} />
 <Route path="/login" element={<LoginPage/>} />
-<Route path="/detail" element={<DetailCar/>} />
+<Route path="/detail" element={<DetailPage/>} />
 
 </Routes>
 
