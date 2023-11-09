@@ -1,0 +1,57 @@
+.actions {
+    margin-left: 40px;
+    display: flex;
+    gap:10px;
+    color: rgba(55, 46, 46, 0.689);
+    padding: 5px;
+}
+
+
+.containerBox {
+
+   grid-column-gap: 10px;
+   display: grid;
+   grid-template-areas:
+     "box1 box1 box2 box3"
+     "box1 box1 box4 box5";
+   grid-template-rows: 200px 200px 30px;
+   grid-template-columns: 320px 320px 320px 320px;
+   gap: 5px; /* Espaçamento entre as células da grade */
+   justify-content: center;
+  
+}
+
+.box1 {
+
+background-color: aquamarine;
+border-radius: 6px;
+margin: 5px;
+margin-top: 10px;
+grid-area: box1;
+} 
+
+.box2, .box3, .box4, .box5 {
+
+    background-color: rgba(0, 0, 255, 0.396);
+    border-radius: 6px;
+    margin: 5px;
+} 
+
+
+.box2 {
+  grid-area: box2;
+  margin-top: 10px;
+}
+
+.box3 {
+  grid-area: box3;
+  margin-top: 10px;
+}
+
+.box5 {
+  grid-area: box5;
+}
+
+.box4 {
+  grid-area: box4;
+}

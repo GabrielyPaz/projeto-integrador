@@ -1,21 +1,21 @@
-import styles from './DetailDescricao.module.css';
+// import styles from './DetailDescricao.module.css';
 
 
 
-const DetailDescricao = () => { 
+// const DetailDescricao = () => { 
 
-    return (
-    <div className={styles.detailHeader}>
+//     return (
+//     <div className={styles.detailHeader}>
 
-        <div className={styles.detailTitle}>
-            <h1>Descrição do Produto</h1>
-        </div>
+//         <div className={styles.detailTitle}>
+//             <h1>Descrição do Produto</h1>
+//         </div>
         
     
        
-    </div> 
+//     </div> 
        
-    )
-}
+//     )
+// }
 
-export default DetailDescricao;
+// export default DetailDescricao;
