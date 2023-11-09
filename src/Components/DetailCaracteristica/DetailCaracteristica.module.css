@@ -19,7 +19,7 @@
 
 .title {
     width: 100%;
-    border-bottom: 1px solid var(--primary-color);
+    border-bottom: 1.7px solid #f0572d;
 }
 
 .containerGrid {
