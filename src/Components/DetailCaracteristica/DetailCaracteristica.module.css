@@ -1,0 +1,46 @@
+.containerDescricao {
+    background-color: var(--white-pure);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: var(--gray-color);
+}
+
+.titleDescrição, .title {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 20px 0px 20px 40px;
+}
+
+.text {
+    padding: 0 40px 20px 40px;
+    text-align: justify;
+}
+
+.title {
+    width: 100%;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.containerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    padding: 20px 0px 20px 40px;
+    margin-bottom: 80px;
+}
+
+.gridItem {
+    display: flex;
+    gap: 10px;
+    color: var(--primary-color);
+}
+
+/*
+.grid_item p {
+    color: var(--third-color);
+    font-weight: 500;
+    font-size: 14px;
+   
+}*/
+
