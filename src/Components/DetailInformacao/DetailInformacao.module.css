@@ -1,0 +1,37 @@
+.containerInformacao {
+    height: 367px;
+    top: 2119px;
+    left: -23px;     
+}
+
+.tituloInformacao {
+
+    height: 80px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28.13px;
+    color: ;  
+    border-bottom: 1.8px solid #F0572D; 
+    padding: 20px 0px 20px 40px;
+}
+
+.politicaInformacao {
+    font-size: 18px;
+    margin-top: 5px;
+    margin: 20px;
+}
+
+.regras {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: 20px;
+    padding: 0 40px 20px 40px;
+}
+
+.regrasInfo {
+    margin: 5px;
+    padding: 20px;
+    height: 30px;   
+    
+}

@@ -1,15 +1,15 @@
 .containerDescricao {
-    background-color: var(--white-pure);
     display: flex;
     flex-direction: column;
     gap: 30px;
-    color: var(--gray-color);
+    
 }
 
 .titleDescrição, .title {
     font-size: 24px;
-    font-weight: 700;
+    font-weight: bold;
     padding: 20px 0px 20px 40px;
+    color: #31363F;
 }
 
 .text {
@@ -20,6 +20,7 @@
 .title {
     width: 100%;
     border-bottom: 1.7px solid #f0572d;
+    color: #31363F;
 }
 
 .containerGrid {
@@ -27,13 +28,12 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
     padding: 20px 0px 20px 40px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 }
 
 .gridItem {
     display: flex;
     gap: 10px;
-    color: var(--primary-color);
 }
 
 /*
