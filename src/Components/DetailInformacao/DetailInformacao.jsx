@@ -7,10 +7,10 @@ export default function DetailInformacao() {
 
             <h1 className={styles.tituloInformacao}>O que você precisa saber:</h1>
 
-            <div className={styles.regras}>
+            <div className={styles.regrasGrid}>
 
                 <div  className={styles.regrasInformacao}>
-                    <h3 className={styles.politicaInformacao}>Regras de locação</h3>
+                    <h3 className={styles.regrasTitle}>Regras de locação</h3>
 
                     <p className={styles.regrasInfo}>Ter idade mínima de 21 anos</p>
 
@@ -21,7 +21,7 @@ export default function DetailInformacao() {
                 </div>
 
                 <div className={styles.regrasInformacao}>
-                    <h3 className={styles.politicaInformacao}>Alteração de Reserva</h3>
+                    <h3 className={styles.regrasTitle}>Alteração de Reserva</h3>
 
                     <p className={styles.regrasInfo}>Terá uma pré-analise de disponibilidade do veículo</p>
 
@@ -31,7 +31,7 @@ export default function DetailInformacao() {
                 </div>
 
                 <div className={styles.regrasInformacao}>           
-                    <h3 className={styles.politicaInformacao}>Política de cancelamento</h3>
+                    <h3 className={styles.regrasTitle}>Política de cancelamento</h3>
 
                     <p className={styles.regrasInfo}>Antecedencia de no mínimo 48h</p>
 

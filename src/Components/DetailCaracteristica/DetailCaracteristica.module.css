@@ -52,7 +52,13 @@
 .containerGrid {
 grid-template-columns: 1fr 1fr;
 }
-  
-    
+
+.titleDescrição, .title {
+    font-size: 20px;
+}
+
+.text {
+    font-size: 14px;
+}
   
   }
