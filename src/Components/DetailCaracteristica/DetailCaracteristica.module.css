@@ -33,14 +33,26 @@
 
 .gridItem {
     display: flex;
+    align-items: center;
     gap: 10px;
+    font-size: 0.9rem;
+    color: #f0572d;
 }
 
-/*
-.grid_item p {
-    color: var(--third-color);
+
+.gridItem p {
+    color:#31363F;
     font-weight: 500;
     font-size: 14px;
    
-}*/
+}
 
+@media screen and (max-width: 620px) {
+
+.containerGrid {
+grid-template-columns: 1fr 1fr;
+}
+  
+    
+  
+  }

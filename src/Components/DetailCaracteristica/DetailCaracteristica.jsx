@@ -22,13 +22,34 @@ export default function DetailCaracteristica() {
             <h2 className={styles.title}>O que o carro oferece?</h2>
 
             <div className={styles.containerGrid}>
-                <div className={styles.gridItem}>  <AiFillCar/> Capacidade Off-Road</div>               
-                <div className={styles.gridItem}>  <AiFillCar/>  Conforto e Espaço</div>
-                <div className={styles.gridItem}>  <AiFillCar/> Tecnologia Avançada</div>
-                <div className={styles.gridItem}>  <AiFillCar/> Segurança</div>
-                <div className={styles.gridItem}>  <AiFillCar/> Desempenho Potente</div>
-                <div className={styles.gridItem}> <AiFillCar/> Visibilidade</div>
-                <div className={styles.gridItem}>  <AiFillCar/> Versatilidade e Adaptabilidade</div>
+                <div className={styles.gridItem}>  
+                    <AiFillCar/> 
+                    <p>Capacidade Off-Road</p>
+                </div>               
+                <div className={styles.gridItem}>  
+                    <AiFillCar/> 
+                    <p>Conforto e Espaço</p>
+                </div>
+                <div className={styles.gridItem}>  
+                    <AiFillCar/> 
+                    <p>Tecnologia Avançada</p>
+                </div>
+                <div className={styles.gridItem}>  
+                    <AiFillCar/> 
+                    <p>Segurança</p>
+                </div>
+                <div className={styles.gridItem}>  
+                    <AiFillCar/> 
+                    <p>Desempenho Potente</p>
+                </div>
+                <div className={styles.gridItem}>
+                    <AiFillCar/> 
+                    <p>Visibilidade</p>
+                </div>
+                <div className={styles.gridItem}> 
+                    <AiFillCar/> 
+                    <p>Versatilidade e Adaptabilidade</p>
+                </div>
                
             </div>          
        
