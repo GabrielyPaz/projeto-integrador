@@ -1,0 +1,107 @@
+.containerReserva{
+
+  background-color: #DFE4EA;
+  /* height: 40px; */
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  height: 72vh; /* Adicione margem inferior desejada */
+  margin: 0 auto;
+  align-items: center;
+  
+  
+  }
+  
+  .title {
+  width: 100%;
+  font-size: 25px;
+  font-weight: 700;
+  color: #31363f;
+  /* margin-left: 4rem;*/
+  padding: 1rem; 
+  /* margin: 20px; */
+  
+  }
+  
+  .dateArea {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  background-color: #DFE4EA;
+  }
+  
+  .containerButton {
+  
+  background-color: #f2f2f2;
+
+  display: flex;
+  flex-direction: column;
+  /* width: 30rem; */
+  /* height: 8rem; */
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 4rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.45) 1px 2px 6px;
+  padding: 1rem;
+  
+  }
+  
+  .button {
+  
+  background-color: var(--laranja-principal);
+  color: var(--branco);
+  border: none;
+  width: 18rem;
+  height: 2.5rem;
+  border-radius: 4px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-size:medium;
+  font-weight: bold;
+  /* display: inline-block; */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 2px rgba(114, 110, 110, 0.17);
+  
+  }
+
+
+/* ===== RESPONSIVIDADE ======== */
+
+/* Estilo para ocultar o texto em telas menores ou iguais a 580 pixels */
+@media screen and (max-width: 1092px) {
+  .dateArea {
+    flex-direction: column;
+  }
+
+  .containerButton { 
+    background-color: #DFE4EA;
+    box-shadow: none;
+    margin-left: 0;
+    padding: 0 2rem;
+    
+  }
+
+}
+
+@media screen and (max-width: 620px) {
+
+  .button {
+    /* display: none; */
+  }
+
+  .containerButton p {
+    font-size: 0.9rem;
+    
+
+  }
+
+}

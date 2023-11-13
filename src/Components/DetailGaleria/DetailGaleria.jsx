@@ -7,7 +7,7 @@ const DetailGaleria = () => {
 
 
    return (
-    <div>
+    <div className={styles.container}>
         <div className={styles.actions}>
             <HiOutlineShare size={25} />
             <HiOutlineHeart size={25}/>
@@ -33,6 +33,10 @@ const DetailGaleria = () => {
                 <Link to="/" className={styles.link}>Ver mais</Link>
             </div>
         </div>
+
+
+
+
    </div> 
      
    )
