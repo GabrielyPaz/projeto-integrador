@@ -12,6 +12,7 @@
     justify-content: space-between; 
     padding: 0 10px;
     font-weight: 400;
+    z-index: 500;
   
 }
 
