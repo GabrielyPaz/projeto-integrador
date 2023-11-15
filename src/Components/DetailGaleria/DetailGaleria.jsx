@@ -10,7 +10,7 @@ import 'swiper/swiper-bundle.css';
 import { register } from "swiper/element/bundle";
 register();
 
-const DetailGaleria = () => {
+const DetailGaleria = ( {veiculo} ) => {
   
   const slides = [
     {
@@ -51,7 +51,7 @@ const DetailGaleria = () => {
         <div className={styles.box1}>
           <img
             className={styles.imgCar}
-            src="https://images.pexels.com/photos/93632/pexels-photo-93632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src={veiculo.img}
             alt="Descrição da Imagem"
           />
         </div>

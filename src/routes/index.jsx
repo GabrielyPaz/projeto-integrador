@@ -9,18 +9,21 @@ export function RouteList() {
 
 return (
 <>
-<BrowserRouter>
-<LoginContextProvider>
-<Routes>
-<Route path="/" element={<Home/>} />
-<Route path="/register" element={<Register/>} />
-<Route path="/login" element={<LoginPage/>} />
-<Route path="/detail" element={<DetailPage/>} />
+  <BrowserRouter>
 
-</Routes>
+    <LoginContextProvider>
 
-</LoginContextProvider>
-</BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/detail/:id" element={<DetailPage/>} />
+
+      </Routes>
+
+    </LoginContextProvider>
+
+  </BrowserRouter>
 </>
 )
 }

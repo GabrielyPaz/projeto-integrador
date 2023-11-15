@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { MdKeyboardArrowLeft  } from "react-icons/md";
 
 
-const DetailHeader = () => { 
+const DetailHeader = ( {veiculo} ) => { 
 
     return (
     <div className={styles.detailHeader}>
 
         <div className={styles.detailTitle}>
-            <h2>Nome da Categoria</h2>
-                <h1>Produto</h1>
+            <h2>{veiculo.category}</h2>
+                <h1>{veiculo.title}</h1>
         </div>
         
         <div className={styles.detailHeaderIcon}>
@@ -18,9 +18,7 @@ const DetailHeader = () => {
                 <MdKeyboardArrowLeft size={50}/>  
             </Link>   
         </div>
-       
     </div> 
-       
     )
 }
 
