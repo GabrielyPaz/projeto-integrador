@@ -23,3 +23,4 @@ const DetailHeader = ( {veiculo} ) => {
 }
 
 export default DetailHeader;
+ 

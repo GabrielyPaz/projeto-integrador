@@ -5,7 +5,7 @@ export default function DetailInformacao() {
     return(
         <div className={styles.containerInformacao}>
 
-            <h1 className={styles.tituloInformacao}>O que você precisa saber:</h1>
+            <h1 className={styles.tituloInformacao}>O que você precisa saber</h1>
 
             <div className={styles.regrasGrid}>
 
