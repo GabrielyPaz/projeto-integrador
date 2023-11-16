@@ -2,7 +2,7 @@ import styles from "./DetailGaleria.module.css";
 import { HiOutlineHeart, HiOutlineShare } from "react-icons/hi";
 import { useState} from 'react';
 import Modal from '../Modal/Modal';
-import "swiper/css/navigation";
+//import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.css';

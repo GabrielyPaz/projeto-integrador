@@ -1,5 +1,5 @@
 .container {
-max-height: 80vh;
+max-height: 100vh;
 }
 
 .actions {
@@ -135,11 +135,12 @@ font-size: 1rem;
 @media (max-width: 700px) {
   .container {
       height: 100vh;
-    
+      
     }
 
   .imgCar {
       display: none;
+      width: 50px;
             
   }
   .carrosselContainer {

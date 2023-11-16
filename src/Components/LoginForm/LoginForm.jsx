@@ -115,7 +115,7 @@ const Login = () => {
             </div>
 
             <div className={styles.container_login_form_btn}>
-              <button className={styles.login_form_btn} type="submit">
+              <button data-testId="button" className={styles.login_form_btn} type="submit">
                 Entrar
               </button>
             </div>
