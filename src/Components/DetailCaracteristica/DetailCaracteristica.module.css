@@ -62,3 +62,24 @@ grid-template-columns: 1fr 1fr;
 }
   
   }
+
+@media screen and (max-width: 420px) {  
+
+.containerGrid {
+gap: 18px;
+/* margin-bottom: 10px; */
+
+} 
+
+.gridItem { 
+gap: 4px;
+
+}
+
+.titleDescrição, .title {
+    padding: 20px 0px 20px 20px;
+    color: #31363F;
+}
+
+
+}

@@ -63,3 +63,26 @@ font-size: 14px;
 }
       
 }
+
+@media screen and (max-width: 420px) {
+.tituloInformacao { 
+font-size: 22px;
+padding: 20px 0px 20px 20px;
+
+}
+
+
+.regrasGrid {
+grid-template-columns: 1fr;
+}
+
+.regrasTitle {
+    font-size: 16px;
+    margin-bottom: 1.2rem;
+    }
+        
+    .regrasInfo {
+    font-size: 13px;
+    }
+
+}

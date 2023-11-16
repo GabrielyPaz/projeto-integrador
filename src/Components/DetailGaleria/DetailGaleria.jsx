@@ -1,16 +1,42 @@
 import styles from "./DetailGaleria.module.css";
 import { HiOutlineHeart, HiOutlineShare } from "react-icons/hi";
-import { Link } from "react-router-dom";
-
+import { useState} from 'react';
+import Modal from '../Modal/Modal';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { SwiperSlide } from "swiper/react";
 import 'swiper/swiper-bundle.css';
-
 import { register } from "swiper/element/bundle";
 register();
 
 const DetailGaleria = () => {
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const images = [
+    {
+      url: 'https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=600',
+      className: styles.imageModal,
+    },
+    {
+      url: 'https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=600',
+      className: styles.imageModal,
+    },
+    {
+      url: 'https://images.pexels.com/photos/707046/pexels-photo-707046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      className: styles.imageModal,
+    },
+    {
+      url: 'https://images.pexels.com/photos/326259/pexels-photo-326259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      className: styles.imageModal,
+    },
+    {
+      url: 'https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      className: styles.imageModal,
+    },
+  ];
+
+
   
   const slides = [
     {
@@ -83,10 +109,9 @@ const DetailGaleria = () => {
             src="https://images.pexels.com/photos/11877391/pexels-photo-11877391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="Descrição da Imagem"
           />
-          <Link to="/" className={styles.link}>
-            Ver mais
-          </Link>
+            <button onClick={() => setOpenModal(true)} className={styles.modalButton}>Ver mais</button>
         </div>
+            <Modal isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)} images={images} />
       </div>
     
       <div className={styles.carrosselContainer}>       

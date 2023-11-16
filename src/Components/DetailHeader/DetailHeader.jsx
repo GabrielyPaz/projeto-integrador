@@ -25,3 +25,4 @@ const DetailHeader = () => {
 }
 
 export default DetailHeader;
+ 
