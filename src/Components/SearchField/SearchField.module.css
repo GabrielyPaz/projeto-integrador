@@ -1,0 +1,15 @@
+.filter {
+ max-width: 700px;
+ margin: 0 auto;
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ background-color: var(--cinza-background);
+ box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px;
+}
+
+.filterOptions {
+ display: flex;
+ justify-content: space-around;
+ gap: 3rem;
+}

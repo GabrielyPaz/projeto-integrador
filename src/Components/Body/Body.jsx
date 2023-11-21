@@ -3,9 +3,13 @@ import styles from "./Body.module.css";
 import Carousel from "react-bootstrap/Carousel";
 import dadosVeiculo from '../../data/contents.json';
 import { Link } from "react-router-dom";
-
+import { useState } from "react";
+import SearchField from "../SearchField/searchField";
 
 function Body() {
+
+    const [filter, setFilter] = useState("All");
+    const filteredData = filter === "All" ? dadosVeiculo : dadosVeiculo.filter(item => item.category === filter);
 
     return (
         <main className={styles.body}>
@@ -34,6 +38,8 @@ function Body() {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
+
+                <SearchField filter={filter} setFilter={setFilter} />
             
             <div className={styles.cardCars}>
             
@@ -41,7 +47,9 @@ function Body() {
                 <h2 className={styles.cardTitle}>Recomendações</h2>
                 </div>    
 
-                {dadosVeiculo.map(item => (
+                
+
+                {filteredData.map(item => (
 
                     <section key={item.id} className={styles.sectionCard}>
                         <div className={styles.cardContainer}>
