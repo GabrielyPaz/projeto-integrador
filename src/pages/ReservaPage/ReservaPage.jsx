@@ -1,6 +1,7 @@
 import DetailInformacao from "../../Components/DetailInformacao/DetailInformacao";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/NavBar/Navbar";
+import DatePickerComponent from "../../Components/ReservaCalendar/DatePickerComponent";
 import ReservaHeader from "../../Components/ReservaHeader/ReservaHeader";
 // import dadosVeiculo from '../../data/contents.json'
 // import { useParams } from "react-router-dom";
@@ -30,6 +31,7 @@ return (
         <Navbar />
         <main>
             <ReservaHeader />
+            <DatePickerComponent />
             <DetailInformacao />
         </main>
         <Footer />
