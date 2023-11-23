@@ -5,12 +5,12 @@ import Footer from "../../Components/Footer/Footer";
 export function LoginPage() {
 
 return (
-<>
-<Navbar />
-<main>
-<LoginForm />
-</main>
-<Footer />
-</>
+    <>
+        <Navbar />
+        <main>
+            <LoginForm />
+        </main>
+        <Footer />
+    </>
 )
 } 

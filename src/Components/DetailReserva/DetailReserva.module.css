@@ -43,7 +43,7 @@
   
   }
   
-  .button {
+  .link {
   background-color: var(--laranja-principal);
   color: var(--branco);
   border: none;
@@ -56,6 +56,9 @@
   text-decoration: none;
   font-size:medium;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* display: inline-block; */
   cursor: pointer;
   transition: all 0.3s ease;

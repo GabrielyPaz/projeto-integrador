@@ -1,5 +1,6 @@
 import styles from './DetailReserva.module.css';
 import DatePickerComponent from '../DatePickerComponent/DatePickerComponent';
+import { Link } from 'react-router-dom'; 
 
 
 
@@ -16,7 +17,7 @@ const DetailReserva = () => {
             </div>
             <div className={styles.containerButton}>
                 <p>Adicione datas a sua viagem para obter o valor exato</p>    
-                <button className={styles.button}>Iniciar reserva</button>
+                <Link  to="/reservation" className={styles.link}>Iniciar reserva</Link>
             </div>
 
         </div>
@@ -26,6 +27,6 @@ const DetailReserva = () => {
       
     )
  }
- 
+ // /reserve
  
  export default DetailReserva;

@@ -1,0 +1,46 @@
+.detailHeader {
+    background-color: #31363f;
+    display: flex;
+    justify-content:space-between ;
+    padding: 10px;
+    
+    }
+    
+    .detailTitle {
+    
+    color: #ffff;
+    padding-left: 10px;
+    
+    }
+    
+    .detailTitle h1 {
+        font-size: 24px;
+        font-weight: 700;
+    
+    }
+    
+    .detailTitle h2 {
+        font-size: 18px;
+        font-weight: 400;
+        
+    
+    }
+    
+    .detailTitle h1, h2 {
+        margin: 0 !important;
+    }
+    
+    .detailHeaderIcon{
+        color: #ffff !important;
+        align-items: center;
+        display: flex;
+        
+    }
+    
+    .link {
+    
+        color: #ffff;
+        align-items: center;
+        
+       
+    }

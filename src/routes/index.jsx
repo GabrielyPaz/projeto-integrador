@@ -4,6 +4,8 @@ import { LoginPage } from "../pages/Login/LoginPage";
 import { Register } from "../pages/Register/Register";
 import LoginContextProvider from "../contexts/LoginContext/LoginContext";
 import { DetailPage } from "../pages/DetailPage/DetailPage";
+import { ReservaPage } from "../pages/ReservaPage/ReservaPage";
+
 
 export function RouteList() {
 
@@ -18,7 +20,8 @@ return (
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/detail/:id" element={<DetailPage/>} />
-
+        <Route path="/reservation" element={<ReservaPage/>} />
+        
       </Routes>
 
     </LoginContextProvider>
