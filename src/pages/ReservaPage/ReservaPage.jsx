@@ -3,6 +3,8 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/NavBar/Navbar";
 import DatePickerComponent from "../../Components/ReservaCalendar/DatePickerComponent";
 import ReservaHeader from "../../Components/ReservaHeader/ReservaHeader";
+import ReservaFormulario from "../../Components/ReservaFormulario/ReservaFormulario";
+import ReservaHorario from "../../Components/ReservaHorario/ReservaHorario";
 // import dadosVeiculo from '../../data/contents.json'
 // import { useParams } from "react-router-dom";
 // import { useEffect, useState } from "react";
@@ -31,8 +33,11 @@ return (
         <Navbar />
         <main>
             <ReservaHeader />
+            <ReservaFormulario />
             <DatePickerComponent />
+            <ReservaHorario />
             <DetailInformacao />
+            
         </main>
         <Footer />
     </>
