@@ -1,5 +1,5 @@
 .horaChegadaFormulario {
-    width: 50%;
+    /* width: 50%; */
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -19,7 +19,8 @@
     gap: 12px;
     border-radius: 5px;
     padding: 25px;
-    background-color: var(--branco-opaco);
+    /* background-color: var(--branco-opaco); */
+    background-color: #fff;
     box-shadow: #C4C4C4 3px 5px 5px 5px !important;
 }
 

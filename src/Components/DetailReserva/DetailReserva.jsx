@@ -20,6 +20,8 @@ const DetailReserva = () => {
                 <Link  to="/reservation" className={styles.link}>Iniciar reserva</Link>
             </div>
 
+            
+
         </div>
         
 

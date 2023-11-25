@@ -5,6 +5,9 @@ import DatePickerComponent from "../../Components/ReservaCalendar/DatePickerComp
 import ReservaHeader from "../../Components/ReservaHeader/ReservaHeader";
 import ReservaFormulario from "../../Components/ReservaFormulario/ReservaFormulario";
 import ReservaHorario from "../../Components/ReservaHorario/ReservaHorario";
+import Reserva from "../../Components/Reserva/Reserva";
+import styles from './ReservaPage.module.css';
+
 // import dadosVeiculo from '../../data/contents.json'
 // import { useParams } from "react-router-dom";
 // import { useEffect, useState } from "react";
@@ -33,14 +36,28 @@ return (
         <Navbar />
         <main>
             <ReservaHeader />
-            <ReservaFormulario />
-            <DatePickerComponent />
-            <ReservaHorario />
+            <div className={styles.container}>
+                <div className={styles.leftPanel}>
+                    <ReservaFormulario />
+                        <div className={styles.containerReserva}>
+                            <h1 className={styles.title}>Selecione sua data de reserva</h1>
+                            <div className={styles.dateArea}>
+                                <div className={styles.date}>
+                                    <DatePickerComponent/>
+                                </div>
+                            </div>
+                        </div>    
+                    <ReservaHorario />
+                 </div>
+                <div className={styles.rightPanel}>
+                    <Reserva />
+                </div>
+            </div>
             <DetailInformacao />
-            
         </main>
         <Footer />
     </>
     )
 }
+
 
