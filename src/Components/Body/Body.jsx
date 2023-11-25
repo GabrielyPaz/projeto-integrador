@@ -4,7 +4,7 @@ import Carousel from "react-bootstrap/Carousel";
 import dadosVeiculo from '../../data/contents.json';
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import SearchField from "../SearchField/searchField";
+import SearchField from "../SearchField/SearchField";
 
 function Body() {
 
