@@ -25,12 +25,13 @@
     align-items: center;
 }
     
-.title {
+.titleCalendar {
     width: 100%;
     font-size: 24px;
     font-weight: 700;
     color: #31363f;
-    padding: 1rem; 
+    padding: 1rem;
+    padding-left: 2.5rem; 
     
 }
     

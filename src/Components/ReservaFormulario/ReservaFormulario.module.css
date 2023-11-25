@@ -1,22 +1,22 @@
 .reservaFormulario {
     /* width: 50%; */
     background-color: #DFE4EA;
-    padding: 20px;
-    
+    padding: 0px 20px;
 }
 
 .reservaForm {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 20px;
+    padding: 0px 20px;
+    padding-bottom: 1.5rem;
 }
 
 .DadosReserva {
     color: var(--azul-escuro);
     font-weight: 700;
     font-size: 24px;
-    padding-top: 3rem;
+    padding-top: 2rem;
     padding-bottom: 0;
 }
 

@@ -1,28 +1,133 @@
 .container {
 
 background-color: #DFE4EA;
-padding: 40px 5px;
+padding: 1rem;
+padding-top: 5.9rem;
 display: flex;
 justify-content: center;
 align-items: center;
+}
 
+.reservaTitle h2 {
+
+font-weight: 700;
+font-size: 1.5rem;
+padding-bottom: 1rem;  
 
 }
 
 .detailReserva {
-
 background-color: #fff;
-padding: 2rem;
+padding: 2rem 2rem;
+margin-right: 1rem;
 border-radius: 4px; 
 box-shadow: #C4C4C4 3px 5px 5px 5px;
-padding: 20px 5px;  
-
-
 }
 
+.imageContainer {
+
+width: 100%;
+height: 18rem;  
+
+}
 .imgCar {
     /* max-width: 21.875rem; */
   width: 100%;
   height: 100%;
   object-fit: cover;
-}  
+}
+
+.produtoTitle {
+
+padding-top: 1.5rem;
+
+
+}
+
+.produtoTitle h2{
+
+font-weight: 700;
+font-size: 1.8rem;
+padding: 0 !important;
+margin: 0 !important;
+  
+}
+
+
+.produtoTitle h3{
+
+font-weight: 400;
+font-size: 1.5rem;
+padding: 0 !important;
+margin: 0 !important;
+
+  
+}
+.localizacao {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  
+}
+
+.checkArea {
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid  #31363f7e;
+  align-items: center;
+  margin-top: 1.6rem;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid  #31363f7e;
+}
+
+.check h4 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  align-items: center;
+  padding: 0.4;
+}
+
+.containerButton {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  padding: 1rem;
+  
+  }
+  
+  .button {
+  background-color: var(--laranja-principal);
+  color: var(--branco);
+  border: none;
+  width: 100%;
+  height: 3rem;
+  border-radius: 4px;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-size:0.9rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* display: inline-block; */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 2px rgba(114, 110, 110, 0.17);
+  }

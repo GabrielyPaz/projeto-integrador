@@ -40,7 +40,7 @@ return (
                 <div className={styles.leftPanel}>
                     <ReservaFormulario />
                         <div className={styles.containerReserva}>
-                            <h1 className={styles.title}>Selecione sua data de reserva</h1>
+                            <h1 className={styles.titleCalendar}>Selecione sua data de reserva</h1>
                             <div className={styles.dateArea}>
                                 <div className={styles.date}>
                                     <DatePickerComponent/>

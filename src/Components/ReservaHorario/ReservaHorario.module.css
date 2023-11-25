@@ -1,13 +1,15 @@
 .horaChegadaFormulario {
-    /* width: 50%; */
+    /* width: 40rem; */
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 0rem 1rem;
+    padding-left: 2.5rem;
     gap: 1.5rem;
+    padding-bottom: 3rem;
 }
 
 .horaTitulo {
-    padding-top: 2.5rem;
+    padding-top: 1rem;
     font-size: 24px; 
     font-weight:bold;
     color: var(--azul-escuro);
@@ -22,6 +24,7 @@
     /* background-color: var(--branco-opaco); */
     background-color: #fff;
     box-shadow: #C4C4C4 3px 5px 5px 5px !important;
+    width: 93%;
 }
 
 .horaCheck {
