@@ -1,15 +1,52 @@
 .filter {
  max-width: 700px;
- margin: 0 auto;
+ margin: 2rem auto;
  display: flex;
+ flex-direction: column;
  align-items: center;
  justify-content: space-around;
- background-color: var(--cinza-background);
+ background-color:#DFE4EA;
  box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px;
+ padding-bottom: 1.3rem;
+ border-radius: 4px;
+ color: #31363F;
 }
+
+.filter h3 {
+padding: 10px;
+color:#31363F;
+font-weight: 700;
+font-size: 1.5rem;
+justify-content: flex-start;
+}
+
+.filter p {
+font-weight: 500;
+font-size: 1.2rem;
+}
+
 
 .filterOptions {
  display: flex;
+ /* flex-direction: column; */
  justify-content: space-around;
- gap: 3rem;
+ align-items: center;
+ gap: 1rem;
+ 
 }
+
+
+.selectContainer {
+    display: flex;
+    width: 220px;
+    height: 40px;
+    padding-left: 10px;
+    background-color: #f0572d;
+    font-weight: 700;
+    border: 1.5px solid var(--cinza-background);
+    color:#fff;
+    border-radius: 6px;
+  }
+  
+
+
