@@ -35,7 +35,8 @@
   }
   
   .login_form_title {
-    margin-bottom: 45px;
+    margin-bottom: 25px;
+    padding-top: 35px;
     color: var(--laranja-principal);
     display: flex;
     align-items: center;
@@ -62,6 +63,11 @@
 
 .error .login {
   border: 2px solid red;
+  background-color:rgba(255, 0, 0, 0.357);
+}
+
+.error .input_register {
+  //border: 2px solid red;
   background-color:rgba(255, 0, 0, 0.357);
 }
   
@@ -171,9 +177,9 @@
 }
 
 .question {
-    font-weight: 400;
+    font-weight: 200;
     font-size: 1.2rem;
-    line-height: 19px;
+    line-height: 12px;
     text-decoration: none;    
     color: var(--preto-total);
     
@@ -182,6 +188,5 @@
 .register {
   color: var(--laranja-principal);
   font-size: 1.2rem;
-  font-weight: bold;
-  
+  font-weight: bold; 
 }

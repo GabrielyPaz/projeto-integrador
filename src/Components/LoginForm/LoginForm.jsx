@@ -7,8 +7,9 @@ import { LoginContext } from "../../contexts/LoginContext/LoginContext";
 import eye from "../../assets/eye.svg";
 import eyeslash from "../../assets/eye-slash.svg";
 
-const Login = () => {
-  const [email, setUserEmail] = useState("");
+export default function Login() {
+
+  const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(false);
   const navigate = useNavigate();
@@ -30,8 +31,7 @@ const Login = () => {
 
     if (existRegister) {
       const searchUser = registros.find(
-        (record) =>
-          record.email === data.email && record.password === data.password
+        record => record.email === data.email && record.password === data.password
       );
 
       if (searchUser) {
@@ -78,8 +78,8 @@ const Login = () => {
                 className={styles.login}
                 name="email"
                 type="email"
-                placeholder="Digite seu email..."
-                value={email}
+                placeholder="Digite seu email."
+                value={userEmail}
                 onChange={onChangeUserEmail}
               />
             </div>
@@ -99,7 +99,7 @@ const Login = () => {
                   className={styles.input_register}
                   name="password"
                   type={!showPassword ? "password" : "text"}
-                  placeholder="Digite sua senha..."
+                  placeholder="Digite sua senha."
                   value={password}
                   onChange={onChangePassword}
                 />
@@ -133,6 +133,7 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+
+
