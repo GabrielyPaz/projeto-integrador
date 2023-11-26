@@ -159,7 +159,9 @@
 .login_form_btn:hover {
     background: var(--branco);
     color: var(--laranja-principal);  
-    border: 1px solid var(--laranja-principal);   
+    border: 1px solid var(--laranja-principal); 
+    outline: none;
+      
   }
 
 .text-center {
