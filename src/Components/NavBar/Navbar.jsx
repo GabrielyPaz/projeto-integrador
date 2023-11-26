@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className={styles.item}>
 
         <Link to="/" className={styles.link}>
-          <img src="/public/logo-site.svg" alt="logo da digital cars" className={styles.image} />
+          <img src="/logo-site.svg" alt="logo da digital cars" className={styles.image} />
           <span className={styles.text}>Paixão pela estrada</span>
         </Link>
 
