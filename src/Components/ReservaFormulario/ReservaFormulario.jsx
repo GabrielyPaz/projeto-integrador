@@ -14,22 +14,22 @@ export default function ReservaFormulario() {
                     
                     <div className={styles.inputItem}>
                         <label className={styles.label} htmlFor="">Nome</label>
-                        <input className={styles.inputText} type="text" placeholder='Digite seu nome.' />
+                        <input className={styles.inputText} type="text" placeholder='Digite seu nome.' disabled/>
                     </div>
 
                     <div className={styles.inputItem}>
                         <label className={styles.label} htmlFor="">Sobrenome</label>
-                        <input className={styles.inputText} type="text" placeholder='Digite seu sobrenome.' />
+                        <input className={styles.inputText} type="text" placeholder='Digite seu sobrenome.' disabled />
                     </div>
 
                     <div className={styles.inputItem}>
                         <label className={styles.label} htmlFor="">E-mail</label>
-                        <input className={styles.inputText} type="text" placeholder='Digite seu e-mail.' />
+                        <input className={styles.inputText} type="text" placeholder='Digite seu e-mail.' disabled/>
                     </div>
 
                     <div className={styles.inputItem}>
                         <label className={styles.label} htmlFor="">Cidade</label>
-                        <input className={styles.inputText} type="text" placeholder=' '/>
+                        <input className={styles.inputText} type="text" placeholder=' ' required/>
                     </div>
 
                 </div>
