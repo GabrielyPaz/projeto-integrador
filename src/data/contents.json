@@ -1,7 +1,7 @@
 [
  {
    "id": 1,
-   "img": "../src/assets/images/onix.jpg",
+   "img": "../../src/assets/images/onix.jpg",
    "category": "Sedan",
    "title": "Chevrolet Onix",
    "description": "O modelo queridinho da Chevrolet possui 3.930 mm de comprimento, 1.474 mm de altura, 1.705 mm de largura e 2.538 mm entre os eixos. Já o vão livre do solo tem 117 mm. O veículo tem um peso final de 1.011 kg e suporta 375 kg de carga útil. O Onix Joy 2019 tem capacidade para 5 ocupantes."
@@ -22,35 +22,35 @@
  },
  {
    "id": 4,
-   "img": "../src/assets/images/mercedesAmg45.jpg",
+   "img": "../../src/assets/images/mercedesAmg45.jpg",
    "category": "Coupé",
    "title": "Mercedes-Benz AMG 45",
    "description": "O Mercedes-Benz AMG A45 é um hatchback esportivo que incorpora luxo e desempenho excepcionais. Sob o capô, um motor turbocharged entrega potência impressionante, oferecendo uma experiência de condução emocionante. Seu design exterior é marcado por linhas aerodinâmicas e detalhes agressivos, refletindo a natureza esportiva do veículo. O interior combina materiais de alta qualidade com tecnologia avançada, proporcionando um ambiente sofisticado e conectado. Equipado com recursos de última geração, o AMG A45 é uma opção premium para entusiastas que buscam uma combinação única de elegância e performance."
  },
  {
    "id": 5,
-   "img": "../src/assets/images/corolla.jpg",
+   "img": "../../src/assets/images/corolla.jpg",
    "category": "Sedan",
    "title": "Corolla",
    "description": "O Toyota Corolla é um sedan reconhecido por sua confiabilidade e desempenho sólido. Com um design elegante e linhas aerodinâmicas, destaca-se pela sua presença nas estradas. O interior espaçoso e confortável oferece uma experiência de condução agradável, complementada por tecnologias avançadas de segurança e entretenimento. Sob o capô, o Corolla geralmente apresenta motores eficientes que combinam desempenho e economia de combustível. Como um dos carros mais vendidos do mundo, o Corolla é uma escolha popular para aqueles que buscam durabilidade e estilo em um sedan."
  },
  {
    "id": 6,
-   "img": "../src/assets/images/mobi.jpg",
+   "img": "../../src/assets/images/mobi.jpg",
    "category": "Hatch",
    "title": "Mobi",
    "description": "O Fiat Mobi é um compacto urbano que se destaca pela sua agilidade e design moderno. Com dimensões compactas, é ideal para a condução em ambientes urbanos movimentados. Seu interior espaçoso e versátil proporciona conforto aos ocupantes, enquanto o eficiente motor oferece um equilíbrio entre desempenho e economia de combustível. Equipado com recursos tecnológicos, como sistema de entretenimento e conectividade, o Fiat Mobi é uma opção atraente para aqueles que buscam um carro ágil e funcional para o dia a dia na cidade."
  },
  {
    "id": 7,
-   "img": "../src/assets/images/tiguan.jpg",
+   "img": "../../src/assets/images/tiguan.jpg",
    "category": "SUV",
    "title": "Tiguan",
    "description": "O Volkswagen Tiguan 2022 é um SUV compacto que combina versatilidade, estilo e tecnologia de ponta. Com um design moderno, linhas fluidas e uma grade dianteira distintiva, o Tiguan oferece uma presença marcante na estrada. Seu interior espaçoso e bem projetado proporciona conforto para passageiros e motorista, enquanto a tecnologia de infotainment e assistência à condução eleva a experiência a bordo. Equipado com motores eficientes, o Tiguan oferece desempenho sólido e economia de combustível. Combinando praticidade e sofisticação, o Tiguan 2022 é uma opção atraente para aqueles que buscam um SUV moderno e funcional.."
  },
  {
    "id": 8,
-   "img": "../src/assets/images/crv.jpg",
+   "img": "../../src/assets/images/crv.jpg",
    "category": "SUV",
    "title": "Honda CRV",
    "description": "O Honda CR-V é um SUV compacto que se destaca por sua confiabilidade e versatilidade. Com um design contemporâneo, linhas elegantes e uma grade dianteira distintiva, o CR-V oferece uma presença visualmente atraente. Seu interior espaçoso e bem projetado proporciona conforto aos ocupantes, enquanto os recursos de segurança e tecnologia avançada elevam a experiência de condução. Com opções de motores eficientes, o CR-V oferece um equilíbrio entre desempenho e eficiência de combustível. Como um SUV popular, o Honda CR-V é uma escolha sólida para quem procura um veículo confiável e familiar."
