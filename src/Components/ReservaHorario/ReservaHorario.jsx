@@ -22,7 +22,7 @@ export default function Horario() {
             Indique a sua hora prevista de chegada
           </label>
 
-          <select  className={styles.horaSelect}>
+          <select className={styles.horaSelect}>
             <option value="" disabled hidden selected>
               Selecione a sua hora de chegada</option>
               {horariosArray.map((horario, index) => (

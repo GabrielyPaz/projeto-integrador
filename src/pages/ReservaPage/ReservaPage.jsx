@@ -34,7 +34,7 @@ export function ReservaPage() {
 
   /* const navigate = useNavigate();
   const produtoId = useParams();
-  const [setProduto] = useState([]);
+  const setProduto = useState([]);
 
   const estaLogado = !!localStorage.getItem("usuarioLogado");
 
@@ -49,12 +49,15 @@ export function ReservaPage() {
         title: "Atenção:",
         text: "Para realizar a reserva você deverá estar logado.",
         confirmButtonColor: "#1DBEB4",
+
       }).then((result) => {
+
         if (result.isConfirmed) {
-          console.log("Confirmado");
+          
           navigate("/login");
+
         } else {
-          console.log("Não Confirmado");
+          
           navigate("/login");
         }
       });
@@ -62,23 +65,23 @@ export function ReservaPage() {
   };
 
   const getProduto = () => {
-    const produtoEncontrado = produtoId.find(
-      (item) => item.id === parseInt(produtoId.id)
-    );
+    const produtoEncontrado = contents.find(
+      item => item.id === parseInt(produtoId.id));
     setProduto(produtoEncontrado);
   };
 
   useEffect(() => {
     verificarLogin();
     getProduto();
-  }, []);
+  
+  },);
 
   useEffect(() => {
     window.scrollTo({
-      top: 0,
-      transitionDelay: 300,
-      behavior: "smooth",
-    });
+    top: 0,
+    transitionDelay: 300,
+    behavior: "smooth",
+  });
   }, []);*/
 
   return (

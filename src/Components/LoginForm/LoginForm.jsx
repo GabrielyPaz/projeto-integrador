@@ -1,14 +1,16 @@
-import { useState, useContext } from "react";
+import { useState, useContext } from "react";  
 import styles from "./Form.module.css";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../../contexts/LoginContext/LoginContext";
+import Swal from 'sweetalert2';
 
 // ========= ANDRE ===========
 import eye from "../../assets/eye.svg";
 import eyeslash from "../../assets/eye-slash.svg";
 
-const Login = () => {
-  const [email, setUserEmail] = useState("");
+export default function Login() {
+
+  const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(false);
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ const Login = () => {
 
   const onSubmitInfo = (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
@@ -29,29 +32,62 @@ const Login = () => {
     const existRegister = !!localStorage.getItem("registros");
 
     if (existRegister) {
+
       const searchUser = registros.find(
-        (record) =>
-          record.email === data.email && record.password === data.password
+        record => record.email === data.email && record.password === data.password
       );
 
-      if (searchUser) {
-        searchUser.name;
+      if(searchUser) {
+        Swal.fire({
+            title: "Login Efetuado com Sucesso!",
+            background: `${login ? '#DFE4EA': '#31363f'}`,
+            color: `${login ? '#31363f' : '#31363f'}`,
+            confirmButtonColor: '#f0572d',
+            icon: "success"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.setItem('usuarioLogado', JSON.stringify(searchUser));
+                navigate('/');
+            } else {
+                localStorage.setItem('usuarioLogado', JSON.stringify(searchUser));
+                navigate('/');
+            }
+        });
 
-        alert("Login efetuado com sucesso!");
-        // localStorage.setItem('Está logado!', false);
-        localStorage.setItem("usuarioLogado", JSON.stringify(searchUser));
-        login(searchUser);
-        navigate("/");
-      } else {
-        alert("Informações inválidas. Tente novamente!");
-        setFormError(true);
-      }
     } else {
-      alert("Informações inválidas. Tente novamente!");
-      setFormError(true);
+        Swal.fire({
+            text: "Tente novamente, suas credenciais estão inválidas!",
+            background: `${login ? '#31363f': '#31363f'}`,
+            color: `${'#FFF'}`,
+            confirmButtonColor: '#f0572d',
+            icon: "error"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                setFormError(true)
+            } else {
+              setFormError(true)
+            }
+          });
+        
     }
-  };
 
+} else {
+    Swal.fire({
+        text: "Por favor, tente novamente, suas credenciais são inválidas!",
+        background: `${'#1f242d'}`,
+        color: `${'#FFF'}`,
+        confirmButtonColor: '#1DBEB4',
+        icon: "error"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setFormError(true)
+        } else {
+          setFormError(true)
+        }
+      });
+}
+
+};  
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -78,8 +114,8 @@ const Login = () => {
                 className={styles.login}
                 name="email"
                 type="email"
-                placeholder="Digite seu email..."
-                value={email}
+                placeholder="Digite seu email."
+                value={userEmail}
                 onChange={onChangeUserEmail}
               />
             </div>
@@ -99,7 +135,7 @@ const Login = () => {
                   className={styles.input_register}
                   name="password"
                   type={!showPassword ? "password" : "text"}
-                  placeholder="Digite sua senha..."
+                  placeholder="Digite sua senha."
                   value={password}
                   onChange={onChangePassword}
                 />
@@ -133,6 +169,7 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+
+
