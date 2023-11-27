@@ -1,39 +1,38 @@
-import DetailInformacao from "../../Components/DetailInformacao/DetailInformacao";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/NavBar/Navbar";
-import DatePickerComponent from "../../Components/ReservaCalendar/DatePickerComponent";
-import ReservaHeader from "../../Components/ReservaHeader/ReservaHeader";
-import ReservaFormulario from "../../Components/ReservaFormulario/ReservaFormulario";
-import ReservaHorario from "../../Components/ReservaHorario/ReservaHorario";
-import Reserva from "../../Components/Reserva/Reserva";
-import styles from "./ReservaPage.module.css";
+import DetailInformacao from '../../Components/DetailInformacao/DetailInformacao'
+import Footer from '../../Components/Footer/Footer'
+import Navbar from '../../Components/NavBar/Navbar'
+import DatePickerComponent from '../../Components/ReservaCalendar/DatePickerComponent'
+import ReservaHeader from '../../Components/ReservaHeader/ReservaHeader'
+import ReservaFormulario from '../../Components/ReservaFormulario/ReservaFormulario'
+import ReservaHorario from '../../Components/ReservaHorario/ReservaHorario'
+import Reserva from '../../Components/Reserva/Reserva'
+import styles from './ReservaPage.module.css'
 
-/*import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-import Swal from "sweetalert2";*/
+// import Swal from "sweetalert2";
 
-// import dadosVeiculo from '../../data/contents.json'
-// import { useParams } from "react-router-dom";
-// import { useEffect, useState } from "react";
+import dadosVeiculo from '../../data/contents.json'
 
 export function ReservaPage() {
-  // const [veiculo, setVeiculo] = useState([]);
-  // const veiculoId = useParams();
+  const [veiculo, setVeiculo] = useState([])
+  const veiculoId = useParams()
 
-  // const getVeiculo = () => {
+  const getVeiculo = () => {
+    const veiculoEncontrado = dadosVeiculo.find(
+      item => item.id === parseInt(veiculoId.id)
+    )
+    setVeiculo(veiculoEncontrado)
 
-  //     const veiculoEncontrado = dadosVeiculo.find(item => item.id === parseInt (veiculoId.id) );
-  //     setVeiculo(veiculoEncontrado);
+    console.log(veiculoEncontrado)
+  }
 
-  //     console.log(veiculoEncontrado);
-  // }
+  useEffect(() => {
+    getVeiculo()
+  }, [])
 
-  // useEffect(() => {
-  //     getVeiculo();
-  // }, []);
-
- /* const navigate = useNavigate();
+  /* const navigate = useNavigate();
   const produtoId = useParams();
   const [setProduto] = useState([]);
 
@@ -86,7 +85,7 @@ export function ReservaPage() {
     <>
       <Navbar />
       <main>
-        <ReservaHeader />
+        <ReservaHeader veiculo={veiculo} />
         <div className={styles.container}>
           <div className={styles.leftPanel}>
             <ReservaFormulario />
@@ -103,12 +102,12 @@ export function ReservaPage() {
             <ReservaHorario />
           </div>
           <div className={styles.rightPanel}>
-            <Reserva />
+            <Reserva veiculo={veiculo} />
           </div>
         </div>
         <DetailInformacao />
       </main>
       <Footer />
     </>
-  );
+  )
 }
