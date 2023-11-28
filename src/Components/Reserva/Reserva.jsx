@@ -1,3 +1,4 @@
+import ReservaFormulario from '../ReservaFormulario/ReservaFormulario'
 import styles from './Reserva.module.css'
 import { MdLocationPin, MdStarBorder } from 'react-icons/md'
 // import dadosVeiculo from '../../data/contents.json'
@@ -51,6 +52,8 @@ const Reserva = ({ veiculo }) => {
           <button className={styles.button}>Confirmar reserva</button>
         </div>
       </div>
+
+      <ReservaFormulario />
     </div>
   )
 }

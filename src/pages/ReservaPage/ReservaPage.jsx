@@ -9,15 +9,40 @@ import Reserva from '../../Components/Reserva/Reserva'
 import styles from './ReservaPage.module.css'
 
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-// import Swal from "sweetalert2";
+import Swal from 'sweetalert2'
 
 import dadosVeiculo from '../../data/contents.json'
 
 export function ReservaPage() {
   const [veiculo, setVeiculo] = useState([])
   const veiculoId = useParams()
+  const navigate = useNavigate()
+
+  const estaLogado = !!localStorage.getItem('usuarioLogado')
+
+  const verificarLogin = () => {
+    console.log(estaLogado)
+
+    if (!estaLogado) {
+      console.log('Redirecionando para /login')
+
+      navigate('/login')
+      Swal.fire({
+        icon: 'error',
+        title: 'Atenção:',
+        text: 'Para realizar a reserva você deverá estar logado.',
+        confirmButtonColor: '#1DBEB4'
+      }).then(result => {
+        if (result.isConfirmed) {
+          navigate('/login')
+        } else {
+          navigate('/login')
+        }
+      })
+    }
+  }
 
   const getVeiculo = () => {
     const veiculoEncontrado = dadosVeiculo.find(
@@ -30,59 +55,16 @@ export function ReservaPage() {
 
   useEffect(() => {
     getVeiculo()
+    verificarLogin()
   }, [])
-
-  /* const navigate = useNavigate();
-  const produtoId = useParams();
-  const setProduto = useState([]);
-
-  const estaLogado = !!localStorage.getItem("usuarioLogado");
-
-  const verificarLogin = () => {
-    console.log(estaLogado);
-
-    if (!estaLogado) {
-      console.log("Redirecionando para /login");
-      navigate("/login");
-      Swal.fire({
-        icon: "error",
-        title: "Atenção:",
-        text: "Para realizar a reserva você deverá estar logado.",
-        confirmButtonColor: "#1DBEB4",
-
-      }).then((result) => {
-
-        if (result.isConfirmed) {
-          
-          navigate("/login");
-
-        } else {
-          
-          navigate("/login");
-        }
-      });
-    }
-  };
-
-  const getProduto = () => {
-    const produtoEncontrado = contents.find(
-      item => item.id === parseInt(produtoId.id));
-    setProduto(produtoEncontrado);
-  };
-
-  useEffect(() => {
-    verificarLogin();
-    getProduto();
-  
-  },);
 
   useEffect(() => {
     window.scrollTo({
-    top: 0,
-    transitionDelay: 300,
-    behavior: "smooth",
-  });
-  }, []);*/
+      top: 0,
+      transitionDelay: 300,
+      behavior: 'smooth'
+    })
+  }, [])
 
   return (
     <>
