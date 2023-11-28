@@ -49,3 +49,22 @@ input:focus {
     border: 0 none;
     outline: 0;
 }
+
+/* ===== RESPONSIVIDADE ======== */
+
+@media screen and (max-width: 1024px) {
+  
+    .input {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+  
+    .inputItem input  { 
+      
+        grid-template-columns: 1fr;
+      
+    }
+  
+  }
+  

@@ -40,10 +40,31 @@ background-color: rgba(74, 73, 72, 0.177);
 
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container { 
+    margin: 0.8rem;
 
-/* Media query para telas pequenas */
+  }
+  .dateContainer {
+   
+    /* background-color: aquamarine; */
+    justify-content: center;
+    padding: 1vw 1.5vw; 
+    
+
+}
+
+}
+
+
 @media (max-width: 768px) {
   .linha {
-    display: none;  /* Exibe a linha vertical em telas pequenas */
+    display: none;  
   }
+
+  .container { 
+    margin: 0.8rem;
+
+  }
+
 }

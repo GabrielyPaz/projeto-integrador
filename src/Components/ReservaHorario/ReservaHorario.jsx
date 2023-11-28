@@ -31,6 +31,20 @@ export default function Horario() {
                                 </option>
               ))}
           </select>
+
+          {/* <label className={styles.horaLabel}>
+            Indique a sua hora prevista para devolução
+          </label>
+
+          <select className={styles.horaSelect}>
+            <option value="" disabled hidden selected>
+              Selecione a sua hora de devolução</option>
+              {horariosArray.map((horario, index) => (
+                                <option key={index} value={horario}>
+                                    {horario}
+                                </option>
+              ))}
+          </select> */}
         </div>
       </div>
     </form>
