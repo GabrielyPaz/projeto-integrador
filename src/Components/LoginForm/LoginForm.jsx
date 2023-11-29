@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";  
+import { useState } from "react";  
 import styles from "./Form.module.css";
 import { useNavigate } from "react-router-dom";
-import { LoginContext } from "../../contexts/LoginContext/LoginContext";
+//import { LoginContext } from "../../contexts/LoginContext/LoginContext";
 import Swal from 'sweetalert2';
 
 // ========= ANDRE ===========
@@ -14,8 +14,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(false);
   const navigate = useNavigate();
-  const { login } = useContext(LoginContext);
-
+  
   const onChangeUserEmail = (e) => setUserEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
@@ -40,8 +39,6 @@ export default function Login() {
       if(searchUser) {
         Swal.fire({
             title: "Login Efetuado com Sucesso!",
-            background: `${login ? '#DFE4EA': '#31363f'}`,
-            color: `${login ? '#31363f' : '#31363f'}`,
             confirmButtonColor: '#f0572d',
             icon: "success"
           }).then((result) => {
@@ -57,8 +54,6 @@ export default function Login() {
     } else {
         Swal.fire({
             text: "Tente novamente, suas credenciais estão inválidas!",
-            background: `${login ? '#31363f': '#31363f'}`,
-            color: `${'#FFF'}`,
             confirmButtonColor: '#f0572d',
             icon: "error"
           }).then((result) => {
@@ -74,9 +69,7 @@ export default function Login() {
 } else {
     Swal.fire({
         text: "Por favor, tente novamente, suas credenciais são inválidas!",
-        background: `${'#1f242d'}`,
-        color: `${'#FFF'}`,
-        confirmButtonColor: '#1DBEB4',
+        confirmButtonColor: '#f0572d',
         icon: "error"
       }).then((result) => {
         if (result.isConfirmed) {

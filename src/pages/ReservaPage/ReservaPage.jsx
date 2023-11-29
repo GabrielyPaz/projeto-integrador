@@ -33,7 +33,7 @@ export function ReservaPage() {
         icon: 'error',
         title: 'Atenção:',
         text: 'Para realizar a reserva você deverá estar logado.',
-        confirmButtonColor: '#1DBEB4'
+        confirmButtonColor: '#f0572d'
       }).then(result => {
         if (result.isConfirmed) {
           navigate('/login')
