@@ -34,7 +34,7 @@ const Reserva = ({ veiculo }) => {
     const dataFinalReserva = checkOut;
 
     // Informações do usuário
-    const produtoId = veiculo.id; // ou a propriedade adequada do veículo
+    const produtoId = veiculo.id;
     // const usuarioId = usuarioData.email;
 
     const formInfoPost = {
@@ -83,7 +83,7 @@ const Reserva = ({ veiculo }) => {
         <ReservaHorario onSelectHour={selectHour} />
       </div>
 
-      <div className={styles.containerReservation}>
+      <div className={styles.rightPanel}>
         <div className={styles.detailReserva}>
           <div className={styles.reservaTitle}>
             <h2>Detalhe da reserva</h2>

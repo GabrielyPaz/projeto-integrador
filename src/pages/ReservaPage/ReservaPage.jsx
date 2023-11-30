@@ -3,7 +3,6 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/NavBar/Navbar";
 import ReservaHeader from "../../Components/ReservaHeader/ReservaHeader";
 import Reserva from "../../Components/Reserva/Reserva";
-import styles from "./ReservaPage.module.css";
 
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -68,11 +67,7 @@ export function ReservaPage() {
       <Navbar />
       <main>
         <ReservaHeader veiculo={veiculo} />
-        <div className={styles.container}>
-          <div className={styles.rightPanel}>
-            <Reserva veiculo={veiculo} />
-          </div>
-        </div>
+        <Reserva veiculo={veiculo} />
         <DetailInformacao />
       </main>
       <Footer />

@@ -1,11 +1,52 @@
-.containerReservation {
+.reservaForm {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   background-color: #dfe4ea;
+}
+
+.leftPanel {
+  /* Estilos para o painel esquerdo (ReservaFormulario, DatePickerComponent, ReservaHorario) */
+  background-color: #dfe4ea;
+}
+
+.rightPanel {
   padding: 1rem;
-  padding-top: 5.9rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2rem;
 }
+
+.containerReserva {
+  /* background-color: #DFE4EA; */
+  /* background-color: #fff; */
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.titleCalendar {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  color: #31363f;
+  padding: 1rem;
+  padding-left: 2.5rem;
+}
+
+.dateArea {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background-color: #dfe4ea;
+}
+
 
 .reservaTitle h2 {
   font-weight: 700;
@@ -16,15 +57,18 @@
 .detailReserva {
   background-color: #fff;
   padding: 2rem 2rem;
-  margin-right: 1rem;
+  margin-right: 1.4rem;
+  margin-top: -3.8rem;
   border-radius: 4px;
   box-shadow: #c4c4c4 3px 5px 5px 5px;
+  
 }
 
 .imageContainer {
   width: 100%;
   height: 18rem;
 }
+
 .imgCar {
   /* max-width: 21.875rem; */
   width: 100%;
@@ -49,6 +93,7 @@
   padding: 0 !important;
   margin: 0 !important;
 }
+
 .localizacao {
   display: flex;
   height: 50px;
@@ -115,192 +160,35 @@
   box-shadow: 1px 1px 2px rgba(114, 110, 110, 0.17);
 }
 
-/* ========= FORMULÁRIO ======== */
-.reservaFormulario {
-  /* width: 50%; */
-  background-color: #dfe4ea;
-  padding: 0px 20px;
-}
-
-.reservaForm {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 0px 20px;
-  padding-bottom: 1.5rem;
-}
-
-.DadosReserva {
-  color: var(--azul-escuro);
-  font-weight: 700;
-  font-size: 24px;
-  padding-top: 2rem;
-  padding-bottom: 0;
-}
-
-.input {
-  width: 100%;
-  /* background: var(--branco-opaco); */
-  background-color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  padding: 2rem;
-  border-radius: 4px;
-  box-shadow: #c4c4c4 3px 5px 5px 5px;
-}
-
-.inputItem input {
-  width: 100%;
-  height: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--laranja-principal);
-  border-radius: 2px;
-  margin: 0;
-  padding: 1rem;
-  background-color: var(--cinza-background);
-}
-
-input:focus {
-  border: 0 none;
-  outline: 0;
-}
-
-/* ================ CALENDARIO =============== */
-
-.containerDatePicker {
-  display: flex;
-  box-shadow: rgba(0, 0, 0, 0.45) 1px 2px 6px;
-  background-color: #f2f2f2;
-  border-radius: 4px;
-  align-items: center;
-  justify-content: center;
-}
-
-.dateContainer {
-  padding: 1.5vw 3vw;
-  background-color: #f2f2f2;
-  border-radius: 6px;
-  display: flex;
-  justify-self: center;
-  flex-direction: column;
-  /* flex: 1; */
-  /* Faz com que os elementos ocupem a largura disponível igualmente */
-  margin: 0.5vw; /* Adiciona margem entre os date containers */
-}
-
-.datePicker {
-  border: none !important;
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-weight: 400;
-  /* letter-spacing: 2px; */
-  /* background-color: #e86161; */
-  background-color: #f2f2f2;
-  gap: 1vw;
-}
-
-.highlighted {
-  background-color: rgba(74, 73, 72, 0.177);
-}
-
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .container {
-    margin: 0.8rem;
-  }
-  .dateContainer {
-    /* background-color: aquamarine; */
-    justify-content: center;
-    padding: 1vw 1.5vw;
-  }
-}
-
-/* ========== RESERVA HORÁRIO ==============*/
-
-.horaChegadaFormulario {
-  /* width: 40rem; */
-  display: flex;
-  flex-direction: column;
-  padding: 0rem 1rem;
-  padding-left: 2.5rem;
-  gap: 1.5rem;
-  padding-bottom: 3rem;
-}
-
-.horaTitulo {
-  padding-top: 1rem;
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--azul-escuro);
-}
-
-.horarioFormPrinc {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  border-radius: 5px;
-  padding: 25px;
-  /* background-color: var(--branco-opaco); */
-  background-color: #fff;
-  box-shadow: #c4c4c4 3px 5px 5px 5px !important;
-  width: 93%;
-}
-
-.horaCheck {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--laranja-principal);
-}
-
-.horaLabel {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--azul-escuro);
-  padding-left: 5px;
-}
-
-.horaSelect {
-  width: 55%;
-  height: 40px;
-  outline: none;
-  border: 1.5px solid var(--cinza-background);
-  background-color: var(--branco-opaco);
-  border-radius: 5px;
-  padding: 0 1rem;
-}
-
-/* ===== RESPONSIVIDADE ======== */
-
-@media screen and (max-width: 1024px) {
-  .input {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .inputItem input {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .container {
     padding: 1rem;
     padding-top: 1rem;
     padding-bottom: 2.5rem;
   }
+} */
 
-  .linha {
-    display: none;
+/* ===== RESPONSIVIDADE ======== */
+
+@media screen and (max-width: 1024px) {
+  .reservaForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Define duas colunas, sendo a primeira com 1 parte e a segunda com 2 partes */
+    background-color: #dfe4ea;
+  }
+}
+
+@media screen and (max-width: 944px) {
+  .reservaForm {
+    display: grid;
+    grid-template-columns: 1fr; /* Define duas colunas, sendo a primeira com 1 parte e a segunda com 2 partes */
+    background-color: #dfe4ea;
   }
 
-  .containerDatePicker {
-    margin: 0.8rem;
+  .detailReserva {
+    margin-right: 0rem;
+    margin-top: 0;
+    
+
   }
 }
