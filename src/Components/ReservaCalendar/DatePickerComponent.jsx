@@ -6,7 +6,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { isBefore } from 'date-fns';
 import { useMediaQuery } from 'react-responsive';
 
-const DatePickerComponent = () => {
+const DatePickerComponent = ( { onChange } ) => {
   // const [startDate, setStartDate] = useState(null);
   const isMobile = useMediaQuery({ maxWidth: 620 }); 
 
@@ -21,13 +21,16 @@ const DatePickerComponent = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.containerDatePicker}>
       <div className={styles.dateContainer}>
         <DatePicker
           selectsRange
           startDate={dateRange.startDate}
           endDate={dateRange.endDate}
-          onChange={(dates) => setDateRange({ startDate: dates[0], endDate: dates[1] })}
+          onChange={(dates) => {
+            setDateRange({ startDate: dates[0], endDate: dates[1] });
+            onChange(dates);
+          }}
           inline
           locale={ptBR}
           calendarClassName={styles.datePicker}

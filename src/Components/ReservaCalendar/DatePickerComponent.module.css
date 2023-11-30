@@ -1,5 +1,5 @@
 
-.container {
+.containerDatePicker {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.45) 1px 2px 6px;
   background-color:#f2f2f2;
@@ -62,7 +62,7 @@ background-color: rgba(74, 73, 72, 0.177);
     display: none;  
   }
 
-  .container { 
+  .containerDatePicker { 
     margin: 0.8rem;
 
   }

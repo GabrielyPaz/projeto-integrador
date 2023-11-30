@@ -2,13 +2,13 @@ import styles from "./ReservaHorario.module.css"
 import { useState } from 'react';
 import { FaRegCheckCircle } from "react-icons/fa";
 
-export default function Horario() {
+export default function Horario({ onSelectHour }) {
 
   const [ horariosArray ] = useState(Array.from({ length: 24 }, (_, i) => `${i.toString().padStart(2, '0')}:00`));
 
   return (
 
-    <form className={styles.reservaHorario}>
+    <div className={styles.reservaHorario}>
       <div className={styles.horaChegadaFormulario}>
         <h1 className={styles.horaTitulo}> Seu horário de chegada </h1>
 
@@ -22,7 +22,7 @@ export default function Horario() {
             Indique a sua hora prevista de chegada
           </label>
 
-          <select className={styles.horaSelect}>
+          <select className={styles.horaSelect} onChange={onSelectHour}>
             <option value="" disabled hidden selected>
               Selecione a sua hora de chegada</option>
               {horariosArray.map((horario, index) => (
@@ -47,6 +47,6 @@ export default function Horario() {
           </select> */}
         </div>
       </div>
-    </form>
+    </div>
   );
 }
