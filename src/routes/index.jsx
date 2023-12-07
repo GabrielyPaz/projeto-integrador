@@ -5,6 +5,8 @@ import { Register } from '../pages/Register/Register'
 import LoginContextProvider from '../contexts/LoginContext/LoginContext'
 import { DetailPage } from '../pages/DetailPage/DetailPage'
 import { ReservaPage } from '../pages/ReservaPage/ReservaPage'
+import { AdmPage } from '../pages/AdmPage/AdmPage'
+import { UsuarioPage } from '../pages/UsuarioPage/UsuarioPage'
 
 export function RouteList() {
   return (
@@ -17,6 +19,8 @@ export function RouteList() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/detail/:id" element={<DetailPage />} />
             <Route path="/detail/:id/reservation" element={<ReservaPage />} />
+            <Route path="/administracao" element={<AdmPage />} />
+            <Route path="/:userId/reservas" element={<UsuarioPage />} />
           </Routes>
         </LoginContextProvider>
       </BrowserRouter>

@@ -7,7 +7,7 @@ import ReservaFormulario from "../../Components/ReservaFormulario/ReservaFormula
 import ReservaHorario from "../../Components/ReservaHorario/ReservaHorario";
 import Swal from "sweetalert2";
 
-const Reserva = ({ veiculo }) => {
+const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
   const navigate = useNavigate();
 
   const [selectedHour, setSelectedHour] = useState("");
@@ -44,6 +44,8 @@ const Reserva = ({ veiculo }) => {
       produtoId,
       // usuarioId
     };
+
+    // setHistoricoReservas((prevReservas) => [...prevReservas, formInfoPost]);
 
     if (!checkIn || !checkOut || !selectedHour) {
       alert("Preencha todos os campos obrigatórios.");

@@ -107,6 +107,27 @@
 
 }
 
+
+.linkReserva {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding-top: 0.5rem;
+  padding-right: 0.6rem;
+  border-right: 2px solid #f0572d;
+  cursor: pointer;
+}
+
+.linkReserva h3 {
+  /* display: none; */
+  color: #31363f;
+  font-size: 1rem;
+  font-weight: 700;
+  
+}
+
+
 .loginArea {
   display: flex;
   align-items: center;
@@ -264,7 +285,23 @@ nav {
     margin: 0 !important;
   }
 
+.linkReservaLoginArea {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  cursor: pointer;
+  margin-top: -24rem;
 
+}  
+
+.linkReservaLoginArea h3 {
+
+  color: #31363f;
+  font-size: 1rem;
+  font-weight: 700;
+  
+}
 
 
 .buttonItem {
@@ -323,6 +360,10 @@ nav {
   .image {
     width: 68px;
     height: 50px;
+   }
+
+   .linkReserva {
+    display: none;
    }
 
   .loginAvatar {

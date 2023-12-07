@@ -1,0 +1,185 @@
+.detailHeader {
+  background-color: #31363f;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+
+.detailTitle {
+  color: #ffff;
+  padding-left: 10px;
+}
+
+.detailTitle h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* .detailTitle h2 {
+        font-size: 18px;
+        font-weight: 400;
+        
+    
+    } */
+
+.detailTitle h1,
+h2 {
+  margin: 0 !important;
+}
+
+.detailHeaderIcon {
+  color: #ffff !important;
+  align-items: center;
+  display: flex;
+}
+
+.link {
+  color: #ffff;
+  align-items: center;
+}
+
+/* === CARD === */
+
+.containerReserva{
+
+    background-color: #DFE4EA;
+    /* width: 20rem; */
+    /* height: 5rem; */
+    border-radius: 0.3rem;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    /* margin-left: 2rem; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    justify-content: center;
+    
+}
+
+.detailReserva {
+  width: 20rem;  
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  margin-top: 1.6rem;
+  border-radius: 4px;
+  box-shadow: #c4c4c4c2 2px 3px 3px 3px;
+  margin-bottom: 6rem;
+}
+
+.imageContainer {
+margin-top: 0.2rem;
+  width: 100%;
+  height: 12rem;
+}
+
+.imgCar {
+  /* max-width: 21.875rem; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.produtoTitle {
+  padding-top: 0.8rem;
+}
+
+.produtoTitle h2 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.produtoTitle h3 {
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.localizacao {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.checkArea {
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid #31363f7e;
+  align-items: center;
+  margin-top: 0.4rem;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  padding: 0.6rem;
+  border-bottom: 1px solid #31363f7e;
+}
+
+.check h4 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  align-items: center;
+  padding: 0.4;
+}
+
+.check span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    align-items: center;
+    padding: 0.4;
+  }
+  
+
+.containerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.button {
+  background-color: var(--laranja-principal);
+  color: var(--branco);
+  border: none;
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* display: inline-block; */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 2px rgba(114, 110, 110, 0.17);
+}
+
+/* ============ RESPONSIVIDADE ============ */
+
+@media screen and (max-width: 636px) {
+    .containerReserva {
+        gap: 0rem;
+      
+    }
+  
+}
