@@ -17,7 +17,7 @@
 
 .form_register{
 	position: absolute;
-	top: 50%;
+	top: 53%;  
 	left: 50%;
 	transform: translate(-50%, -50%);
 
@@ -34,6 +34,7 @@
 
 .h1_register{
 	color: var(--cor-laranja);
+  font-size: 2em;
 }
 
 .input_register {
@@ -58,7 +59,7 @@
 	font-weight: 300;
 	margin-bottom: -.1em;
 	margin-top: .5em;
-	font-size: .8em;
+	font-size: 1.1em;
 	}
 
 .user_input{

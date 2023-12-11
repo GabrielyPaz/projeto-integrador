@@ -115,7 +115,10 @@ const Navbar = () => {
             <div className={styles.menuLoginArea}>
               <div className={styles.reservaLoginArea}>
                 {location.pathname !== "/:userId/reservas" && (
-                  <Link to="/:userId/reservas" className={styles.linkReservaLoginArea}>
+                  <Link
+                    to="/:userId/reservas"
+                    className={styles.linkReservaLoginArea}
+                  >
                     <h3>Minhas reservas</h3>
                   </Link>
                 )}
