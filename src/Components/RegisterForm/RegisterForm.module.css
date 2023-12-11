@@ -39,7 +39,7 @@
 
 .input_register {
 	width: 100%;
-	padding: .4em .5em;
+	padding: .3em .4em;
 	border: 1px solid var(--cor-laranja);
 	border-radius: .2em;
 	background-color: var(--branco);
@@ -79,7 +79,7 @@
 .input_register_error {
 	outline: none;
 	width: 100%;
-	padding: .4em .5em;
+	padding: .1em .2em;
 	background-color: var(--app-grey);
 	border: 1px solid var(--cor-erro-input);
 	background-color: var(--cor-erro-input-transparente);
@@ -89,7 +89,7 @@
 .input_div_error{
 	outline: none;
 	width: 100%;
-	padding: .4em .5em;
+	padding: .1em .2em;
 	background-color: var(--app-grey);
 	border-radius: .2em;
 	border: none;
@@ -147,7 +147,7 @@
 	
 	width: 206px;
 	margin-top: 1rem;
-	padding: .5em 3em;
+	padding: .3em 1em;
 	color: white;
 	font-weight: 400;
 	font-size: 1em;

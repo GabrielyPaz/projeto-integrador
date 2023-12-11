@@ -1,6 +1,6 @@
-.container {
-max-height: 100vh;
-}
+/*.container {
+  height: 100vh;
+}*/
 
 .actions {
 margin-left: 2.5rem;
@@ -133,10 +133,10 @@ font-size: 1rem;
 
 
 @media (max-width: 700px) {
-  .container {
+  /*.container {
       height: 100vh;
       
-    }
+    }*/
 
   .imgCar {
       display: none;
