@@ -202,7 +202,7 @@ export default function RegisterForm() {
         </div>
 
         <div className={styles.user_input}>
-          <label className={styles.label_register}>Comfirmar Senha:</label>
+          <label className={styles.label_register}>Confirmar Senha:</label>
           <div
             className={
               errors.confirmPassword
