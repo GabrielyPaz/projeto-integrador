@@ -98,7 +98,7 @@
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.15);
   border: none;
   outline: none;
-  padding: 20px;
+  padding: 30px;
 }
 
 .atributos h2 {
@@ -124,6 +124,7 @@
 
 .atributoItem input {
   padding: 10px;
+  margin-right: 25px;
 }
 
 .atributoNome {
@@ -155,6 +156,7 @@
 .atributoItem {
   display: flex;
   flex-direction: column;
+  padding-left: 30px;
   gap: 3px;
 }
 
@@ -272,7 +274,18 @@
 }
 
 @media (max-width: 700px) {
+  .sectionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .inputInform {
+    display: grid;
+
+    grid-template-columns: 1fr;
+  }
+
   .politicaProd {
+    display: grid;
     grid-template-columns: 1fr;
   }
 
@@ -290,15 +303,25 @@
   }
 }
 
-@media (max-width: 380px) {
-  .sectionGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 100%;
+@media (max-width: 360px) {
+
+  .inputInform {
+    .sectionGrid {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
   }
 
   .atributosButton {
     width: 100%;
+  }
+
+  .atributoItem input {    
+    margin: 30px;
+  }
+
+  .atributoNome input {    
+    margin-right: 30px;
   }
 
   .politicaProd {

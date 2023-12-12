@@ -1,8 +1,34 @@
+import { useState } from "react";
 import styles from "./AdminFormulario.module.css";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 export default function AdminFormulario() {
+  const [atributoQtd, setAtributoQtd] = useState(1);
+  const [imagemQtd, setImagemQtd] = useState(5);
+
+  const atributos = new Array(atributoQtd).fill(null);
+  const imagens = new Array(imagemQtd).fill(null);
+
+  function addInput() {
+    if (atributoQtd <= 9) {
+      setAtributoQtd(atributoQtd + 1);
+    } else {
+      alert("Limite de atributos atingido");
+    }
+  }
+
+  function addImagens() {
+    if (imagemQtd <= 14) {
+      setImagemQtd(imagemQtd + 1);
+    } else {
+      alert("Limite de imagens atingido");
+    }
+  }
+
+  const handleForm = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
       <div className={styles.adminHeader}>
@@ -48,28 +74,43 @@ export default function AdminFormulario() {
           </div>
 
           <div className={styles.atributos}>
+
             <h2>Adicionar Atributos</h2>
 
-            <div className={styles.atributosInputs}>
-              <div className={`${styles.atributoItem} ${styles.atributoNome}`}>
-                <label htmlFor="">Nome</label>
-                <input type="text" />
-              </div>
+            {atributos.map((_, index) => (
+              <div className={styles.atributosInputs} key={index}>
+                <div
+                  className={`${styles.atributoItem} ${styles.atributoNome}`}
+                >
+                  <label htmlFor="">Nome</label>
+                  <input type="text" placeholder="Nome" />
+                </div>
 
-              <div className={`${styles.atributoItem} ${styles.atributoIcone}`}>
-                <label htmlFor="">Ícone</label>
-                <input type="url" />
-              </div>
+                <div
+                  className={`${styles.atributoItem} ${styles.atributoIcone}`}
+                >
+                  <label htmlFor="">Ícone</label>
+                  <input type="url" placeholder="Url do ícone" />
+                </div>
 
-              <button className={styles.atributosButton}>+</button>
-            </div>
+                {index === atributoQtd - 1 && (
+                  <button className={styles.atributosButton} onClick={addInput}>
+                    +
+                  </button>
+                )}
+              </div>
+            ))}
           </div>
 
           <div className={styles.politica}>
+
             <h2>Políticas do Produto</h2>
+
             <div className={styles.politicaProd}>
               <div className={styles.politicaItem}>
+
                 <h3>Regras da casa</h3>
+
                 <label htmlFor="">Descrição</label>
                 <textarea
                   name=""
@@ -105,16 +146,22 @@ export default function AdminFormulario() {
           </div>
 
           <div className={styles.carregarImagens}>
+
             <h3>Carregar imagens</h3>
 
-            <div className={styles.imagensInput}>
-              <input type="text" />
-              <button>+</button>
-            </div>
-          </div>
+            {imagens.map((_, index) => (
+              <div className={styles.imagensInput} key={index}>
+                <input type="text" placeholder="Url da Imagem" />
 
-          <div className={styles.buttonCriar}>
-            <button>Criar</button>
+                {index === imagemQtd - 1 && (
+                  <button onClick={addImagens}>+</button>
+                )}
+              </div>
+            ))}
+
+            <div className={styles.buttonCriar}>
+              <button onSubmit={handleForm}>Criar</button>
+            </div>
           </div>
         </form>
       </div>
