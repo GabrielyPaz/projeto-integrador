@@ -68,6 +68,8 @@ const ReservaUsuario = () => {
             <div className={styles.checkOut}>
               <MdCalendarMonth size={18} />
               <span>15/12/2023</span>
+              <HiOutlineClock size={18} />
+              <span>15h</span>
             </div>
 
             <div className={styles.containerButton}>
@@ -121,6 +123,8 @@ const ReservaUsuario = () => {
             <div className={styles.checkOut}>
               <MdCalendarMonth size={18} />
               <span>15/12/2023</span>
+              <HiOutlineClock size={18} />
+              <span>15h</span>
             </div>
             <div className={styles.containerButton}>
               <button className={styles.button}>Cancelar Reserva</button>

@@ -25,6 +25,17 @@
   width: 93%;
 }
 
+.horasComponent {
+
+display: flex;
+flex-direction: row;
+align-items: center;
+align-content: center;
+justify-content: space-between;
+
+
+}
+
 .horaCheck {
   display: flex;
   align-items: center;
@@ -35,10 +46,12 @@
 }
 
 .horaLabel {
+  display: flex;
   font-size: 14px;
   font-weight: 500;
   color: var(--azul-escuro);
   padding-left: 5px;
+
 }
 
 .horaSelect {

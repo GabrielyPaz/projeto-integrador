@@ -120,12 +120,12 @@ function Body() {
           </div>
         </Slider>
         <div style={{ textAlign: "center" }}>
-          <button onClick={goToPrev}>
+          <button onClick={goToPrev} className={styles.btnCarousel}>
             <FaAngleLeft
               style={{ fontSize: "2em", color: "#F0572D", cursor: "pointer" }}
             />
           </button>
-          <button onClick={goToNext}>
+          <button onClick={goToNext} className={styles.btnCarousel}>
             <FaAngleRight
               style={{ fontSize: "2em", color: "#F0572D", cursor: "pointer" }}
             />

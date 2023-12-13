@@ -57,7 +57,7 @@
   object-fit: cover;
   object-position: center;
   border-radius: 4px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow:  rgba(0, 0, 0, 0.45) 0px 3px 8px;
 }
 
 .carouselTitle {
@@ -170,6 +170,15 @@
   background-color: #fff;
   color: #f0572d;
   font-weight: bold;
+}
+
+.btnCarousel {
+border-radius: 4px;
+margin-left: 0.4rem;
+margin-right: 0.4rem;
+/*border: none;
+box-shadow: 1px 1px 3px #31363f; */
+
 }
 
 @media (max-width: 1010px) {

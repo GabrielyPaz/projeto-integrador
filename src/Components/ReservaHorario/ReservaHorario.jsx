@@ -1,13 +1,13 @@
-import styles from "./ReservaHorario.module.css"
-import { useState } from 'react';
+import styles from "./ReservaHorario.module.css";
+import { useState } from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 
 export default function Horario({ onSelectHour }) {
-
-  const [ horariosArray ] = useState(Array.from({ length: 24 }, (_, i) => `${i.toString().padStart(2, '0')}:00`));
+  const [horariosArray] = useState(
+    Array.from({ length: 24 }, (_, i) => `${i.toString().padStart(2, "0")}:00`)
+  );
 
   return (
-
     <div className={styles.reservaHorario}>
       <div className={styles.horaChegadaFormulario}>
         <h1 className={styles.horaTitulo}> Seu horário de chegada </h1>
@@ -17,34 +17,39 @@ export default function Horario({ onSelectHour }) {
             <FaRegCheckCircle />
             <p> Seu carro estará pronto para check-in entre 08h00 e 20h00</p>
           </div>
+          <div className={styles.horasComponent}>
+            <label className={styles.horaLabel}>
+              Indique a sua hora prevista de chegada
+            </label>
 
-          <label className={styles.horaLabel}>
-            Indique a sua hora prevista de chegada
-          </label>
-
-          <select className={styles.horaSelect} onChange={onSelectHour}>
-            <option value="" disabled hidden selected>
-              Selecione a sua hora de chegada</option>
+            <select className={styles.horaSelect} onChange={onSelectHour}>
+              <option value="" disabled hidden selected>
+                Selecione a sua hora de chegada
+              </option>
               {horariosArray.map((horario, index) => (
-                                <option key={index} value={horario}>
-                                    {horario}
-                                </option>
+                <option key={index} value={horario}>
+                  {horario}
+                </option>
               ))}
-          </select>
+            </select>
+          </div>
 
-          {/* <label className={styles.horaLabel}>
-            Indique a sua hora prevista para devolução
-          </label>
+          <div className={styles.horasComponent}>
+            <label className={styles.horaLabel}>
+              Indique a sua hora prevista para devolução
+            </label>
 
-          <select className={styles.horaSelect}>
-            <option value="" disabled hidden selected>
-              Selecione a sua hora de devolução</option>
+            <select className={styles.horaSelect}>
+              <option value="" disabled hidden selected>
+                Selecione a sua hora de devolução
+              </option>
               {horariosArray.map((horario, index) => (
-                                <option key={index} value={horario}>
-                                    {horario}
-                                </option>
+                <option key={index} value={horario}>
+                  {horario}
+                </option>
               ))}
-          </select> */}
+            </select>
+          </div>
         </div>
       </div>
     </div>
