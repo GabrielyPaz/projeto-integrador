@@ -115,7 +115,7 @@ export default function AdminFormulario() {
                 <textarea
                   name=""
                   id=""
-                  cols="30"
+                  cols="20"
                   rows="10"
                   placeholder="Escreva aqui"
                 ></textarea>
@@ -126,7 +126,7 @@ export default function AdminFormulario() {
                 <textarea
                   name=""
                   id=""
-                  cols="30"
+                  cols="20"
                   rows="10"
                   placeholder="Escreva aqui"
                 ></textarea>
@@ -137,7 +137,7 @@ export default function AdminFormulario() {
                 <textarea
                   name=""
                   id=""
-                  cols="30"
+                  cols="20"
                   rows="10"
                   placeholder="Escreva aqui"
                 ></textarea>
