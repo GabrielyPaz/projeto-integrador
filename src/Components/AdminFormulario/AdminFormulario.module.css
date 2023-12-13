@@ -307,7 +307,6 @@
 }
 
 @media (max-width: 360px) {
-
   .inputInform {
     .sectionGrid {
       grid-template-columns: 1fr;
@@ -319,11 +318,11 @@
     width: 100%;
   }
 
-  .atributoItem input {    
+  .atributoItem input {
     margin: 30px;
   }
 
-  .atributoNome input {    
+  .atributoNome input {
     margin-right: 30px;
   }
 

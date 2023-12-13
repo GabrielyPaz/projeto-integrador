@@ -1,93 +1,89 @@
-/*.container {
-  height: 100vh;
-}*/
-
 .actions {
-margin-left: 2.5rem;
-display: flex;
-gap:10px;
-color: rgba(55, 46, 46, 0.689);
-padding: 10px;
-align-items: center;
+  margin-left: 2.5rem;
+  display: flex;
+  gap: 10px;
+  color: rgba(55, 46, 46, 0.689);
+  padding: 10px;
+  align-items: center;
 }
 
 .containerBox {
-grid-column-gap: 10px;
-display: grid;
-grid-template-areas:
-  "box1 box1 box2 box3"
-  "box1 box1 box4 box5";
-grid-template-rows: 1fr 1fr auto;
-grid-template-columns: 1fr  1fr  1fr  1fr;
-gap: 5px; 
-justify-content: center;
-margin: 0 2.5rem;
+  grid-column-gap: 10px;
+  display: grid;
+  grid-template-areas:
+    "box1 box1 box2 box3"
+    "box1 box1 box4 box5";
+  grid-template-rows: 1fr 1fr auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  justify-content: center;
+  margin: 0 2.5rem;
 }
 
 .box1 {
-/* background-color: aquamarine; */
-border-radius: 6px;
-margin: 5px;
-margin-top: 10px;
-grid-area: box1;
-/* box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px; */
-} 
+  /* background-color: aquamarine; */
+  border-radius: 6px;
+  margin: 5px;
+  margin-top: 10px;
+  grid-area: box1;
+  /* box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px; */
+}
 
-.box2, .box3, .box4, .box5 {
-/* background-color: rgba(0, 0, 255, 0.396); */
-border-radius: 6px;
-margin: 5px;
-/* box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px; */
-} 
+.box2,
+.box3,
+.box4,
+.box5 {
+  /* background-color: rgba(0, 0, 255, 0.396); */
+  border-radius: 6px;
+  margin: 5px;
+  /* box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px; */
+}
 
 .box2 {
-grid-area: box2;
-margin-top: 10px;
+  grid-area: box2;
+  margin-top: 10px;
 }
 
 .box3 {
-grid-area: box3;
-margin-top: 10px;
+  grid-area: box3;
+  margin-top: 10px;
 }
 
 .box4 {
-grid-area: box4;
+  grid-area: box4;
 }
 
 .box5 {
-grid-area: box5;
-display: flex;
-position: relative;
-align-items: end;
-justify-content: right;
+  grid-area: box5;
+  display: flex;
+  position: relative;
+  align-items: end;
+  justify-content: right;
 }
 
 .imgCar {
-  /* max-width: 21.875rem; */
-width: 100%;
-height: 100%;
-border-radius: 0.3rem;
-object-fit: cover;
-
+  width: 100%;
+  height: 100%;
+  border-radius: 0.3rem;
+  object-fit: cover;
 }
 
 .modalButton {
-color: #ffff;
-z-index: 0;
-position: absolute;
-padding: 10px;
-font-size: 1rem;
+  color: #ffff;
+  z-index: 0;
+  position: absolute;
+  padding: 10px;
+  font-size: 1rem;
 }
 
 .carrosselContainer {
-  display: none;  
-  /* padding: 10px; */
+  display: none;
 }
 
 .carrossel {
   width: 100%;
   height: 10px;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .carrosselImagem {
@@ -97,12 +93,10 @@ font-size: 1rem;
 
 .carrosselItem {
   position: relative;
-  
-  
 }
 
 .indexAtual {
-  color: #FFF;
+  color: #fff;
   position: absolute;
   right: 2%;
   bottom: 4%;
@@ -112,7 +106,6 @@ font-size: 1rem;
 }
 
 .modalButton {
-
   color: #ffff;
   z-index: 0;
   position: absolute;
@@ -120,50 +113,35 @@ font-size: 1rem;
   border: none;
   padding: 10px;
   font-size: 1rem;
-  text-decoration:underline;
-  
-  }
+  text-decoration: underline;
+}
 
-  .imageModal {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    overflow: hidden;
-  }
-
+.imageModal {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  overflow: hidden;
+}
 
 @media (max-width: 700px) {
-  /*.container {
-      height: 100vh;
-      
-    }*/
-
   .imgCar {
-      display: none;
-      width: 50px;
-            
+    display: none;
+    width: 50px;
   }
   .carrosselContainer {
-      width: 100%;
-      display: block;
-      
-  }   
+    width: 100%;
+    display: block;
+  }
 }
-
 
 @media (max-width: 420px) {
-
   .container {
     padding: 30px 10px;
-     
   }
-
 }
 
-@media(max-width: 1240px) {
+@media (max-width: 1240px) {
   .imgCar {
-      flex-direction: column;
+    flex-direction: column;
   }
-
 }
-

@@ -47,7 +47,6 @@ const Modal = ({ isOpen, setModalOpen, images }) => {
                       src={image.url}
                       alt={`Thumbnail ${index + 1}`}
                       onClick={() => handleThumbnailClick(index)}
-                      // className={`${image.className} ${styles.thumbnail}`}
                     />
                   ))}
                 </div>

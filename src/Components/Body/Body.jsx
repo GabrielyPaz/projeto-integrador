@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import styles from "./Body.module.css";
 import SearchTemplate from "../SearchTemplate/SearchTemplate";
-// import Carousel from 'react-bootstrap/Carousel'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,15 +14,23 @@ function Body() {
   const [filter, setFilter] = useState("All");
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState(dadosVeiculo);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [slider, setSlider] = useState(null);
+
+  const slidesToShow = window.innerWidth > 1010 ? 3 : 1;
 
   const settings = {
     infinite: true,
     speed: 400,
-    slidesToShow: 3, // Ajuste para o número desejado de slides visíveis simultaneamente
+    slidesToShow,
     slidesToScroll: 1,
-    prevArrow: <FaAngleLeft color="#F0572D" />,
-    nextArrow: <FaAngleRight color="#F0572D" />,
+  };
+
+  const goToNext = () => {
+    slider && slider.slickNext();
+  };
+
+  const goToPrev = () => {
+    slider && slider.slickPrev();
   };
 
   const handleCarouselImageSelect = (index) => {
@@ -66,7 +73,11 @@ function Body() {
         <div className={styles.carouselContainerTitle}>
           <h2>Categorias</h2>
         </div>
-        <Slider {...settings} className={styles.carousel}>
+        <Slider
+          ref={(s) => setSlider(s)}
+          {...settings}
+          className={styles.carousel}
+        >
           <div className={styles.carouselItem}>
             <img
               className={styles.imgCarousel}
@@ -108,14 +119,24 @@ function Body() {
             </div>
           </div>
         </Slider>
+        <div style={{ textAlign: "center" }}>
+          <button onClick={goToPrev}>
+            <FaAngleLeft
+              style={{ fontSize: "2em", color: "#F0572D", cursor: "pointer" }}
+            />
+          </button>
+          <button onClick={goToNext}>
+            <FaAngleRight
+              style={{ fontSize: "2em", color: "#F0572D", cursor: "pointer" }}
+            />
+          </button>
+        </div>
       </div>
-      
+
       <SearchField filter={filter} setFilter={setFilter} />
 
       <div className={styles.cardCars}>
-        <div className={styles.cardForTitle}>
-          {/* <h2 className={styles.cardTitle}>Recomendações</h2> */}
-        </div>
+        <div className={styles.cardForTitle}></div>
 
         {filteredData.map((item) => (
           <section key={item.id} className={styles.sectionCard}>

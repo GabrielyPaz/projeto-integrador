@@ -8,7 +8,6 @@ const SearchField = ({ filter, setFilter }) => {
 
         <h3>Buscar carro por categoria</h3>
         <div className={styles.filterOptions}>
-          {/* <p>Selecione uma categoria</p> */}
           <select value={filter} onChange={(e) => setFilter(e.target.value)} className={styles.selectContainer}>
             <option value="All">Todas</option>
             <option value="Sedan">Sedan</option>
@@ -16,7 +15,6 @@ const SearchField = ({ filter, setFilter }) => {
             <option value="Coupé">Coupé</option>
           </select>
         </div>
-     
     </div>
   )
 }

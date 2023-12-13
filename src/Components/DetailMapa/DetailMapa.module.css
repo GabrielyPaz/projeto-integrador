@@ -1,34 +1,30 @@
 .leaflet-container {
-    height: 30vh;
-    width: 100vw;
-   
+  height: 30vh;
+  width: 100vw;
 }
 
-.containerMapa {    
-    margin: 40px 0px;
-    
+.containerMapa {
+  margin: 40px 0px;
 }
 
 .titleMapa {
-    width: 100%;
-    
-    color: #31363F;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px 20px 20px 40px;
+  width: 100%;
+
+  color: #31363f;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px 20px 20px 40px;
 }
 
 .mapaArea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-   
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mapa {
-    border: 1px solid #F0572D;
-    height: 400px;
-    width: 90%;
-    z-index: 0;  
+  border: 1px solid #f0572d;
+  height: 400px;
+  width: 90%;
+  z-index: 0;
 }
