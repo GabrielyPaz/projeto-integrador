@@ -1,65 +1,80 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import styles from "./Body.module.css";
-import SearchTemplate from "../SearchTemplate/SearchTemplate";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
-import dadosVeiculo from "../../data/contents.json";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import SearchField from "../SearchField/SearchField";
+import styles from './Body.module.css'
+import SearchTemplate from '../SearchTemplate/SearchTemplate'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa'
+import dadosVeiculo from '../../data/contents.json'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import SearchField from '../SearchField/SearchField'
+import axiosINstance from '../../service/api'
 
 function Body() {
-  const [filter, setFilter] = useState("All");
-  const [search, setSearch] = useState("");
-  const [filteredData, setFilteredData] = useState(dadosVeiculo);
-  const [slider, setSlider] = useState(null);
+  const [filter, setFilter] = useState('All')
+  const [search, setSearch] = useState('')
+  const [filteredData, setFilteredData] = useState(dadosVeiculo)
+  const [slider, setSlider] = useState(null)
 
-  const slidesToShow = window.innerWidth > 1010 ? 3 : 1;
+  //####### Trabalhando com a API ###########
+
+  // ***** OBS: A API esta demorando um pouco para retornar os resultados *****
+
+  const [listaCidade, setListaCidade] = useState()
+
+  const getCidade = async () => {
+    const resposta = await axiosINstance.get('/cidades')
+    console.log(resposta.data)
+    setListaCidade(resposta.data)
+  }
+
+  //===============================================================================
+  const slidesToShow = window.innerWidth > 1010 ? 3 : 1
 
   const settings = {
     infinite: true,
     speed: 400,
     slidesToShow,
-    slidesToScroll: 1,
-  };
+    slidesToScroll: 1
+  }
 
   const goToNext = () => {
-    slider && slider.slickNext();
-  };
+    slider && slider.slickNext()
+  }
 
   const goToPrev = () => {
-    slider && slider.slickPrev();
-  };
+    slider && slider.slickPrev()
+  }
 
-  const handleCarouselImageSelect = (index) => {
-    setSelectedImageIndex(index);
-  };
+  const handleCarouselImageSelect = index => {
+    setSelectedImageIndex(index)
+  }
 
   const handleSearch = () => {
-    const filtered = dadosVeiculo.filter((item) => {
-      const byCategory = filter === "All" || item.category === filter;
+    const filtered = dadosVeiculo.filter(item => {
+      const byCategory = filter === 'All' || item.category === filter
       const bySearch = item.location
         .toLowerCase()
-        .includes(search.toLowerCase());
+        .includes(search.toLowerCase())
 
-      return byCategory && bySearch;
-    });
-    setFilteredData(filtered);
-  };
+      return byCategory && bySearch
+    })
+    setFilteredData(filtered)
+  }
 
-  const handleFilterChange = (selectedFilter) => {
-    setFilter(selectedFilter);
-  };
+  const handleFilterChange = selectedFilter => {
+    setFilter(selectedFilter)
+  }
 
   const handleSearchChange = () => {
-    handleSearch();
-  };
+    handleSearch()
+  }
 
   useEffect(() => {
-    handleSearch();
-  }, [filter]);
+    handleSearch()
+  }, [filter])
 
   return (
     <main className={styles.body}>
@@ -74,7 +89,7 @@ function Body() {
           <h2>Categorias</h2>
         </div>
         <Slider
-          ref={(s) => setSlider(s)}
+          ref={s => setSlider(s)}
           {...settings}
           className={styles.carousel}
         >
@@ -119,15 +134,15 @@ function Body() {
             </div>
           </div>
         </Slider>
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: 'center' }}>
           <button onClick={goToPrev} className={styles.btnCarousel}>
             <FaAngleLeft
-              style={{ fontSize: "2em", color: "#F0572D", cursor: "pointer" }}
+              style={{ fontSize: '2em', color: '#F0572D', cursor: 'pointer' }}
             />
           </button>
           <button onClick={goToNext} className={styles.btnCarousel}>
             <FaAngleRight
-              style={{ fontSize: "2em", color: "#F0572D", cursor: "pointer" }}
+              style={{ fontSize: '2em', color: '#F0572D', cursor: 'pointer' }}
             />
           </button>
         </div>
@@ -138,7 +153,7 @@ function Body() {
       <div className={styles.cardCars}>
         <div className={styles.cardForTitle}></div>
 
-        {filteredData.map((item) => (
+        {filteredData.map(item => (
           <section key={item.id} className={styles.sectionCard}>
             <div className={styles.cardContainer}>
               <img className={styles.imgCar} src={item.img} />
@@ -154,7 +169,7 @@ function Body() {
         ))}
       </div>
     </main>
-  );
+  )
 }
 
-export default Body;
+export default Body
