@@ -1,93 +1,33 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// useForm
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-//yup
-
+import { api } from "../../services/api";
 import Swal from "sweetalert2";
-
 import styles from "./RegisterForm.module.css";
 import eye from "../../assets/eye.svg";
 import eyeslash from "../../assets/eye-slash.svg";
 
 export default function RegisterForm() {
   const navigate = useNavigate();
-
   const [showPasswordOne, setShowPasswordOne] = useState(false);
   const [showPasswordTwo, setShowPasswordTwo] = useState(false);
-  const data = localStorage.getItem("registros");
-  const [listaRegistro, setListaRegistro] = useState(
-    data ? JSON.parse(data) : []
-  );
-  /*
-	const [formData, setFormData] = useState({
-    nome: '',
-    sobrenome:'',
-    email: '',
-    password: ''
-  });*/
 
   const schema = Yup.object().shape({
-    nome: Yup.string()
-      .required("* Campo Obrigatório!")
-      .min(3, "* Mínimo de 3 caracteres!"),
-
-    sobrenome: Yup.string()
-      .required("* Campo Obrigatório!")
-      .min(3, "* Mínimo de 3 caracteres!"),
-
-    email: Yup.string()
-      .required("* Campo Obrigatório!")
-      .email("* Insira um e-mail válido"),
-
-    password: Yup.string()
-      .required("* Campo Obrigatório!")
-      .min(8, "* Mínimo de 8 caracteres"),
-
-    confirmPassword: Yup.string()
-      .required("* Repita a senha!")
-      .oneOf([Yup.ref("password"), null], "* Senha estão diferentes!"),
+    nome: Yup.string().required("* Campo Obrigatório!").min(3, "* Mínimo de 3 caracteres!"),
+    sobrenome: Yup.string().required("* Campo Obrigatório!").min(3, "* Mínimo de 3 caracteres!"),
+    email: Yup.string().required("* Campo Obrigatório!").email("* Insira um e-mail válido"),
+    senha: Yup.string().required("* Campo Obrigatório!").min(8, "* Mínimo de 8 caracteres"),
+    confirmarSenha: Yup.string().required("* Repita a senha!").oneOf([Yup.ref("senha"), null], "* Senhas diferentes!"),
   });
 
   const { register, handleSubmit, formState, reset } = useForm({
     mode: "all",
     resolver: yupResolver(schema),
-    defaultValues: {
-      nome: "",
-      sobrenome: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    },
   });
 
   const { errors, isDirty, isValid } = formState;
-  //console.log("error", errors.nome)
-
-  const handleSubmitData = (data) => {
-    console.log(data);
-    const novoRegistro = [...listaRegistro, data];
-    setListaRegistro(novoRegistro);
-    console.log(data);
-
-    localStorage.setItem("registros", JSON.stringify(novoRegistro));
-    reset();
-
-    Swal.fire({
-      title: "Cadastro realizado com sucesso!",
-      background: "#ffff",
-      confirmButtonColor: "#f0572d",
-      icon: "success",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/");
-      } else {
-        navigate("/");
-      }
-    });    
-  };
 
   const handleClickShowPasswordOne = () => {
     setShowPasswordOne(!showPasswordOne);
@@ -97,11 +37,51 @@ export default function RegisterForm() {
     setShowPasswordTwo(!showPasswordTwo);
   };
 
+  const onSubmit = async (data) => {
+    console.log(data)
+
+    try {
+      const response = await api.post('/usuarios', {
+        nome: data.nome,
+        sobrenome: data.sobrenome,
+        email: data.email,
+        senha: data.senha,
+        nomeFuncao: "usuario"
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      });
+        console.log(response)
+
+      if (response.status === 201) {
+        localStorage.setItem('token', response.data.jwt);
+
+        Swal.fire({
+          title: "Cadastro realizado com sucesso!",
+          background: "#ffff",
+          confirmButtonColor: "#f0572d",
+          icon: "success",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate("/");
+          } else {
+            navigate("/");
+          }
+        });
+      }
+    } catch (error) {
+      
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <form
         className={styles.form_register}
-        onSubmit={handleSubmit(handleSubmitData)}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className={styles.h1_register}>Cadastro</h1>
 
@@ -116,6 +96,8 @@ export default function RegisterForm() {
               }
               name="nome"
               type="text"
+              onChange={(e) => handleChange(e)}
+              
               {...register("nome")}
             />
             {errors.nome && (
@@ -135,6 +117,8 @@ export default function RegisterForm() {
               }
               name="sobrenome"
               type="text"
+              onChange={(e) => handleChange(e)}
+              
               {...register("sobrenome")}
             />
             {errors.sobrenome && (
@@ -157,6 +141,8 @@ export default function RegisterForm() {
               type="email"
               name="email"
               id="email"
+              onChange={(e) => handleChange(e)}
+              
               {...register("email")}
             />
             {errors.email && (
@@ -171,7 +157,7 @@ export default function RegisterForm() {
           <label className={styles.label_register}>Senha:</label>
           <div
             className={
-              errors.password
+              errors.senha
                 ? styles.divPasswordEConfirmPassword_error
                 : styles.divPasswordEConfirmPassword
             }
@@ -181,9 +167,11 @@ export default function RegisterForm() {
                 errors.password ? styles.input_div_error : styles.input_register
               }
               type={!showPasswordOne ? "password" : "text"}
-              name="password"
-              id="password"
-              {...register("password")}
+              name="senha"
+              id="senha"
+              onChange={(e) => handleChange(e)}
+              
+              {...register("senha")}
             />
 
             <img
@@ -194,9 +182,9 @@ export default function RegisterForm() {
               alt="icone olho"
             />
           </div>
-          {errors.password && (
+          {errors.senha && (
             <small className={styles.small_register_error}>
-              {errors.password.message}
+              {errors.senha.message}
             </small>
           )}
         </div>
@@ -205,22 +193,24 @@ export default function RegisterForm() {
           <label className={styles.label_register}>Confirmar Senha:</label>
           <div
             className={
-              errors.confirmPassword
+              errors.confirmarSenha
                 ? styles.divPasswordEConfirmPassword_error
                 : styles.divPasswordEConfirmPassword
             }
           >
             <input
               className={
-                errors.confirmPassword
+                errors.confirmarSenha
                   ? styles.input_div_error
                   : styles.input_register
               }
               type={!showPasswordTwo ? "password" : "text"}
-              name="confirmPassword"
-              id="confirmPassword"
+              name="confirmarSenha"
+              id="confirmarSenha"
+              onChange={(e) => handleChange(e)}
               minLength={8}
-              {...register("confirmPassword")}
+              
+              {...register("confirmarSenha")}
             />
             <img
               onClick={handleClickShowPasswordTwo}
@@ -230,9 +220,9 @@ export default function RegisterForm() {
               alt="icone olho"
             />
           </div>
-          {errors.confirmPassword && (
+          {errors.confirmarSenha && (
             <small className={styles.small_register_error}>
-              {errors.confirmPassword.message}
+              {errors.confirmarSenha.message}
             </small>
           )}
 

@@ -10,6 +10,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  /* background-image: url('https://images.pexels.com/photos/6389164/pexels-photo-6389164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 .carouselContainerTitle {

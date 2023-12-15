@@ -3,6 +3,7 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/NavBar/Navbar";
 import ReservaHeader from "../../Components/ReservaHeader/ReservaHeader";
 import Reserva from "../../Components/Reserva/Reserva";
+import { api } from "../../services/api";
 
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -16,14 +17,12 @@ export function ReservaPage() {
   const veiculoId = useParams();
   const navigate = useNavigate();
 
-  const estaLogado = !!localStorage.getItem("usuarioLogado");
+  const estaLogado = !!localStorage.getItem("token");
 
   const verificarLogin = () => {
     console.log(estaLogado);
 
     if (!estaLogado) {
-      console.log("Redirecionando para /login");
-
       navigate("/login");
       Swal.fire({
         icon: "error",
@@ -42,12 +41,15 @@ export function ReservaPage() {
 
   const getVeiculo = () => {
     const veiculoEncontrado = dadosVeiculo.find(
-      (item) => item.id === parseInt(veiculoId.id)
+      item => item.id === parseInt(veiculoId.id)
     );
     setVeiculo(veiculoEncontrado);
-
-    console.log(veiculoEncontrado);
   };
+
+  // const getVeiculo = async () => {
+  //   const res = await api.get("/carros/:id");
+  //   setProduto(res.data);
+  // };
 
   useEffect(() => {
     getVeiculo();

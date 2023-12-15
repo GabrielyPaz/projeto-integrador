@@ -3,6 +3,7 @@ import Footer from "../../Components/Footer/Footer";
 //import { useNavigate } from 'react-router-dom';
 //import { useEffect, useState } from 'react';
 import AdminFormulario from "../../Components/AdminFormulario/AdminFormulario";
+//import { jwtDecode } from "jwt-decode";
 
 
 export function AdminPage() {
