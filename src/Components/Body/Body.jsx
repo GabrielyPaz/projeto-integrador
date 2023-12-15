@@ -10,7 +10,7 @@ import dadosVeiculo from '../../data/contents.json'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import SearchField from '../SearchField/SearchField'
-import axiosINstance from '../../service/api'
+// import axiosINstance from '../../service/api'
 
 function Body() {
   const [filter, setFilter] = useState('All')
@@ -22,13 +22,13 @@ function Body() {
 
   // ***** OBS: A API esta demorando um pouco para retornar os resultados *****
 
-  const [listaCidade, setListaCidade] = useState()
+  // const [listaCidade, setListaCidade] = useState()
 
-  const getCidade = async () => {
-    const resposta = await axiosINstance.get('/cidades')
-    console.log(resposta.data)
-    setListaCidade(resposta.data)
-  }
+  // const getCidade = async () => {
+  //   const resposta = await axiosINstance.get('/cidades')
+  //   console.log(resposta.data)
+  //   setListaCidade(resposta.data)
+  // }
 
   //===============================================================================
   const slidesToShow = window.innerWidth > 1010 ? 3 : 1

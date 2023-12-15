@@ -1,86 +1,73 @@
-import { useState } from "react";  
+import { useState } from "react";
 import styles from "./LoginForm.module.css";
 import { useNavigate } from "react-router-dom";
 //import { LoginContext } from "../../contexts/LoginContext/LoginContext";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
-// ========= ANDRE ===========
+import { api } from "../../services/api";
+
 import eye from "../../assets/eye.svg";
 import eyeslash from "../../assets/eye-slash.svg";
 
 export default function Login() {
-
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(false);
   const navigate = useNavigate();
-  
+
   const onChangeUserEmail = (e) => setUserEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
-  // ========= ANDRE ===========
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmitInfo = (e) => {
+  const onSubmitInfo = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
 
-    const registros = JSON.parse(localStorage.getItem("registros"));
-    const existRegister = !!localStorage.getItem("registros");
-
-    if (existRegister) {
-
-      const searchUser = registros.find(
-        record => record.email === data.email && record.password === data.password
+    try {
+      const response = await api.post(
+        "/authentication/login",
+        { email: data.email, senha: data.senha },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
       );
 
-      if(searchUser) {
+      if (response.status === 200) {
         Swal.fire({
-            title: "Login Efetuado com Sucesso!",
-            confirmButtonColor: '#f0572d',
-            icon: "success"
-          }).then((result) => {
-            if (result.isConfirmed) {
-                localStorage.setItem('usuarioLogado', JSON.stringify(searchUser));
-                navigate('/');
-            } else {
-                localStorage.setItem('usuarioLogado', JSON.stringify(searchUser));
-                navigate('/');
-            }
+          title: "Login Efetuado com Sucesso!",
+          confirmButtonColor: "#f0572d",
+          icon: "success",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.setItem("token", response.data.jwt);
+            navigate("/");
+          } else {
+            localStorage.setItem("token", response.data.jwt);
+            navigate("/");
+          }
         });
-
-    } else {
-        Swal.fire({
-            text: "Tente novamente, suas credenciais estão inválidas!",
-            confirmButtonColor: '#f0572d',
-            icon: "error"
-          }).then((result) => {
-            if (result.isConfirmed) {
-                setFormError(true)
-            } else {
-              setFormError(true)
-            }
-          });
-        
-    }
-
-} else {
-    Swal.fire({
-        text: "Por favor, tente novamente, suas credenciais são inválidas!",
-        confirmButtonColor: '#f0572d',
-        icon: "error"
+      }
+    } catch (error) {
+      Swal.fire({
+        text: "Tente novamente, suas credenciais estão inválidas!",
+        confirmButtonColor: "#f0572d",
+        icon: "error",
       }).then((result) => {
         if (result.isConfirmed) {
-          setFormError(true)
+          setFormError(true);
         } else {
-          setFormError(true)
+          setFormError(true);
         }
       });
-}
+    }
+  };
 
-};  
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -126,7 +113,7 @@ export default function Login() {
               <div className={styles.user_input}>
                 <input
                   className={styles.input_register}
-                  name="password"
+                  name="senha"
                   type={!showPassword ? "password" : "text"}
                   placeholder="Digite sua senha."
                   value={password}
@@ -144,7 +131,11 @@ export default function Login() {
             </div>
 
             <div className={styles.container_login_form_btn}>
-              <button data-testId="button" className={styles.login_form_btn} type="submit">
+              <button
+                data-testId="button"
+                className={styles.login_form_btn}
+                type="submit"
+              >
                 Entrar
               </button>
             </div>
@@ -163,6 +154,3 @@ export default function Login() {
     </div>
   );
 }
-
-
-
