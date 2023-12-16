@@ -6,16 +6,17 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { FaAngleRight, FaAngleLeft } from 'react-icons/fa'
-import dadosVeiculo from '../../data/contents.json'
-import { Link } from 'react-router-dom'
+// import dadosVeiculo from '../../data/contents.json'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import SearchField from '../SearchField/SearchField'
 import axiosINstance from '../../service/api'
+import CarroItem from '../CarroItem/CarroItem'
 
-function Body() {
+function Body({ carros }) {
   const [filter, setFilter] = useState('All')
   const [search, setSearch] = useState('')
-  const [filteredData, setFilteredData] = useState(dadosVeiculo)
+  const [filteredData, setFilteredData] = useState([])
   const [slider, setSlider] = useState(null)
 
   //####### Trabalhando com a API ###########
@@ -24,11 +25,32 @@ function Body() {
 
   const [listaCidade, setListaCidade] = useState()
 
+  // const [veiculo, setVeiculo] = useState([])
+  // const veiculoId = useParams()
+
   const getCidade = async () => {
     const resposta = await axiosINstance.get('/cidades')
-    console.log(resposta.data)
-    setListaCidade(resposta.data)
+
+    setListaCidade(resposta.data.cidades.nome)
+    console.log(resposta.data.cidades.nome)
   }
+
+  useEffect(() => {
+    getCidade()
+  }, [])
+
+  // ########### Buscando veiculos ###########
+
+  // const getVeiculo = async () => {
+  //   const resposta = await axiosINstance.get(`/carros/${veiculoId.id}`)
+
+  //   setVeiculo(resposta.data)
+  //   console.log(resposta.data)
+  // }
+
+  // useEffect(() => {
+  //   getVeiculo()
+  // }, [])
 
   //===============================================================================
   const slidesToShow = window.innerWidth > 1010 ? 3 : 1
@@ -53,15 +75,14 @@ function Body() {
   }
 
   const handleSearch = () => {
-    const filtered = dadosVeiculo.filter(item => {
-      const byCategory = filter === 'All' || item.category === filter
-      const bySearch = item.location
-        .toLowerCase()
-        .includes(search.toLowerCase())
-
-      return byCategory && bySearch
-    })
-    setFilteredData(filtered)
+    // const filtered = carros.filter(item => {
+    //   const byCategory = filter === 'All' || item.category === filter
+    //   const bySearch = item.location
+    //     .toLowerCase()
+    //     .includes(search.toLowerCase())
+    //   return byCategory && bySearch
+    // })
+    // setFilteredData(filtered)
   }
 
   const handleFilterChange = selectedFilter => {
@@ -153,19 +174,8 @@ function Body() {
       <div className={styles.cardCars}>
         <div className={styles.cardForTitle}></div>
 
-        {filteredData.map(item => (
-          <section key={item.id} className={styles.sectionCard}>
-            <div className={styles.cardContainer}>
-              <img className={styles.imgCar} src={item.img} />
-            </div>
-            <p className={styles.modelCar}> {item.title} </p>
-            <div className={styles.yearCar}>
-              <span className={styles.span}>Ano 2020/2021</span>
-              <Link to={`/detail/${item.id}`}>
-                <button className={styles.buttonCar}>Ver mais</button>
-              </Link>
-            </div>
-          </section>
+        {carros.map(item => (
+          <CarroItem key={item.id} {...item} />
         ))}
       </div>
     </main>
