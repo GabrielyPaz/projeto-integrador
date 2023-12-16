@@ -23,16 +23,16 @@ function Body({ carros }) {
 
   // ***** OBS: A API esta demorando um pouco para retornar os resultados *****
 
-  const [listaCidade, setListaCidade] = useState()
+  const [cidade, setCidade] = useState([])
 
   // const [veiculo, setVeiculo] = useState([])
   // const veiculoId = useParams()
 
   const getCidade = async () => {
-    const resposta = await axiosINstance.get('/cidades')
+    const resposta = await axiosINstance.get(`/cidades/${carros.id}`)
 
-    setListaCidade(resposta.data.cidades.nome)
-    console.log(resposta.data.cidades.nome)
+    setCidade(resposta.data.cidades)
+    console.log(resposta.data.cidades)
   }
 
   useEffect(() => {

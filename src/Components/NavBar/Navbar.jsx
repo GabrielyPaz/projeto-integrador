@@ -6,6 +6,8 @@ import { TfiMenu } from "react-icons/tfi";
 import { Link, useLocation } from "react-router-dom";
 import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
 
+import { jwtDecode } from "jwt-decode";
+
 const Navbar = () => {
   const location = useLocation();
   const [menuMobile, setMenuMobile] = useState(false);
