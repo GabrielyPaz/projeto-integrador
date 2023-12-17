@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./LoginForm.module.css";
 import { useNavigate } from "react-router-dom";
-//import { LoginContext } from "../../contexts/LoginContext/LoginContext";
+import { useAuth } from "../../contexts/LoginContext/LoginContext";
 import Swal from "sweetalert2";
 
 import { api } from "../../services/api";
@@ -14,46 +14,59 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [formError, setFormError] = useState(false);
   const navigate = useNavigate();
+  const { dispatch } = useAuth();
 
   const onChangeUserEmail = (e) => setUserEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmitInfo = async (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => {
+  e.preventDefault();
 
+  try {
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
+  const email = formData.get('email');
+  const senha = formData.get('senha');
 
-    try {
-      const response = await api.post(
-        "/authentication/login",
-        { email: data.email, senha: data.senha },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
+  const response = await api.post('/authentication/login', {
+    email,
+    senha,
+  });
+
+  const data = response.data;
+
+  console.log("Login Response:", response);
+
+    if (response.status === 200) {
+      dispatch({
+        type: 'LOGIN',
+        payload: {
+          user: {
+            id: data.id,
+            nome: data.nome,
+            sobrenome: data.sobrenome,
+            funcao: data.funcao,
+            exp: data.exp,
           },
-        }
-      );
+          token: data.jwt,
+        },
+      });
 
-      if (response.status === 200) {
-        Swal.fire({
-          title: "Login Efetuado com Sucesso!",
-          confirmButtonColor: "#f0572d",
-          icon: "success",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            localStorage.setItem("token", response.data.jwt);
-            navigate("/");
-          } else {
-            localStorage.setItem("token", response.data.jwt);
-            navigate("/");
-          }
-        });
-      }
-    } catch (error) {
+      Swal.fire({
+        title: "Login Efetuado com Sucesso!",
+        confirmButtonColor: "#f0572d",
+        icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.setItem("token", data.jwt);
+          navigate("/");
+        }
+      });
+    } else {
+      // Tratamento de erro para outras respostas que não sejam 200
+      console.error("Login error:", response);
+
       Swal.fire({
         text: "Tente novamente, suas credenciais estão inválidas!",
         confirmButtonColor: "#f0572d",
@@ -66,7 +79,22 @@ export default function Login() {
         }
       });
     }
-  };
+  } catch (error) {
+    console.error("Login error:", error);
+    Swal.fire({
+      text: "Tente novamente, ocorreu um erro no login.",
+      confirmButtonColor: "#f0572d",
+      icon: "error",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setFormError(true);
+      } else {
+        setFormError(true);
+      }
+    });
+  }
+};
+
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -76,7 +104,7 @@ export default function Login() {
     <div className={styles.container}>
       <div className={styles.container_login}>
         <div className={styles.wrap_login}>
-          <form className={styles.login_form} onSubmit={onSubmitInfo}>
+          <form className={styles.login_form} onSubmit={handleLogin}>
             <h1 className={styles.login_form_title}>Iniciar Sessão</h1>
 
             <div

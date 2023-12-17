@@ -1,18 +1,46 @@
-import styles from './Navbar.module.css'
-import { useState, useContext } from 'react'
-import { LoginContext } from '../../contexts/LoginContext/LoginContext'
-import { IoClose } from 'react-icons/io5'
-import { TfiMenu } from 'react-icons/tfi'
-import { Link, useLocation } from 'react-router-dom'
-import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter } from 'react-icons/si'
-
-// import { jwtDecode } from "jwt-decode";
+import styles from "./Navbar.module.css";
+import { useState, useContext, useEffect } from "react";
+import { IoClose } from "react-icons/io5";
+import { TfiMenu } from "react-icons/tfi";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
+import { useAuth } from "../../contexts/LoginContext/LoginContext";
 
 const Navbar = () => {
-  const location = useLocation()
-  const [menuMobile, setMenuMobile] = useState(false)
-  const { state, logout } = useContext(LoginContext)
-  const exibirMenu = () => setMenuMobile(!menuMobile)
+
+  const location = useLocation();
+  const [menuMobile, setMenuMobile] = useState(false);
+
+  const navigate = useNavigate();
+  const { authState, dispatch } = useAuth();
+
+  const { isAuthenticated, user, token } = authState;
+
+  const handleLogout = () => {
+    // Despacha a ação de LOGOUT
+    dispatch({ type: "LOGOUT" });
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    console.log(
+      "Navbar - useEffect - Is Autenticado:",
+      authState.isAuthenticated
+    );
+    if (authState.isAuthenticated && authState.user) {
+      console.log("Navbar - useEffect - Autenticado!");
+      const now = new Date().getTime() / 1000;
+      const expiration = Math.floor(authState.user.exp);
+      if (now > expiration) {
+        handleLogout();
+      }
+    }
+  }, [authState.isAuthenticated, authState.user, handleLogout]);
+
+  console.log("Nome:", authState.user?.nome); // Adicione este log
+  console.log("Sobrenome:", authState.user?.sobrenome); // Adicione este log
+
+  const exibirMenu = () => setMenuMobile(!menuMobile);
 
   return (
     <header className={styles.navbar}>
@@ -27,10 +55,10 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {state.login && state.user ? (
+      {isAuthenticated ? (
         <div className={styles.loginArea}>
           <div className={styles.reservaArea}>
-            {location.pathname !== '/:userId/reservas' && (
+            {location.pathname !== "/:userId/reservas" && (
               <Link to="/:userId/reservas" className={styles.linkReserva}>
                 <h3>Minhas reservas</h3>
               </Link>
@@ -38,25 +66,22 @@ const Navbar = () => {
           </div>
 
           <div className={styles.loginAvatar}>
-            {' '}
-            {state.user.nome.charAt(0).toUpperCase()}
-            {state.user.sobrenome.charAt(0).toUpperCase()}{' '}
+            {user?.nome.charAt(0).toUpperCase()}
+            {user?.sobrenome.charAt(0).toUpperCase()}
           </div>
           <div className={styles.loginText}>
             <p> Olá, </p>
             <strong>
-              {' '}
-              {state.user.nome} {state.user.sobrenome}{' '}
+              {user.nome} {user.sobrenome}
             </strong>
           </div>
-          <button className={styles.buttonLogout} onClick={() => logout()}>
-            {' '}
-            Logout{' '}
+          <button className={styles.buttonLogout} onClick={handleLogout}>
+            Logout
           </button>
         </div>
       ) : (
         <ul className={styles.list}>
-          {location.pathname !== '/register' && (
+          {location.pathname !== "/register" && (
             <li className={styles.item}>
               <Link to="/register">
                 <button className={styles.buttonNav}>Criar conta</button>
@@ -64,7 +89,7 @@ const Navbar = () => {
             </li>
           )}
 
-          {location.pathname !== '/login' && (
+          {location.pathname !== "/login" && (
             <li className={styles.item}>
               <Link to="/login">
                 <button className={styles.buttonNav}>Iniciar sessão</button>
@@ -92,18 +117,16 @@ const Navbar = () => {
             onClick={exibirMenu}
           />
 
-          {state.login && state.user ? (
+          {isAuthenticated ? (
             <div className={styles.menuSuperiorLogado}>
               <div className={styles.menuAvatar}>
-                {' '}
-                {state.user.nome.charAt(0).toUpperCase()}
-                {state.user.sobrenome.charAt(0).toUpperCase()}{' '}
+                {user?.nome.charAt(0).toUpperCase()}
+                {user?.sobrenome.charAt(0).toUpperCase()}
               </div>
               <div className={styles.menuText}>
                 <p> Olá, </p>
                 <strong>
-                  {' '}
-                  {state.user.nome} {state.user.sobrenome}{' '}
+                  {user.nome} {user.sobrenome}
                 </strong>
               </div>
             </div>
@@ -113,10 +136,10 @@ const Navbar = () => {
         </div>
 
         <div className={styles.menuInferior}>
-          {state.login ? (
+          {isAuthenticated ? (
             <div className={styles.menuLoginArea}>
               <div className={styles.reservaLoginArea}>
-                {location.pathname !== '/:userId/reservas' && (
+                {location.pathname !== "/:userId/reservas" && (
                   <Link
                     to="/:userId/reservas"
                     className={styles.linkReservaLoginArea}
@@ -127,24 +150,19 @@ const Navbar = () => {
               </div>
 
               <p>
-                {' '}
-                Deseja <span onClick={() => logout()}>
-                  {' '}
-                  encerrar a sessão{' '}
-                </span>{' '}
-                ?{' '}
+                Deseja <span onClick={handleLogout}>encerrar a sessão</span>?
               </p>
               <hr color="black" width="100%" size="1" />
             </div>
           ) : (
             <div className={styles.menuButtons}>
-              {location.pathname !== '/register' && (
+              {location.pathname !== "/register" && (
                 <Link to="/register ">
-                  {' '}
+                  {" "}
                   <button className={styles.buttonItem}>
-                    {' '}
-                    Criar Conta{' '}
-                  </button>{' '}
+                    {" "}
+                    Criar Conta{" "}
+                  </button>{" "}
                 </Link>
               )}
               <hr
@@ -152,19 +170,19 @@ const Navbar = () => {
                 width="90%"
                 size="1"
                 className={` ${
-                  location.pathname === '/register' ||
-                  location.pathname === '/login'
+                  location.pathname === "/register" ||
+                  location.pathname === "/login"
                     ? styles.hidden
-                    : ''
+                    : ""
                 }`}
               />
-              {location.pathname !== '/login' && (
+              {location.pathname !== "/login" && (
                 <Link to="/login">
-                  {' '}
+                  {" "}
                   <button className={styles.buttonItem}>
-                    {' '}
-                    Fazer login{' '}
-                  </button>{' '}
+                    {" "}
+                    Fazer login{" "}
+                  </button>{" "}
                 </Link>
               )}
             </div>
@@ -188,7 +206,7 @@ const Navbar = () => {
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
