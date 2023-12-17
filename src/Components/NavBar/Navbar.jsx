@@ -7,7 +7,6 @@ import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
 import { useAuth } from "../../contexts/LoginContext/LoginContext";
 
 const Navbar = () => {
-
   const location = useLocation();
   const [menuMobile, setMenuMobile] = useState(false);
 
@@ -15,6 +14,9 @@ const Navbar = () => {
   const { authState, dispatch } = useAuth();
 
   const { isAuthenticated, user, token } = authState;
+
+  const [isAdmin] = useState(user ? user?.funcao?.nome : null);
+  const [userId] = useState(user ? user.id : null);
 
   const handleLogout = () => {
     // Despacha a ação de LOGOUT
@@ -58,11 +60,20 @@ const Navbar = () => {
       {isAuthenticated ? (
         <div className={styles.loginArea}>
           <div className={styles.reservaArea}>
-            {location.pathname !== "/:userId/reservas" && (
-              <Link to="/:userId/reservas" className={styles.linkReserva}>
-                <h3>Minhas reservas</h3>
-              </Link>
-            )}
+            {isAdmin === "admin"
+              ? location.pathname !== "/admin" && (
+                  <Link to="/admin" className={styles.linkReserva}>
+                    <h3>Administrar</h3>
+                  </Link>
+                )
+              : location.pathname !== `/${user.id}/reservas` && (
+                  <Link
+                    to={`/${user.id}/reservas`}
+                    className={styles.linkReserva}
+                  >
+                    <h3>Minhas Reservas</h3>
+                  </Link>
+                )}
           </div>
 
           <div className={styles.loginAvatar}>
@@ -138,15 +149,21 @@ const Navbar = () => {
         <div className={styles.menuInferior}>
           {isAuthenticated ? (
             <div className={styles.menuLoginArea}>
-              <div className={styles.reservaLoginArea}>
-                {location.pathname !== "/:userId/reservas" && (
-                  <Link
-                    to="/:userId/reservas"
-                    className={styles.linkReservaLoginArea}
-                  >
-                    <h3>Minhas reservas</h3>
-                  </Link>
-                )}
+              <div className={styles.linkReservaLoginArea}>
+                {isAdmin === "admin"
+                  ? location.pathname !== "/admin" && (
+                      <Link to="/admin" className={styles.linkReserva}>
+                        <h3>Administrar</h3>
+                      </Link>
+                    )
+                  : location.pathname !== `/${user.id}/reservas` && (
+                      <Link
+                        to={`/${user.id}/reservas`}
+                        className={styles.linkReservaLoginArea}
+                      >
+                        <h3>Minhas Reservas</h3>
+                      </Link>
+                    )}
               </div>
 
               <p>
