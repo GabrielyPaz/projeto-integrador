@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./AdminFormulario.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { api } from '../../services/api';
+import Swal from 'sweetalert2';
 
 export default function AdminFormulario() {
   const [atributoQtd, setAtributoQtd] = useState(1);
@@ -102,48 +104,7 @@ export default function AdminFormulario() {
             ))}
           </div>
 
-          <div className={styles.politica}>
-
-            <h2>Políticas do Produto</h2>
-
-            <div className={styles.politicaProd}>
-              <div className={styles.politicaItem}>
-
-                <h3>Regras da casa</h3>
-
-                <label htmlFor="">Descrição</label>
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="10"
-                  placeholder="Escreva aqui"
-                ></textarea>
-              </div>
-              <div className={styles.politicaItem}>
-                <h3>Saúde e segurança</h3>
-                <label htmlFor="">Descrição</label>
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="10"
-                  placeholder="Escreva aqui"
-                ></textarea>
-              </div>
-              <div className={styles.politicaItem}>
-                <h3>Política de cancelamento</h3>
-                <label htmlFor="">Descrição</label>
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="10"
-                  placeholder="Escreva aqui"
-                ></textarea>
-              </div>
-            </div>
-          </div>
+         
 
           <div className={styles.carregarImagens}>
 
