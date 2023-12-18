@@ -8,53 +8,47 @@ import DetailCaracteristica from '../../Components/DetailCaracteristica/DetailCa
 import DetailMapa from '../../Components/DetailMapa/DetailMapa'
 import DetailInformacao from '../../Components/DetailInformacao/DetailInformacao'
 import DetailReserva from '../../Components/DetailReserva/DetailReserva'
-// import dadosVeiculo from '../../data/contents.json'
+
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 import axiosINstance from '../../service/api'
-// import Body from '../../Components/Body/Body'
 
 export function DetailPage() {
   const [cidade, setCidade] = useState([])
+  const [categoria, setCategoria] = useState([])
   const [veiculo, setVeiculo] = useState([])
   const veiculoId = useParams()
 
-  console.log(veiculoId)
-
-  // const getVeiculo = () => {
-
-  //     const veiculoEncontrado = dadosVeiculo.find(item => item.id === parseInt (veiculoId.id) );
-  //     setVeiculo(veiculoEncontrado);
-
-  //     console.log(veiculoEncontrado);
-  // }
-
   const getVeiculo = async () => {
     const resposta = await axiosINstance.get(`/carros/${veiculoId.id}`)
+    setVeiculo(resposta.data)
 
-    setVeiculo(resposta.data.categoria.nome)
-    console.log(resposta.data.categoria.urlImagem)
   }
 
   const getCidade = async () => {
-    const resposta = await axiosINstance.get(`/cidades/${cidade.id}`)
+    const resposta = await axiosINstance.get(`/carros/${veiculoId.id}`)
+    setCidade(resposta.data.cidade)
 
-    setCidade(resposta.data.cidade.nome)
-    console.log(resposta.data.cidade.nome)
+  }
+
+  const getCategoria = async () => {
+    const resposta = await axiosINstance.get(`/carros/${veiculoId.id}`)
+    setCategoria(resposta.data.categoria)
   }
 
   useEffect(() => {
     getVeiculo()
     getCidade()
+    getCategoria()
   }, [])
 
   return (
     <>
       <Navbar />
       <main>
-        <DetailHeader veiculo={veiculo} />
-        <DetailLocalizacao veiculo={veiculo} />
+        <DetailHeader veiculo={veiculo} categoria={categoria}/>
+        <DetailLocalizacao veiculo={veiculo} cidade={cidade}/>
         <DetailGaleria veiculo={veiculo} />
         <DetailCaracteristica veiculo={veiculo} />
         <DetailReserva veiculo={veiculo} />

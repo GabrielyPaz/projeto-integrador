@@ -75,6 +75,8 @@ function Body({ carros }) {
   }
 
   const handleSearch = () => {
+    console.log(search)
+    
     // const filtered = carros.filter(item => {
     //   const byCategory = filter === 'All' || item.category === filter
     //   const bySearch = item.location
@@ -87,6 +89,12 @@ function Body({ carros }) {
 
   const handleFilterChange = selectedFilter => {
     setFilter(selectedFilter)
+  }
+
+  const teste = async (item) => {
+    const resposta = await axiosINstance.get(`/carros/${item.id}`)
+    console.log(resposta.data.categoria.nome)
+    return resposta.data.categoria.nome
   }
 
   const handleSearchChange = () => {
@@ -174,7 +182,9 @@ function Body({ carros }) {
       <div className={styles.cardCars}>
         <div className={styles.cardForTitle}></div>
 
-        {carros.map(item => (
+        {carros
+        // .filter((item) => search === "All" ? true : search === 'Rio de Janeiro' ? true : false)
+        .map(item => (
           <CarroItem key={item.id} {...item} />
         ))}
       </div>

@@ -3,10 +3,11 @@ import styles from './DetailCaracteristica.module.css'
 import { AiFillCar } from 'react-icons/ai'
 
 export default function DetailCaracteristica({ veiculo }) {
+
   return (
     <div className={styles.containerDescricao}>
       <h1 className={styles.titleDescrição}>
-        Com um design robusto e funcional
+        Descrição do Veículo
       </h1>
       <p className={styles.text}> {veiculo.descricao} </p>
 
@@ -41,6 +42,7 @@ export default function DetailCaracteristica({ veiculo }) {
           <AiFillCar />
           <p>Versatilidade e Adaptabilidade</p>
         </div>
+        
       </div>
     </div>
   )
