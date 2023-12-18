@@ -16,9 +16,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px;
     text-align: center;
-
   }
 
   .login_form {
@@ -35,13 +33,11 @@
   }
   
   .login_form_title {
-    margin-bottom: 25px;
-    padding-top: 35px;
     color: var(--laranja-principal);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 29px;
   }
 
   .wrap_input {
@@ -63,12 +59,15 @@
 
 .error .login {
   border: 2px solid red;
-  background-color:rgba(255, 0, 0, 0.357);
+  background-color:rgba(255, 0, 0, 0.5);
+}
+
+.error .user_input {  
+  background-color:rgba(255, 0, 0, 0.5);
 }
 
 .error .input_register {
-  //border: 2px solid red;
-  background-color:rgba(255, 0, 0, 0.357);
+  background-color:rgba(255, 0, 0, 0.1);
 }
   
 .input {
@@ -93,10 +92,8 @@
 
   .label_input {
     width: 100%;
-    font-weight: 300;
-    margin-bottom: -.1em;
-    margin-top: .5em;
-    font-size: 1.2rem;	  
+    font-weight: 400;
+    font-size: 18.5px;	  
   }
 
   .login {
@@ -141,10 +138,10 @@
   }
   
   .login_form_btn {
-    font-size: 1.3rem;
+    font-size: 19px;
     font-weight: 700;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     color: var(--branco);
     display: flex;
     justify-content: center;
@@ -179,16 +176,16 @@
 }
 
 .question {
-    font-weight: 200;
-    font-size: 1.2rem;
+    font-weight: 500;
+    font-size: 15px;
     line-height: 12px;
     text-decoration: none;    
-    color: var(--preto-total);
-    
+    color: var(--preto-total);    
 }
 
 .register {
   color: var(--laranja-principal);
-  font-size: 1.2rem;
+  font-size: 15px;
   font-weight: bold; 
+  padding-bottom: 50px;
 }

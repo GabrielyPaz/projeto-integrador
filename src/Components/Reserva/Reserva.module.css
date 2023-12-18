@@ -10,7 +10,7 @@
 }
 
 .rightPanel {
-  padding: 1rem;
+  /* padding: 0.6rem; */
   display: flex;
   justify-content: center;
   align-items: center;

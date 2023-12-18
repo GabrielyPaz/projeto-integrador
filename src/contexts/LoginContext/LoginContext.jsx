@@ -1,28 +1,43 @@
 /* eslint-disable react/prop-types */
-import { createContext, useReducer } from "react";
-import { loginReducer } from '../../reducers/loginReducer'
+import { createContext, useReducer, useContext, useEffect } from "react";
+import  loginReducer  from '../../reducers/loginReducer'
+import { jwtDecode } from "jwt-decode";
 
-export const LoginContext = createContext();
+const AuthContext = createContext();
 
-const LoginContextProvider = ( {children}) => {
-    
-    const storeUser = JSON.parse(localStorage.getItem("usuarioLogado"));
-    const [state, dispatch] = useReducer(loginReducer, {login: !!storeUser, user: storeUser || null});
+const AuthProvider = ({ children }) => {
+  const [authState, dispatch] = useReducer(loginReducer, {
+    isAuthenticated: false,
+    user: null,
+    token: null,
+  });
 
-    const login = (user) => {
-      dispatch({type: 'SET_LOGIN', payload: user})
+  useEffect(() => {
+    // Tente obter os dados do usuário do localStorage e atualize o estado se existirem
+    const storedToken = localStorage.getItem('token');
+
+    if (storedToken) {
+      // Decodifique o token para obter os dados do usuário
+      const user = jwtDecode(storedToken);
+
+      // Atualize o estado
+      dispatch({ type: 'LOGIN', payload: { user, token: storedToken } });
     }
+  }, []);
 
-    const logout = () => {
-      dispatch({type: 'SET_LOGOUT'})
-      localStorage.removeItem("usuarioLogado");
-    }
+  return (
+    <AuthContext.Provider value={{ authState, dispatch }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-    return (
-    <LoginContext.Provider value={ {state, login, logout} }>
-        { children }
-    </LoginContext.Provider>
-  )
-}
+const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
 
-export default LoginContextProvider;
+export { AuthProvider, useAuth };

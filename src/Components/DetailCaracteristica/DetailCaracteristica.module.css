@@ -1,85 +1,76 @@
 .containerDescricao {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-.titleDescrição, .title {
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px 0px 20px 40px;
-    color: #31363F;
+.titleDescrição,
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px 0px 20px 40px;
+  color: #31363f;
 }
 
 .text {
-    padding: 0 40px 20px 40px;
-    text-align: justify;
+  padding: 0 40px 20px 40px;
+  text-align: justify;
 }
 
 .title {
-    width: 100%;
-    border-bottom: 1.7px solid #f0572d;
-    color: #31363F;
+  width: 100%;
+  border-bottom: 1.7px solid #f0572d;
+  color: #31363f;
 }
 
 .containerGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 30px;
-    padding: 20px 0px 20px 40px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+  padding: 20px 0px 20px 40px;
+  margin-bottom: 20px;
 }
 
 .gridItem {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.9rem;
-    color: #f0572d;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #f0572d;
 }
 
-
 .gridItem p {
-    color:#31363F;
-    font-weight: 500;
-    font-size: 14px;
-   
+  color: #31363f;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 620px) {
-
-.containerGrid {
-grid-template-columns: 1fr 1fr;
-}
-
-.titleDescrição, .title {
-    font-size: 20px;
-}
-
-.text {
-    font-size: 14px;
-}
-  
+  .containerGrid {
+    grid-template-columns: 1fr 1fr;
   }
 
-@media screen and (max-width: 420px) {  
+  .titleDescrição,
+  .title {
+    font-size: 20px;
+  }
 
-.containerGrid {
-gap: 18px;
-/* margin-bottom: 10px; */
-
-} 
-
-.gridItem { 
-gap: 4px;
-
+  .text {
+    font-size: 14px;
+  }
 }
 
-.titleDescrição, .title {
-    padding: 20px 0px 20px 20px;
-    color: #31363F;
-}
+@media screen and (max-width: 420px) {
+  .containerGrid {
+    gap: 18px;
+  }
 
+  .gridItem {
+    gap: 4px;
+  }
 
+  .titleDescrição,
+  .title {
+    color: #31363f;
+  }
 }

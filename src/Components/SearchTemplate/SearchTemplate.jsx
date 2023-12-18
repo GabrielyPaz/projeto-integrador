@@ -1,8 +1,6 @@
-import styles from './SearchTemplate.module.css'
+import styles from "./SearchTemplate.module.css";
 
 const SearchTemplate = ({ search, setSearch, handleSearch }) => {
-  // const cidades = ["Recife - PE", "São Paulo - SP", "Fortaleza - CE", "Salvador - BA"];
-
   return (
     <>
       <div className={styles.headerSearch}>
@@ -18,7 +16,7 @@ const SearchTemplate = ({ search, setSearch, handleSearch }) => {
               placeholder="Cidade"
               className={styles.input}
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
 
@@ -50,7 +48,7 @@ const SearchTemplate = ({ search, setSearch, handleSearch }) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SearchTemplate
+export default SearchTemplate;

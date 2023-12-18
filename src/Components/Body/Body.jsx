@@ -1,31 +1,101 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import styles from './Body.module.css'
 import SearchTemplate from '../SearchTemplate/SearchTemplate'
-import Carousel from 'react-bootstrap/Carousel'
-import dadosVeiculo from '../../data/contents.json'
-import { Link } from 'react-router-dom'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa'
+// import dadosVeiculo from '../../data/contents.json'
+import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import SearchField from '../SearchField/SearchField'
+import axiosINstance from '../../service/api'
+import CarroItem from '../CarroItem/CarroItem'
 
-function Body() {
+function Body({ carros }) {
   const [filter, setFilter] = useState('All')
   const [search, setSearch] = useState('')
-  const [filteredData, setFilteredData] = useState(dadosVeiculo)
+  const [filteredData, setFilteredData] = useState([])
+  const [slider, setSlider] = useState(null)
+  
+
+  //####### Trabalhando com a API ###########
+
+  // ***** OBS: A API esta demorando um pouco para retornar os resultados *****
+
+  const [cidade, setCidade] = useState([])
+
+  // const [veiculo, setVeiculo] = useState([])
+  // const veiculoId = useParams()
+
+  const getCidade = async () => {
+    const resposta = await axiosINstance.get(`/cidades/${carros.id}`)
+
+    setCidade(resposta.data.cidades)
+    console.log(resposta.data.cidades)
+  }
+
+  useEffect(() => {
+    getCidade()
+  }, [])
+
+  // ########### Buscando veiculos ###########
+
+  // const getVeiculo = async () => {
+  //   const resposta = await axiosINstance.get(`/carros/${veiculoId.id}`)
+
+  //   setVeiculo(resposta.data)
+  //   console.log(resposta.data)
+  // }
+
+  // useEffect(() => {
+  //   getVeiculo()
+  // }, [])
+
+  //===============================================================================
+  const slidesToShow = window.innerWidth > 1010 ? 3 : 1
+
+  const settings = {
+    infinite: true,
+    speed: 400,
+    slidesToShow,
+    slidesToScroll: 1
+  }
+
+  const goToNext = () => {
+    slider && slider.slickNext()
+  }
+
+  const goToPrev = () => {
+    slider && slider.slickPrev()
+  }
+
+  const handleCarouselImageSelect = index => {
+    setSelectedImageIndex(index)
+  }
 
   const handleSearch = () => {
-    const filtered = dadosVeiculo.filter(item => {
-      const byCategory = filter === 'All' || item.category === filter
-      const bySearch = item.location
-        .toLowerCase()
-        .includes(search.toLowerCase())
-
-      return byCategory && bySearch
-    })
-    setFilteredData(filtered)
+    console.log(search)
+    
+    // const filtered = carros.filter(item => {
+    //   const byCategory = filter === 'All' || item.category === filter
+    //   const bySearch = item.location
+    //     .toLowerCase()
+    //     .includes(search.toLowerCase())
+    //   return byCategory && bySearch
+    // })
+    // setFilteredData(filtered)
   }
 
   const handleFilterChange = selectedFilter => {
     setFilter(selectedFilter)
+  }
+
+  const teste = async (item) => {
+    const resposta = await axiosINstance.get(`/carros/${item.id}`)
+    console.log(resposta.data.categoria.nome)
+    return resposta.data.categoria.nome
   }
 
   const handleSearchChange = () => {
@@ -44,68 +114,79 @@ function Body() {
         handleSearch={handleSearch}
       />
 
-      <Carousel className={styles.carousel}>
-        <Carousel.Item>
-          <img
-            className={styles.imgCarousel}
-            src="https://images.pexels.com/photos/4512259/pexels-photo-4512259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="Imagem do carro"
-          />
-          <Carousel.Caption className={styles.carouselText}>
-            <h3 className={styles.carouselTitle}>Categoria Econômica</h3>
-            <p className={styles.carouselDescricao}>
-              O carro ideal qualquer ocasião, estilo e personalidade
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className={styles.imgCarousel}
-            src="https://images.pexels.com/photos/6649925/pexels-photo-6649925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="Imagem do carro"
-          />
-          <Carousel.Caption className={styles.carouselText}>
-            <h3 className={styles.carouselTitle}>Categoria Intermediária</h3>
-            <p className={styles.carouselDescricao}>
-              O carro ideal qualquer ocasião, estilo e personalidade
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className={styles.imgCarousel}
-            src="https://images.pexels.com/photos/261985/pexels-photo-261985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="Imagem do carro"
-          />
-          <Carousel.Caption className={styles.carouselText}>
-            <h3 className={styles.carouselTitle}>Categoria Executiva</h3>
-            <p className={styles.carouselDescricao}>
-              O carro ideal qualquer ocasião, estilo e personalidade
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+      <div className={styles.carouselContainer}>
+        <div className={styles.carouselContainerTitle}>
+          <h2>Categorias</h2>
+        </div>
+        <Slider
+          ref={s => setSlider(s)}
+          {...settings}
+          className={styles.carousel}
+        >
+          <div className={styles.carouselItem}>
+            <img
+              className={styles.imgCarousel}
+              src="https://images.pexels.com/photos/4512259/pexels-photo-4512259.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Imagem do carro"
+            />
+            <div className={styles.carouselText}>
+              <h3 className={styles.carouselTitle}>Coupé</h3>
+            </div>
+          </div>
+          <div className={styles.carouselItem}>
+            <img
+              className={styles.imgCarousel}
+              src="https://images.pexels.com/photos/6649925/pexels-photo-6649925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Imagem do carro"
+            />
+            <div className={styles.carouselText}>
+              <h3 className={styles.carouselTitle}>HATCH</h3>
+            </div>
+          </div>
+          <div className={styles.carouselItem}>
+            <img
+              className={styles.imgCarousel}
+              src="https://images.pexels.com/photos/261985/pexels-photo-261985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Imagem do carro"
+            />
+            <div className={styles.carouselText}>
+              <h3 className={styles.carouselTitle}>Importado</h3>
+            </div>
+          </div>
+          <div className={styles.carouselItem}>
+            <img
+              className={styles.imgCarousel}
+              src="https://images.pexels.com/photos/261985/pexels-photo-261985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Imagem do carro"
+            />
+            <div className={styles.carouselText}>
+              <h3 className={styles.carouselTitle}>SEDAN</h3>
+            </div>
+          </div>
+        </Slider>
+        <div style={{ textAlign: 'center' }}>
+          <button onClick={goToPrev} className={styles.btnCarousel}>
+            <FaAngleLeft
+              style={{ fontSize: '2em', color: '#F0572D', cursor: 'pointer' }}
+            />
+          </button>
+          <button onClick={goToNext} className={styles.btnCarousel}>
+            <FaAngleRight
+              style={{ fontSize: '2em', color: '#F0572D', cursor: 'pointer' }}
+            />
+          </button>
+        </div>
+      </div>
 
       <SearchField filter={filter} setFilter={setFilter} />
 
       <div className={styles.cardCars}>
-        <div className={styles.cardForTitle}>
-          <h2 className={styles.cardTitle}>Recomendações</h2>
-        </div>
+        <div className={styles.cardForTitle}></div>
 
-        {filteredData.map(item => (
-          <section key={item.id} className={styles.sectionCard}>
-            <div className={styles.cardContainer}>
-              <img className={styles.imgCar} src={item.img} />
-            </div>
-            <p className={styles.modelCar}> {item.title} </p>
-            <div className={styles.yearCar}>
-              <span className={styles.span}>Ano 2020/2021</span>
-              <Link to={`/detail/${item.id}`}>
-                <button className={styles.buttonCar}>Ver mais...</button>
-              </Link>
-            </div>
-          </section>
+        {carros
+        // .filter((item) => search === "All" ? true : search === 'Rio de Janeiro' ? true : false)
+        .map(item => (
+          <CarroItem key={item.id} {...item} />
         ))}
       </div>
     </main>

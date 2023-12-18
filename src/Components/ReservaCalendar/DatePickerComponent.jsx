@@ -30,6 +30,7 @@ const DatePickerComponent = ( { onChange } ) => {
           onChange={(dates) => {
             setDateRange({ startDate: dates[0], endDate: dates[1] });
             onChange(dates);
+            console.log('Datas selecionadas:', dates);
           }}
           inline
           locale={ptBR}

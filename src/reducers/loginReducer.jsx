@@ -1,12 +1,22 @@
-export const loginReducer = (state, action) => {
+const loginReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user,
+        token: action.payload.token,
+      };
+    case 'LOGOUT':
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        token: null,
+      };
+    default:
+      return state;
+  }
+};
 
-    switch(action.type) {
-        case 'SET_LOGIN':
-            return ( {...state, login: true})
-        case 'SET_LOGOUT':
-            return ( {...state, login: false})
-    }
-
-}
-
-
+export default loginReducer;

@@ -1,65 +1,100 @@
+.body {
+  background: linear-gradient(to bottom, #dfe4ea, #ddd);
+  padding-bottom: 1rem;
+}
+
+.carouselContainer {
+  background-color: #fff;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* background-image: url('https://images.pexels.com/photos/6389164/pexels-photo-6389164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+.carouselContainerTitle {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  min-height: min-content;
+}
+
+.carouselContainerTitle h2 {
+  padding: 10px;
+  display: flex;
+  color: #31363f;
+  font-weight: 700;
+  font-size: 2rem;
+  justify-content: flex-start;
+}
+
 .carousel {
-  max-width: 100%;
+  max-width: 60rem;
   max-height: 347px;
-  background-color: #333;
-  /* box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px; */
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselItem {
+  flex: 0 0 auto;
+  max-width: 18rem;
+  scroll-snap-align: start;
+  position: relative; 
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #f0572d;
 }
 
 .imgCarousel {
   display: block;
   margin: 0 auto;
-  max-height: 20rem;
-  width: 100%;
-  height: auto; 
+  height: 14rem;
+  width: 18rem; 
   object-fit: cover;
-  object-position: center; 
+  object-position: center;
+  border-radius: 4px;
+  box-shadow:  rgba(0, 0, 0, 0.45) 0px 3px 8px;
 }
 
 .carouselTitle {
-  display: flex;
+  text-align: center;
   color: #ffffff96;
   font-weight: 700;
-  font-size: 2.5rem;
-  justify-content: center;
-  padding: 10px; 
-  text-shadow: 2px 2px 8px rgba(22, 22, 22, 0.726);
+  font-size: 1.8rem;
+  padding: 10px;
+  text-shadow: 2px 2px 8px rgba(22, 22, 22, 0.837);
 }
 
-.carouselDescricao {
+.carouselText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
-  display: flex;
-  color: #ffffff94;
-  font-weight: 700;
-  font-size: 1.5rem;
-  justify-content: center;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.886);
 }
 
 .cardForTitle {
-  align-items:center;
+  align-items: center;
   display: flex;
   width: 100%;
-  flex-direction: column; 
-  min-height: min-content; 
+  flex-direction: column;
+  min-height: min-content;
 }
 
-.cardTitle{
+.cardTitle {
   padding: 10px;
   display: flex;
-  color: #31363F;
+  color: #31363f;
   font-weight: 700;
   font-size: 1.8rem;
   justify-content: flex-start;
-  
-} 
-
-
-.sectionCard {
-  padding: 0.5rem;
-  background-color: #DFE4EA;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px;
 }
 
 .cardCars {
@@ -67,37 +102,50 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 0 2.5rem;
-  margin-bottom: 6rem;   
+  gap: 1.8rem;
+  padding: 0 6rem;
+  margin-bottom: 6rem;
+}
+
+/* ========= CARDS ============= */
+
+.sectionCard {
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  /* background-color: #2d7ad8; */
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 3px 8px;
+  background-color: #f3f1f1e3;
 }
 
 .cardContainer {
-  background-color: #ffff;
-  max-width: 22rem;
-  height: 17rem;
+  background-color: #ffffff;
+  width: 22rem;
+  height: 16rem;
   border-radius: 0.3rem;
   margin-bottom: 0.5rem;
 }
 
 .imgCar {
-  /* max-width: 21.875rem; */
-  width: 100%;
-  height: 100%;
-  border-radius: 0.3rem;
+  margin: 0 auto;
+  height: 16rem;
+  width: 22rem;
   object-fit: cover;
+  object-position: center;
+  border-radius: 0.3rem;
 }
 
 .modelCar {
   font-weight: 700;
-  margin-top: 0.8rem;
-}  
+  margin-top: 1rem;
+  width: 100%;
+}
 
 .yearCar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.2rem 1rem;
+  flex-direction: column;
+  padding: 0.2rem 0rem;
+  gap: 0.5rem;
 }
 
 .span {
@@ -106,32 +154,48 @@
 }
 
 .buttonCar {
-  width: 9.375rem;
-  padding: 0.125rem 0.25rem;
+  width: 14rem;
+  height: 2.3rem;
+  margin: 0.4rem 4rem;
+  align-self: center;
   border-radius: 4px;
-  border: 1px solid #F0572D;
+  border: 1px solid #f0572d;
   cursor: pointer;
-  background-color: #F0572D;
+  background-color: #f0572d;
   color: #fff;
   font-weight: bold;
-  font-size:medium;
-  transition: all .3s ease-in-out;
+  font-size: medium;
+  transition: all 0.3s ease-in-out;
 }
 
 .buttonCar:hover {
-  border: 1px solid #F0572D;
-  background-color: #fff; 
-  color: #F0572D;
+  border: 1px solid #f0572d;
+  background-color: #fff;
+  color: #f0572d;
   font-weight: bold;
+}
+
+.btnCarousel {
+border-radius: 4px;
+margin-left: 0.4rem;
+margin-right: 0.4rem;
+/*border: none;
+box-shadow: 1px 1px 3px #31363f; */
+
+}
+
+@media (max-width: 1010px) {
+  .carousel {
+    max-width: 18rem;
+  }
 }
 
 @media (max-width: 460px) {
   .carouselTitle {
     font-size: 2rem;
-   
   }
-  
+
   .carouselDescricao {
     display: none;
- }
+  }
 }

@@ -6,16 +6,26 @@ import DatePickerComponent from "../../Components/ReservaCalendar/DatePickerComp
 import ReservaFormulario from "../../Components/ReservaFormulario/ReservaFormulario";
 import ReservaHorario from "../../Components/ReservaHorario/ReservaHorario";
 import Swal from "sweetalert2";
+import { api } from '../../services/api';
+import { jwtDecode } from "jwt-decode";
+import { format, addHours } from 'date-fns';
 
 const Reserva = ({ veiculo }) => {
   const navigate = useNavigate();
 
-  const [selectedHour, setSelectedHour] = useState("");
+  const [selectedHoraChegada, setSelectedHoraChegada] = useState("");
+  const [selectedHoraDevolucao, setSelectedHoraDevolucao] = useState("");
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
 
-  const selectHour = (event) => {
-    setSelectedHour(event.target.value);
+  const selectHour = (event, type) => {
+    const selectedHourValue = event.target.value;
+
+    if (type === "chegada") {
+      setSelectedHoraChegada(selectedHourValue);
+    } else if (type === "devolucao") {
+      setSelectedHoraDevolucao(selectedHourValue);
+    }
   };
 
   const handleDateChange = (dates) => {
@@ -23,53 +33,96 @@ const Reserva = ({ veiculo }) => {
     setCheckOut(dates[1]);
   };
 
-  const handleReservaForm = (e) => {
+  // const formatarDataHoraParaAPI = (data, hora) => {
+  //   console.log(data,hora,hora.getHours())
+  //   return format(addHours(data, hora.getHours()), 'dd/MM/yyyy HH:mm');
+  // };
+
+
+  const token = localStorage.getItem("token");
+  const usuarioData = token ? jwtDecode(token) : null;
+
+
+  const handleReservaForm = async (e) => {
     e.preventDefault();
+    console.log('Formulário enviado!');
+    
+    if (!checkIn || !checkOut) {
+        alert('Selecione um intervalo de datas válido.');
+        return;
+    } 
 
-    // Informações de ReservaHorario
-    const horaInicioReserva = selectedHour;
+    // Verifica se veiculo está definido
+    if (!veiculo) {
+      console.error('Erro: Veículo não está definido.');
+      return;
+    }
 
-    // Informações de DatePickerComponent
-    const dataInicialReserva = checkIn;
-    const dataFinalReserva = checkOut;
+    // Verifica se veiculo.id está definido
+    if (!veiculo.id) {
+      console.error('Erro: ID do veículo não está definido.');
+      return;
+    }
 
-    // Informações do usuário
-    const produtoId = veiculo.id;
-    // const usuarioId = usuarioData.email;
+    // Verifica se usuarioData está definido
+    if (!usuarioData) {
+      console.error('Erro: Informações do usuário não estão definidas.');
+      return;
+    }
+
+    // Verifica se usuarioData.id está definido
+    if (!usuarioData.id) {
+      console.error('Erro: ID do usuário não está definido.');
+      return;
+    }
+
 
     const formInfoPost = {
-      horaInicioReserva,
-      dataInicialReserva,
-      dataFinalReserva,
-      produtoId,
-      // usuarioId
+      carroId: veiculo.id,
+      dataInicial: format(addHours(checkIn, selectedHoraChegada), 'dd/MM/yyyy HH:mm'),
+      dataFinal: format(addHours(checkOut, selectedHoraDevolucao), 'dd/MM/yyyy HH:mm'),
+      usuarioId: usuarioData.id,
     };
 
-    if (!checkIn || !checkOut || !selectedHour) {
-      alert("Preencha todos os campos obrigatórios.");
-      return;
-    } else {
-      console.log(formInfoPost);
-      Swal.fire({
-        icon: "success",
-        title: "Muito Obrigado!",
-        color: `'#f0572d`,
-        html: `<span'>Sua reserva foi feita com sucesso!</span>`,
-        confirmButtonColor: "#f0572d",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/");
-        } else {
-          navigate("/");
-        }
-      });
+    console.log(selectedHoraDevolucao);
+    console.log(selectedHoraChegada);
+    console.log(formInfoPost)
+    console.log("SOCORROO MEU DEUS")
+
+    try {        
+        const response = await api.post('/reservas', formInfoPost, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 200) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muito Obrigado!',
+                color: "#f0572d",
+                html: `<span>Sua reserva foi feita com sucesso!</span>`,
+                confirmButtonColor: "#f0572d",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/');
+                } else {
+                    navigate('/');
+                }
+            })  
+        }    
+      
+    } catch (error) {
+        console.log(error);
+        console.log('Erro ao enviar reserva:', error);
     }
-  };
+  }
 
   return (
     <form className={styles.reservaForm} onSubmit={handleReservaForm}>
       <div className={styles.leftPanel}>
-        <ReservaFormulario />
+        <ReservaFormulario veiculo={veiculo}/>
         <div className={styles.containerReserva}>
           <h1 className={styles.titleCalendar}>
             Selecione sua data de reserva
@@ -80,7 +133,7 @@ const Reserva = ({ veiculo }) => {
             </div>
           </div>
         </div>
-        <ReservaHorario onSelectHour={selectHour} />
+        <ReservaHorario />
       </div>
 
       <div className={styles.rightPanel}>
@@ -92,13 +145,13 @@ const Reserva = ({ veiculo }) => {
           <div className={styles.imageContainer}>
             <img
               className={styles.imgCar}
-              src={veiculo.img}
+              src={veiculo.categoria?.urlImagem}
               alt="Descrição da Imagem"
             />
           </div>
           <div className={styles.produtoTitle}>
-            <h3>{veiculo.category}</h3>
-            <h2>{veiculo.title}</h2>
+            <h3>{veiculo.categoria?.nome}</h3>
+            <h2>{veiculo.modelo}</h2>
           </div>
 
           <div className={styles.starContainer}>
@@ -110,7 +163,7 @@ const Reserva = ({ veiculo }) => {
 
           <div className={styles.localizacao}>
             <MdLocationPin size={14} />
-            <p>{veiculo.location}</p>
+            <p>{veiculo.cidade?.nome}, {veiculo.cidade?.estado}</p>
           </div>
 
           <div className={styles.checkArea}>
@@ -143,3 +196,4 @@ const Reserva = ({ veiculo }) => {
 };
 
 export default Reserva;
+

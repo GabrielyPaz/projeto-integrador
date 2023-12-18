@@ -1,12 +1,12 @@
 import styles from './DetailLocalizacao.module.css'
 import { MdLocationPin, MdStarBorder } from 'react-icons/md'
 
-const DetailLocalizacao = ({ veiculo }) => {
+const DetailLocalizacao = ({ veiculo, cidade }) => {
   return (
     <div className={styles.detailLocalizacao}>
       <div className={styles.detailTitle}>
         <MdLocationPin size={20} />
-        <p> {veiculo.location} </p>
+        <p> {cidade.nome} - {cidade.estado}</p>
       </div>
 
       <div className={styles.detailClassificacao}>

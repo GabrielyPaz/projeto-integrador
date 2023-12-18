@@ -1,9 +1,9 @@
 .headerSearch {
-  background: linear-gradient(to bottom, #31363F, #191B1D); /* perguntar se ficou legal */
-  color:  #ffff;
+  background: linear-gradient(to bottom, #31363f, #191b1d);
+  color: #ffff;
   align-items: center;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   min-height: min-content;
 }
 
@@ -46,27 +46,26 @@
 
 .input {
   display: flex;
-  flex-direction: column; 
-  width: 400px; 
-  height: 40px; 
+  flex-direction: column;
+  width: 400px;
+  height: 40px;
   border-radius: 4px;
   margin-top: 4px;
   border: none;
-  background-color:  #ffff;
+  background-color: #ffff;
   padding-left: 35px;
   box-shadow: 3px 3px 2px rgba(114, 110, 110, 0.193);
 
-  background-image: url('../../assets/icons/map.png');
+  background-image: url("../../assets/icons/map.png");
   background-repeat: no-repeat;
-  background-position: 10px center; 
-  
+  background-position: 10px center;
 }
 
 .date {
   display: flex;
-  flex-direction: column; 
-  width: 200px; 
-  height: 40px; 
+  flex-direction: column;
+  width: 200px;
+  height: 40px;
   border-radius: 4px;
   margin-top: 4px;
   border: none;
@@ -76,17 +75,17 @@
 }
 
 .button {
-  background-color: #F0572D;
+  background-color: #f0572d;
   color: rgb(255, 255, 255);
   border: none;
   width: 206px;
-  height: 40px; 
+  height: 40px;
   border-radius: 4px;
   margin-top: 38px;
   margin-bottom: 10px;
   text-align: center;
   text-decoration: none;
-  font-size:medium;
+  font-size: medium;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -101,71 +100,64 @@
 /* ===== RESPONSIVIDADE ======== */
 
 @media screen and (max-width: 1055px) {
-   
   .button {
     width: 140px;
-    height: 40px; 
+    height: 40px;
   }
 
   .input {
-    width: 180px; 
-    height: 40px; 
-  }
-  
-  .date {
-    width: 170px; 
-    height: 40px; 
+    width: 180px;
+    height: 40px;
   }
 
-}  
+  .date {
+    width: 170px;
+    height: 40px;
+  }
+}
 
 @media screen and (max-width: 720px) {
-  .wrapper { 
+  .wrapper {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     flex-direction: row;
   }
   .title {
-   font-size: 1.6rem;
+    font-size: 1.6rem;
   }
 
   .search {
     margin: 0;
-
   }
 
   .button,
   .input,
   .date {
-    width: 40rem; 
+    width: 40rem;
     margin: 0;
-    display:block ;
+    display: block;
   }
 
   .button {
     margin-top: 20px;
   }
-  
-  
-}  
+}
 
 @media screen and (max-width: 425px) {
   .search {
     margin-bottom: 10px;
   }
-  .wrapper { 
+  .wrapper {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     flex-direction: row;
   }
-  
+
   .button,
   .input,
   .date {
-    width: 23rem; 
-   
+    width: 23rem;
   }
-  
-}  
+}
