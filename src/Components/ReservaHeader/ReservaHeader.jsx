@@ -6,8 +6,8 @@ const ReservaHeader = ({ veiculo }) => {
   return (
     <div className={styles.detailHeader}>
       <div className={styles.detailTitle}>
-        <h2> {veiculo.category} </h2>
-        <h1> {veiculo.title} </h1>
+        <h2> {veiculo.categoria?.nome} </h2>
+        <h1> {veiculo.modelo} </h1>
       </div>
 
       <div className={styles.detailHeaderIcon}>

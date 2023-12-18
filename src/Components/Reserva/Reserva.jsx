@@ -94,13 +94,13 @@ const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
           <div className={styles.imageContainer}>
             <img
               className={styles.imgCar}
-              src={veiculo.img}
+              src={veiculo.categoria?.urlImagem}
               alt="Descrição da Imagem"
             />
           </div>
           <div className={styles.produtoTitle}>
-            <h3>{veiculo.category}</h3>
-            <h2>{veiculo.title}</h2>
+            <h3>{veiculo.categoria?.nome}</h3>
+            <h2>{veiculo.modelo}</h2>
           </div>
 
           <div className={styles.starContainer}>
@@ -112,7 +112,7 @@ const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
 
           <div className={styles.localizacao}>
             <MdLocationPin size={14} />
-            <p>{veiculo.location}</p>
+            <p>{veiculo.cidade?.nome}, {veiculo.cidade?.estado}</p>
           </div>
 
           <div className={styles.checkArea}>

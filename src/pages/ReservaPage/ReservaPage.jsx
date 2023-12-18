@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Swal from "sweetalert2";
 
-import dadosVeiculo from "../../data/contents.json";
+// import dadosVeiculo from "../../data/contents.json";
 
 export function ReservaPage() {
   const [veiculo, setVeiculo] = useState([]);
@@ -39,17 +39,18 @@ export function ReservaPage() {
     }
   };
 
-  const getVeiculo = () => {
-    const veiculoEncontrado = dadosVeiculo.find(
-      item => item.id === parseInt(veiculoId.id)
-    );
-    setVeiculo(veiculoEncontrado);
+  // const getVeiculo = () => {
+  //   const veiculoEncontrado = dadosVeiculo.find(
+  //     item => item.id === parseInt(veiculoId.id)
+  //   );
+  //   setVeiculo(veiculoEncontrado);
+  // };
+
+  const getVeiculo = async () => {
+    const res = await api.get(`/carros/${veiculoId.id}`);
+    setVeiculo(res.data);
   };
 
-  // const getVeiculo = async () => {
-  //   const res = await api.get("/carros/:id");
-  //   setProduto(res.data);
-  // };
 
   useEffect(() => {
     getVeiculo();
@@ -67,10 +68,10 @@ export function ReservaPage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main> 
         <ReservaHeader veiculo={veiculo} />
         <Reserva veiculo={veiculo} />
-        <DetailInformacao />
+        <DetailInformacao veiculo={veiculo}/>
       </main>
       <Footer />
     </>

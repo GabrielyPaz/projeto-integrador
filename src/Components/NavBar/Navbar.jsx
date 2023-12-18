@@ -5,6 +5,7 @@ import { TfiMenu } from "react-icons/tfi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SiFacebook, SiInstagram, SiLinkedin, SiTwitter } from "react-icons/si";
 import { useAuth } from "../../contexts/LoginContext/LoginContext";
+import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
   const location = useLocation();
@@ -14,10 +15,14 @@ const Navbar = () => {
   const { authState, dispatch } = useAuth();
 
   const { isAuthenticated, user, token } = authState;
+  
 
-  const [isAdmin] = useState(user ? user?.funcao?.nome : null);
-  const [userId] = useState(user ? user.id : null);
+  // const [userId] = useState(user ? user.id : null);
 
+  const userToken = localStorage.getItem('token');
+  const usuarioData = userToken ? jwtDecode(userToken) : null;
+  const [isAdmin] = useState(usuarioData? usuarioData.funcao.nome : null);
+  console.log(isAdmin)
   const handleLogout = () => {
     // Despacha a ação de LOGOUT
     dispatch({ type: "LOGOUT" });
@@ -60,20 +65,9 @@ const Navbar = () => {
       {isAuthenticated ? (
         <div className={styles.loginArea}>
           <div className={styles.reservaArea}>
-            {isAdmin === "admin"
-              ? location.pathname !== "/admin" && (
-                  <Link to="/admin" className={styles.linkReserva}>
-                    <h3>Administrar</h3>
-                  </Link>
-                )
-              : location.pathname !== `/${user.id}/reservas` && (
-                  <Link
-                    to={`/${user.id}/reservas`}
-                    className={styles.linkReserva}
-                  >
-                    <h3>Minhas Reservas</h3>
-                  </Link>
-                )}
+            {isAdmin === "admin" && <Link to="/admin" className={styles.linkReserva}> <h3>Administrar</h3> </Link>}
+            {isAdmin === "usuario" && <Link to={`/${user.id}/reservas`} className={styles.linkReserva}> <h3>Minhas Reservas</h3> </Link>}
+
           </div>
 
           <div className={styles.loginAvatar}>
