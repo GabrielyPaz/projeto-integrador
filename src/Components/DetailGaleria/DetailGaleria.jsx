@@ -74,7 +74,7 @@ const DetailGaleria = ({ veiculo }) => {
         <div className={styles.box1}>
           <img
             className={styles.imgCar}
-            src={veiculo.categoria.urlImagem}
+            src={veiculo?.categoria?.urlImagem}
             alt="Descrição da Imagem"
           />
         </div>
