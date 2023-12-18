@@ -46,7 +46,6 @@
 }
 
 @media screen and (max-width: 620px) {
-  
   .containerGrid {
     grid-template-columns: 1fr 1fr;
   }
@@ -64,7 +63,6 @@
 @media screen and (max-width: 420px) {
   .containerGrid {
     gap: 18px;
-  
   }
 
   .gridItem {

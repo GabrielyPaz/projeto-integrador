@@ -1,35 +1,32 @@
-.containerReserva{
-
-  background-color: #DFE4EA;
+.containerReserva {
+  background-color: #dfe4ea;
   display: flex;
   flex-direction: column;
   max-width: 100%;
   margin: 0 auto;
   align-items: center;
-  }
-  
-  .title {
+}
+
+.title {
   width: 100%;
   font-size: 24px;
   font-weight: 700;
   color: #31363f;
-  padding: 1rem; 
-  
-  }
-  
-  .dateArea {
+  padding: 1rem;
+}
+
+.dateArea {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
-  background-color: #DFE4EA;
-  }
-  
-  .containerButton {
-  
-  background-color:  #f2f2f2;
+  background-color: #dfe4ea;
+}
+
+.containerButton {
+  background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
   font-size: 1rem;
@@ -40,10 +37,9 @@
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.45) 1px 2px 6px;
   padding: 1rem;
-  
-  }
-  
-  .link {
+}
+
+.link {
   background-color: var(--laranja-principal);
   color: var(--branco);
   border: none;
@@ -54,7 +50,7 @@
   margin-bottom: 1rem;
   text-align: center;
   text-decoration: none;
-  font-size:medium;
+  font-size: medium;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -63,42 +59,31 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 1px 1px 2px rgba(114, 110, 110, 0.17);
-  }
-
+}
 
 /* ===== RESPONSIVIDADE ======== */
 
 @media screen and (max-width: 1124px) {
-  
   .dateArea {
     flex-direction: column;
   }
 
-  .containerButton { 
-    
+  .containerButton {
     box-shadow: none;
     margin-left: 0;
     padding: 0 2rem;
-    background-color: #DFE4EA;
-    
+    background-color: #dfe4ea;
   }
-
 }
 
 @media screen and (max-width: 620px) {
-
   .containerButton p {
     font-size: 0.9rem;
     padding: 0 0.2rem;
     width: 18rem;
-    
   }
 
   .title {
     font-size: 20px;
-
   }
-
-  
-
 }

@@ -1,6 +1,11 @@
 import styles from "./ReservaUsuario.module.css";
 import { Link } from "react-router-dom";
-import { MdKeyboardArrowLeft, MdLocationPin } from "react-icons/md";
+import {
+  MdKeyboardArrowLeft,
+  MdLocationPin,
+  MdCalendarMonth,
+} from "react-icons/md";
+import { HiOutlineClock } from "react-icons/hi";
 
 const ReservaUsuario = () => {
   return (
@@ -34,21 +39,37 @@ const ReservaUsuario = () => {
             />
           </div>
 
-          <div className={styles.localizacao}>
-            <MdLocationPin size={14} />
-            <p>São Paulo</p>
-          </div>
-
           <div className={styles.checkArea}>
-            <div className={styles.check}>
-              <h4 className={styles.checkIn}>Check In</h4>
+            <div className={styles.localizacao}>
+              <MdLocationPin size={20} color="#f0572d" />
+              <p>Retirada</p>
+            </div>
+
+            <div className={styles.checkIn}>
+              <h4>Recife, PE</h4>
+            </div>
+
+            <div className={styles.checkIn}>
+              <MdCalendarMonth size={18} />
               <span>15/12/2023</span>
+              <HiOutlineClock size={18} />
               <span>15h</span>
             </div>
 
-            <div className={styles.check}>
-              <h4 className={styles.checkOut}>Check Out</h4>
-              <span>20/12/2023</span>
+            <div className={styles.localizacao}>
+              <MdLocationPin size={20} color="#f0572d" />
+              <p>Devolução</p>
+            </div>
+
+            <div className={styles.checkOut}>
+              <h4>Recife, PE</h4>
+            </div>
+
+            <div className={styles.checkOut}>
+              <MdCalendarMonth size={18} />
+              <span>15/12/2023</span>
+              <HiOutlineClock size={18} />
+              <span>15h</span>
             </div>
 
             <div className={styles.containerButton}>
@@ -73,24 +94,38 @@ const ReservaUsuario = () => {
             />
           </div>
 
-          <div className={styles.localizacao}>
-            <MdLocationPin size={14} />
-            <p>São Paulo</p>
-          </div>
-
           <div className={styles.checkArea}>
-            <div className={styles.check}>
-              <h4 className={styles.checkIn}>Check In</h4>
+            <div className={styles.localizacao}>
+              <MdLocationPin size={20} color="#f0572d" />
+              <p>Retirada</p>
+            </div>
+
+            <div className={styles.checkIn}>
+              <h4>Recife, PE</h4>
+            </div>
+
+            <div className={styles.checkIn}>
+              <MdCalendarMonth size={18} />
               <span>15/12/2023</span>
+              <HiOutlineClock size={18} />
               <span>15h</span>
             </div>
 
-            <div className={styles.check}>
-              <h4 className={styles.checkOut}>Check Out</h4>
-              <span>20/12/2023</span>
-             
+            <div className={styles.localizacao}>
+              <MdLocationPin size={20} color="#f0572d" />
+              <p>Devolução</p>
             </div>
 
+            <div className={styles.checkOut}>
+              <h4>Recife, PE</h4>
+            </div>
+
+            <div className={styles.checkOut}>
+              <MdCalendarMonth size={18} />
+              <span>15/12/2023</span>
+              <HiOutlineClock size={18} />
+              <span>15h</span>
+            </div>
             <div className={styles.containerButton}>
               <button className={styles.button}>Cancelar Reserva</button>
             </div>
