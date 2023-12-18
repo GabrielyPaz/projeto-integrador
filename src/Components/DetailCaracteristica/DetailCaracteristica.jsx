@@ -1,9 +1,9 @@
 import styles from './DetailCaracteristica.module.css'
 
-import { AiFillCar } from 'react-icons/ai'
+ import { AiFillCar } from 'react-icons/ai'
 
 export default function DetailCaracteristica({ veiculo }) {
-
+console.log(veiculo.caracteristicasCarro)
   return (
     <div className={styles.containerDescricao}>
       <h1 className={styles.titleDescrição}>
@@ -14,34 +14,12 @@ export default function DetailCaracteristica({ veiculo }) {
       <h2 className={styles.title}>O que o carro oferece?</h2>
 
       <div className={styles.containerGrid}>
-        <div className={styles.gridItem}>
+        {veiculo.caracteristicasCarro?.map(item => (
+        <div key={item.id} className={styles.gridItem}>
           <AiFillCar />
-          <p>Capacidade Off-Road</p>
-        </div>
-        <div className={styles.gridItem}>
-          <AiFillCar />
-          <p>Conforto e Espaço</p>
-        </div>
-        <div className={styles.gridItem}>
-          <AiFillCar />
-          <p>Tecnologia Avançada</p>
-        </div>
-        <div className={styles.gridItem}>
-          <AiFillCar />
-          <p>Segurança</p>
-        </div>
-        <div className={styles.gridItem}>
-          <AiFillCar />
-          <p>Desempenho Potente</p>
-        </div>
-        <div className={styles.gridItem}>
-          <AiFillCar />
-          <p>Visibilidade</p>
-        </div>
-        <div className={styles.gridItem}>
-          <AiFillCar />
-          <p>Versatilidade e Adaptabilidade</p>
-        </div>
+          <p> {item.nome} </p>
+        </div>))}
+        
         
       </div>
     </div>
