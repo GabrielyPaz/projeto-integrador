@@ -80,7 +80,7 @@ export default function AdminFormulario({ listaCidades, listaCategorias }) {
   const handleForm = async () => {
     try {
       const caracterPromises = listaAtributos.map(async (atributo) => {
-        const response = await api.post ("/caracteristicas", atributo, {
+        const response = await /*api.post*/ ("/caracteristicas", atributo, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -92,7 +92,7 @@ export default function AdminFormulario({ listaCidades, listaCategorias }) {
       const listaAtributosIds = await Promise.all(caracterPromises);
 
       const imgsPromises = listaImagens.map(async (imagem) => {
-        const response = await api.post ("/imagens", imagem, {
+        const response = await /*api.post*/ ("/imagens", imagem, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -364,4 +364,4 @@ export default function AdminFormulario({ listaCidades, listaCategorias }) {
     </>
   );
 }
-//}
+
