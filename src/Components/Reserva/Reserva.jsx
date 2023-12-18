@@ -7,16 +7,25 @@ import ReservaFormulario from "../../Components/ReservaFormulario/ReservaFormula
 import ReservaHorario from "../../Components/ReservaHorario/ReservaHorario";
 import Swal from "sweetalert2";
 import { api } from '../../services/api';
+import { jwtDecode } from "jwt-decode";
+import { format, addHours } from 'date-fns';
 
-const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
+const Reserva = ({ veiculo }) => {
   const navigate = useNavigate();
 
-  const [selectedHour, setSelectedHour] = useState("");
+  const [selectedHoraChegada, setSelectedHoraChegada] = useState("");
+  const [selectedHoraDevolucao, setSelectedHoraDevolucao] = useState("");
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
 
-  const selectHour = (event) => {
-    setSelectedHour(event.target.value);
+  const selectHour = (event, type) => {
+    const selectedHourValue = event.target.value;
+
+    if (type === "chegada") {
+      setSelectedHoraChegada(selectedHourValue);
+    } else if (type === "devolucao") {
+      setSelectedHoraDevolucao(selectedHourValue);
+    }
   };
 
   const handleDateChange = (dates) => {
@@ -24,35 +33,71 @@ const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
     setCheckOut(dates[1]);
   };
 
+  // const formatarDataHoraParaAPI = (data, hora) => {
+  //   console.log(data,hora,hora.getHours())
+  //   return format(addHours(data, hora.getHours()), 'dd/MM/yyyy HH:mm');
+  // };
+
+
+  const token = localStorage.getItem("token");
+  const usuarioData = token ? jwtDecode(token) : null;
+
+
   const handleReservaForm = async (e) => {
     e.preventDefault();
+    console.log('Formulário enviado!');
     
-    if (!checkIn && !checkOut) {
+    if (!checkIn || !checkOut) {
         alert('Selecione um intervalo de datas válido.');
         return;
     } 
 
+    // Verifica se veiculo está definido
+    if (!veiculo) {
+      console.error('Erro: Veículo não está definido.');
+      return;
+    }
+
+    // Verifica se veiculo.id está definido
+    if (!veiculo.id) {
+      console.error('Erro: ID do veículo não está definido.');
+      return;
+    }
+
+    // Verifica se usuarioData está definido
+    if (!usuarioData) {
+      console.error('Erro: Informações do usuário não estão definidas.');
+      return;
+    }
+
+    // Verifica se usuarioData.id está definido
+    if (!usuarioData.id) {
+      console.error('Erro: ID do usuário não está definido.');
+      return;
+    }
+
+
     const formInfoPost = {
-        horaInicio: selectedHour+":00",
-        horaFinal: selectedHour+":00",
-        dataInicio: checkIn.getFullYear() + "-" +  (checkIn.getMonth()+1).toString().padStart(2, "0") + "-" + checkIn.getDate().toString().padStart(2, "0"),
-        dataFinal: checkOut.getFullYear() + "-" +  (checkOut.getMonth()+1).toString().padStart(2, "0") + "-" + checkOut.getDate().toString().padStart(2, "0"),
-        status: "VAIVIAJAR",
-        produtosId: id,
-        usuariosId: usuarioData.id
+      carroId: veiculo.id,
+      dataInicial: format(addHours(checkIn, selectedHoraChegada), 'dd/MM/yyyy HH:mm'),
+      dataFinal: format(addHours(checkOut, selectedHoraDevolucao), 'dd/MM/yyyy HH:mm'),
+      usuarioId: usuarioData.id,
     };
-    
+
+    console.log(selectedHoraDevolucao);
+    console.log(selectedHoraChegada);
+    console.log(formInfoPost)
+    console.log("SOCORROO MEU DEUS")
+
     try {        
-        const response = await api.post('/reservas' , formInfoPost, 
-        {
+        const response = await api.post('/reservas', formInfoPost, {
           headers: {
-            'Content-Type' : 'application/json',
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
           },
         });
 
-
-        if (response.status === 201) {
+        if (response.status === 200) {
             Swal.fire({
                 icon: 'success',
                 title: 'Muito Obrigado!',
@@ -70,62 +115,14 @@ const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
       
     } catch (error) {
         console.log(error);
+        console.log('Erro ao enviar reserva:', error);
     }
-
-}
-
-
-  // const handleReservaForm = (e) => {
-  //   e.preventDefault();
-
-  //   // Informações de ReservaHorario
-  //   const horaInicioReserva = selectedHour;
-
-  //   // Informações de DatePickerComponent
-  //   const dataInicialReserva = checkIn;
-  //   const dataFinalReserva = checkOut;
-
-  //   // Informações do usuário
-  //   const produtoId = veiculo.id;
-  //   // const usuarioId = usuarioData.email;
-
-  //   const formInfoPost = {
-  //     horaInicioReserva,
-  //     dataInicialReserva,
-  //     dataFinalReserva,
-  //     produtoId,
-  //     // usuarioId
-  //   };
-
-  //   // setHistoricoReservas((prevReservas) => [...prevReservas, formInfoPost]);
-
-  //   if (!checkIn || !checkOut || !selectedHour) {
-  //     alert("Preencha todos os campos obrigatórios.");
-  //     return;
-  //   } else {
-  //     console.log(formInfoPost);
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Muito Obrigado!",
-  //       color: `'#f0572d`,
-  //       html: `<span'>Sua reserva foi feita com sucesso!</span>`,
-  //       confirmButtonColor: "#f0572d",
-  //     }).then((result) => {
-  //       if (result.isConfirmed) {
-  //         navigate("/");
-  //       } else {
-  //         navigate("/");
-  //       }
-  //     });
-  //   }
-  // };
-
-    
+  }
 
   return (
     <form className={styles.reservaForm} onSubmit={handleReservaForm}>
       <div className={styles.leftPanel}>
-        <ReservaFormulario />
+        <ReservaFormulario veiculo={veiculo}/>
         <div className={styles.containerReserva}>
           <h1 className={styles.titleCalendar}>
             Selecione sua data de reserva
@@ -136,7 +133,7 @@ const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
             </div>
           </div>
         </div>
-        <ReservaHorario onSelectHour={selectHour} />
+        <ReservaHorario />
       </div>
 
       <div className={styles.rightPanel}>
@@ -199,3 +196,4 @@ const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
 };
 
 export default Reserva;
+

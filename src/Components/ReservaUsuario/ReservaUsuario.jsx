@@ -6,9 +6,11 @@ import {
   MdCalendarMonth,
 } from "react-icons/md";
 import { HiOutlineClock } from "react-icons/hi";
+//import { api } from "../../services/api";
 
 
-const ReservaUsuario = () => {
+const ReservaUsuario = ( {id, dataInicio, dataFinal, produtosId} ) => {
+  
   return (
     <div>
       <div className={styles.detailHeader}>

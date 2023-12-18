@@ -18,6 +18,7 @@ function Body({ carros }) {
   const [search, setSearch] = useState('')
   const [filteredData, setFilteredData] = useState([])
   const [slider, setSlider] = useState(null)
+  
 
   //####### Trabalhando com a API ###########
 

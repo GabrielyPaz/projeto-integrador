@@ -1,5 +1,5 @@
 import styles from "./Navbar.module.css";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { TfiMenu } from "react-icons/tfi";
 import { Link, useLocation, useNavigate } from "react-router-dom";

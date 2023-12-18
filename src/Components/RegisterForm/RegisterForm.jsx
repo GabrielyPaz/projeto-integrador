@@ -46,7 +46,7 @@ export default function RegisterForm() {
         sobrenome: data.sobrenome,
         email: data.email,
         senha: data.senha,
-        // nomeFuncao: "usuario"
+        nomeFuncao: "CLIENTE"
       }, {
         headers: {
           'Content-Type': 'application/json',

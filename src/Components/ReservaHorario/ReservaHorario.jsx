@@ -3,9 +3,28 @@ import { useState } from "react";
 import { FaRegCheckCircle } from "react-icons/fa";
 
 export default function Horario({ onSelectHour }) {
-  const [horariosArray] = useState(
-    Array.from({ length: 24 }, (_, i) => `${i.toString().padStart(2, "0")}:00`)
+  const horariosArray = Array.from({ length: 24 }, (_, i) =>
+    `${i.toString().padStart(2, "0")}:00`
   );
+
+  const [selectedHours, setSelectedHours] = useState({
+    chegada: "",
+    devolucao: "",
+  });
+
+  const selectHour = (event, type) => {
+    const selectedHourValue = event.target.value;
+    setSelectedHours((prev) => ({ ...prev, [type]: selectedHourValue }));
+  };
+
+  console.log('selectedHours:', selectedHours);
+
+  const renderOptions = () =>
+    horariosArray.map((horario, index) => (
+      <option key={index} value={horario}>
+        {horario}
+      </option>
+    ));
 
   return (
     <div className={styles.reservaHorario}>
@@ -15,43 +34,39 @@ export default function Horario({ onSelectHour }) {
         <div className={styles.horarioFormPrinc}>
           <div className={styles.horaCheck}>
             <FaRegCheckCircle />
-            <p> Seu carro estará pronto para check-in entre 08h00 e 20h00</p>
+            <p> Seu carro estará pronto para check-in a partir da hora agendada</p>
           </div>
-          <div className={styles.horasComponent}>
-            <label className={styles.horaLabel}>
-              Indique a sua hora prevista de chegada
-            </label>
 
-            <select className={styles.horaSelect} onChange={onSelectHour}>
-              <option value="" disabled hidden selected>
+          <div className={styles.horasComponent}>
+            <label className={styles.horaLabel}>Indique a sua hora prevista de chegada</label>
+            <select
+              className={styles.horaSelect}
+              onChange={(event) => selectHour(event, 'chegada')}
+              value={selectedHours.chegada}
+            >
+              <option value="" disabled hidden>
                 Selecione a sua hora de chegada
               </option>
-              {horariosArray.map((horario, index) => (
-                <option key={index} value={horario}>
-                  {horario}
-                </option>
-              ))}
+              {renderOptions()}
             </select>
           </div>
 
           <div className={styles.horasComponent}>
-            <label className={styles.horaLabel}>
-              Indique a sua hora prevista para devolução
-            </label>
-
-            <select className={styles.horaSelect}>
-              <option value="" disabled hidden selected>
+            <label className={styles.horaLabel}>Indique a sua hora prevista para devolução</label>
+            <select
+              className={styles.horaSelect}
+              onChange={(event) => selectHour(event, 'devolucao')}
+              value={selectedHours.devolucao}
+            >
+              <option value="" disabled hidden>
                 Selecione a sua hora de devolução
               </option>
-              {horariosArray.map((horario, index) => (
-                <option key={index} value={horario}>
-                  {horario}
-                </option>
-              ))}
+              {renderOptions()}
             </select>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+

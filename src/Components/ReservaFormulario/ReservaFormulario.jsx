@@ -2,7 +2,7 @@ import styles from './ReservaFormulario.module.css'
 import { jwtDecode } from "jwt-decode";
 
 
-export default function ReservaFormulario() {
+export default function ReservaFormulario( {veiculo} ) {
  
    const estaLogado = !!localStorage.getItem("token");
     const token = estaLogado ? localStorage.getItem("token") : null;
@@ -11,7 +11,7 @@ export default function ReservaFormulario() {
   return (
     <form className={styles.reservaFormulario}>
       <div className={styles.reservaForm}>
-        <h1 className={styles.DadosReserva}>Complete seus dados</h1>
+        <h1 className={styles.DadosReserva}>Dados do usuário</h1>
 
         <div className={styles.input}>
           <div className={styles.inputItem}>
@@ -52,13 +52,13 @@ export default function ReservaFormulario() {
 
           <div className={styles.inputItem}>
             <label className={styles.label} htmlFor="">
-              Cidade
+              Cidade de origem
             </label>
             <input
               className={styles.inputText}
               type="text"
-              placeholder="Digite sua cidade."
-              required
+              placeholder={veiculo.cidade?.nome}
+              disabled
             />
           </div>
         </div>
