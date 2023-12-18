@@ -1,11 +1,12 @@
-  
 import styles from './ReservaFormulario.module.css'
+import { jwtDecode } from "jwt-decode";
+
 
 export default function ReservaFormulario() {
-  const estaLogado = !!localStorage.getItem('usuarioLogado')
-  const usuarioData = estaLogado
-    ? JSON.parse(localStorage.getItem('usuarioLogado'))
-    : { nome: '', sobrenome: '', email: '' }
+ 
+   const estaLogado = !!localStorage.getItem("token");
+    const token = estaLogado ? localStorage.getItem("token") : null;
+    const usuarioData = token ? jwtDecode(token) : null;
 
   return (
     <form className={styles.reservaFormulario}>
@@ -44,7 +45,7 @@ export default function ReservaFormulario() {
             <input
               className={styles.inputText}
               type="text"
-              placeholder={usuarioData.email}
+              placeholder={usuarioData.sub}
               disabled
             />
           </div>
