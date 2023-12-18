@@ -6,6 +6,7 @@ import DatePickerComponent from "../../Components/ReservaCalendar/DatePickerComp
 import ReservaFormulario from "../../Components/ReservaFormulario/ReservaFormulario";
 import ReservaHorario from "../../Components/ReservaHorario/ReservaHorario";
 import Swal from "sweetalert2";
+import { api } from '../../services/api';
 
 const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
   const navigate = useNavigate();
@@ -23,50 +24,103 @@ const Reserva = ({ veiculo, historicoReservas, setHistoricoReservas }) => {
     setCheckOut(dates[1]);
   };
 
-  const handleReservaForm = (e) => {
+  const handleReservaForm = async (e) => {
     e.preventDefault();
-
-    // Informações de ReservaHorario
-    const horaInicioReserva = selectedHour;
-
-    // Informações de DatePickerComponent
-    const dataInicialReserva = checkIn;
-    const dataFinalReserva = checkOut;
-
-    // Informações do usuário
-    const produtoId = veiculo.id;
-    // const usuarioId = usuarioData.email;
+    
+    if (!checkIn && !checkOut) {
+        alert('Selecione um intervalo de datas válido.');
+        return;
+    } 
 
     const formInfoPost = {
-      horaInicioReserva,
-      dataInicialReserva,
-      dataFinalReserva,
-      produtoId,
-      // usuarioId
+        horaInicio: selectedHour+":00",
+        horaFinal: selectedHour+":00",
+        dataInicio: checkIn.getFullYear() + "-" +  (checkIn.getMonth()+1).toString().padStart(2, "0") + "-" + checkIn.getDate().toString().padStart(2, "0"),
+        dataFinal: checkOut.getFullYear() + "-" +  (checkOut.getMonth()+1).toString().padStart(2, "0") + "-" + checkOut.getDate().toString().padStart(2, "0"),
+        status: "VAIVIAJAR",
+        produtosId: id,
+        usuariosId: usuarioData.id
     };
+    
+    try {        
+        const response = await api.post('/reservas' , formInfoPost, 
+        {
+          headers: {
+            'Content-Type' : 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
 
-    // setHistoricoReservas((prevReservas) => [...prevReservas, formInfoPost]);
 
-    if (!checkIn || !checkOut || !selectedHour) {
-      alert("Preencha todos os campos obrigatórios.");
-      return;
-    } else {
-      console.log(formInfoPost);
-      Swal.fire({
-        icon: "success",
-        title: "Muito Obrigado!",
-        color: `'#f0572d`,
-        html: `<span'>Sua reserva foi feita com sucesso!</span>`,
-        confirmButtonColor: "#f0572d",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          navigate("/");
-        } else {
-          navigate("/");
-        }
-      });
+        if (response.status === 201) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Muito Obrigado!',
+                color: "#f0572d",
+                html: `<span>Sua reserva foi feita com sucesso!</span>`,
+                confirmButtonColor: "#f0572d",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/');
+                } else {
+                    navigate('/');
+                }
+            })  
+        }    
+      
+    } catch (error) {
+        console.log(error);
     }
-  };
+
+}
+
+
+  // const handleReservaForm = (e) => {
+  //   e.preventDefault();
+
+  //   // Informações de ReservaHorario
+  //   const horaInicioReserva = selectedHour;
+
+  //   // Informações de DatePickerComponent
+  //   const dataInicialReserva = checkIn;
+  //   const dataFinalReserva = checkOut;
+
+  //   // Informações do usuário
+  //   const produtoId = veiculo.id;
+  //   // const usuarioId = usuarioData.email;
+
+  //   const formInfoPost = {
+  //     horaInicioReserva,
+  //     dataInicialReserva,
+  //     dataFinalReserva,
+  //     produtoId,
+  //     // usuarioId
+  //   };
+
+  //   // setHistoricoReservas((prevReservas) => [...prevReservas, formInfoPost]);
+
+  //   if (!checkIn || !checkOut || !selectedHour) {
+  //     alert("Preencha todos os campos obrigatórios.");
+  //     return;
+  //   } else {
+  //     console.log(formInfoPost);
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "Muito Obrigado!",
+  //       color: `'#f0572d`,
+  //       html: `<span'>Sua reserva foi feita com sucesso!</span>`,
+  //       confirmButtonColor: "#f0572d",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         navigate("/");
+  //       } else {
+  //         navigate("/");
+  //       }
+  //     });
+  //   }
+  // };
+
+    
 
   return (
     <form className={styles.reservaForm} onSubmit={handleReservaForm}>
