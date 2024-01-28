@@ -296,48 +296,7 @@ export default function AdminFormulario({ listaCidades, listaCategorias }) {
               </div>
             ))}
           </div>
-
-          <div className={styles.politica}>
-            <h2>Políticas do Produto</h2>
-
-            <div className={styles.politicaProd}>
-              <div className={styles.politicaItem}>
-                <h3>Regras da locação</h3>
-
-                <label htmlFor="">Descrição</label>
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="10"
-                  placeholder="Escreva aqui"
-                ></textarea>
-              </div>
-              <div className={styles.politicaItem}>
-                <h3>Saúde e segurança</h3>
-                <label htmlFor="">Descrição</label>
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="10"
-                  placeholder="Escreva aqui"
-                ></textarea>
-              </div>
-              <div className={styles.politicaItem}>
-                <h3>Política de cancelamento</h3>
-                <label htmlFor="">Descrição</label>
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="10"
-                  placeholder="Escreva aqui"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
+          
           <div className={styles.carregarImagens}>
             <h3>Carregar imagens</h3>
 
